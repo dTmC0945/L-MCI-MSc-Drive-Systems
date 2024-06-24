@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-05-30 Thu 19:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Question Bank for M.Sc Electric Drives</title>
+<meta name="author" content="Daniel McGuiness" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link href="https://fonts.cdnfonts.com/css/latin-modern-sans" rel="stylesheet">
+<style> body {font-family: 'LMSans10';font-size: 14px;}</style>
+
+<script src="http://thomasf.github.io/solarized-css/org-info.min.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "1");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Question Bank for M.Sc Electric Drives</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8b04b11">1. Legend</a></li>
+<li><a href="#orgfd08d76">2. Fundamentals</a></li>
+<li><a href="#org8a5ec8a">3. Induction Drives</a></li>
+<li><a href="#org3c57f48">4. Linear Induction Motor</a></li>
+<li><a href="#orgac6edd7">5. Single-Phase Induction Motor</a></li>
+<li><a href="#org7e5a763">6. Dynamic Modelling of an IM</a></li>
+<li><a href="#orgc490d3b">7. Control of Induction Motors.</a></li>
+<li><a href="#org82ffb14">8. PMSM &amp; BLDC Drives</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8b04b11" class="outline-2">
+<h2 id="org8b04b11"><span class="section-number-2">1.</span> Legend</h2>
+<div class="outline-text-2" id="text-1">
+<table id="org8b21406" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><font color="gray"><b>D</b></font></td>
+<td class="org-left">Drawing</td>
+<td class="org-left">Here drawing circuits/diagrams may be required.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><font color="purple">S</font></b></td>
+<td class="org-left">Statement</td>
+<td class="org-left">Here a simple 1 or 2 sentence answer is required along with a possible single line of equation.</td>
+</tr>
+
+<tr>
+<td class="org-left"><font color="blue">T</font>/<font color="red">F</font></td>
+<td class="org-left">True/False Question</td>
+<td class="org-left">Here only an answer of either True of False is expected.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b><font color="green">E</font></b></td>
+<td class="org-left">Easy</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><font color="orange">M</font></b></td>
+<td class="org-left">Medium</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><strong><font color="red">H</font></strong></td>
+<td class="org-left">Hard</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfd08d76" class="outline-2">
+<h2 id="orgfd08d76"><span class="section-number-2">2.</span> Fundamentals</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Draw a 3-phase current waveform (R, B, Y), show the phase difference between each phases and write the mathematical equations for three currents.</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <b><font color="orange">M</font></b>] Draw the circuit diagram for the star (Y) and delta (&Delta;) connections and write down their current and voltage relations.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In a delta (&Delta;) connection, the line and the phase current are equal.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In a star (Y) connection, the line and the phase current are equal.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <strong><font color="red">H</font></strong>] Why is 3-phase used in industry compared to other multi-phase systems?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <strong><font color="red">H</font></strong>] In a 6-phase electric drive, phases are separated physically (&theta;<sub>m</sub>) by 180 degrees.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What is the minimum number of phases needed to create a functioning Rotating Magnetic Field?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] Between star (Y) and delta (&Delta;) which one has no neutral connection?</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <b><font color="green">E</font></b>] Describe the relation between the <b>real</b>, <b>reactive</b>, and <b>apparent power</b> using a triangle and write all the relevant units and symbols associated with it.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] In terms of <b>active</b> and <b>reactive</b> power, what would be of an induction generator? would it generate reactive power and generate active power for example.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What are the two (2) main components of an electrical drive?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] How would you change the rotation of a 3-phase rotating magnetic field ?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] How would you change the rotation of a 5-phase rotating magnetic field ?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] How would you change the rotation of a 7-phase rotating magnetic field ?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is the relation between the net magnetic field (B<sub>net</sub>) and the number of phases (n)?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What happens when a motor is constructed with more poles (i.e., 2p=2 to 2p=4)? What operational, physical differences would be observable between them?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is the maximum speed achievable using the European grid with a pole value of 2p=2 in terms of rpm?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is the maximum speed achievable using the North American grid with a pole value of 2p=2 in terms of rpm?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What the technical definition of phase angle (&varphi;).</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Please draw a 3-phase RMF using R, B, Y phases with R leading B leading Y. Once drawn please show the rotation (CW, CCW) of the field on the diagram.</li>
+<li>[<font color="gray"><b>D</b></font>, 10, <strong><font color="red">H</font></strong>] To create a 5-phase RMF how should the phases be separated electrically (&theta;<sub>e</sub>) and physically (&theta;<sub>m</sub>) in terms of angles.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Write down the equation for a 3-phase RMF rotating clockwise.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Write down the equation for a 3-phase RMF rotating counter-clockwise.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8a5ec8a" class="outline-2">
+<h2 id="org8a5ec8a"><span class="section-number-2">3.</span> Induction Drives</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What is/are the fundamental physical principle(s) behind the torque generation of an induction/asynchronous drive?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Why is an induction drive called by that name?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What is/are the reason(s) an induction drive is preferred in industry?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Low power induction drives (&lt;5 kW) are considered self-starting.</li>
+<li>[<font color="gray"><b>D</b></font>, 10, <b><font color="orange">M</font></b>] What is/are the advantage(s)/disadvantage(s) of an induction drive?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Induction drives are easier to have variable speed control compared to a permanent magnet synchronous motor.</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <strong><font color="red">H</font></strong>] Please draw a section (i.e., cut) diagram of an induction drive and explain each major component along with preferred materials used in industry.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What is the purpose of lamination in an induction drive?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Why is electrical steel preferred during the construction of induction drives?</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] What are the major types of induction motor rotor types? Briefly explain them and compare the following criteria:
+<ul class="org-ul">
+<li>Construction,</li>
+<li>Rotor resistance,</li>
+<li>Starting torque,</li>
+<li>Maintenance,</li>
+<li>Build cost,</li>
+<li>and industrial Use.</li>
+</ul></li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Write down the relation between the stator RMF speed (n), stator frequency (f) and the number of poles (p) for an induction drive.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Briefly explain Faraday's law of induction in one sentence.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] Briefly explain Ampere's law in one sentence.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <strong><font color="red">H</font></strong>] What causes the rotation on a squirrel cage induction rotor?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <strong><font color="red">H</font></strong>] What is the technical term for inclination of the rotor rods relative to the axis of rotation in a squirrel cage rotor?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <strong><font color="red">H</font></strong>] Why is skewing done on the rotor rods of a squirrel cage?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <strong><font color="red">H</font></strong>] What happens to the short circuited rods of a squirrel care rotor when they are perfectly aligned with the axis of rotation?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is the definition of slip, how is it calculated, and please write down the equation and explain the variables.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] An induction drive can operate in motor mode with a negative slip.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What is the possible range of a slip value in motor operation?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What behaviour is expected when the slip of an induction drive is 0?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What behaviour is expected when the slip of an induction drive is 1?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] An induction drive can generate torque while having a slip value of 0.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What are the rated slip values for a low to medium induction drive in normal operation?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What are the slip values for idling mode and short circuit mode in an induction drive respectively?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Slip of an induction drive depends on the mechanical load on the shaft.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] The slip of rated load is called the rated (nominal) slip.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <strong><font color="red">H</font></strong>] What is cogging in electric drives and why does it happens ?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] An induction drive is analogous to a transformer with a rotating primary.</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <b><font color="orange">M</font></b>] Please draw the equivalent circuit for an induction drive and explain each component with secondary referred.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="orange">M</font></b>] The magnetising inductance of an induction drive needs to be referred to the primary side in the equivalent circuit model.</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <b><font color="orange">M</font></b>] Please draw the torque speed plot of an induction drive covering breaking, motor and generator region and explain the important points.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] At the time of starting, the initial current of an induction drive is above the rated current.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Inrush current lasts over seconds.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] What is the purpose of a starter in induction drives?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In an induction drive, torque is proportional to the cube of the applied voltage.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is inrush current and what is done to mitigate it?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] Explain the Direct on-line starter method.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Direct on-line starter method does not provide control over the inrush current.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] Explain the Auto-transformer starter method.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Auto-transformer starting method is only usable in star (Y) connection.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Auto-transformer starting method is only usable in delta (&Delta;) connection.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Auto-transformer starting method is usable in both star (Y) and delta (&Delta;) connection.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In an Auto-transformer starting method, the auto-transformer stays connected after the motor reaches rated speed.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In an Auto-transformer starting method, the auto-transformer doesn't stay connected after the motor reaches rated speed.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Explain the Star/Delta starter method.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In a (Y/&Delta;) the motor starts in delta connection and operates under star connection.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] In a S/D the motor starts in star connection and operates under delta connection.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] Explain the slip-Ring Induction motor starter method.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Slip-Ring starter can only be used in wound rotor induction motor.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Slip-Ring starter can only be used in wound squirrel-cage induction motor.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Slip-Ring starter can only be used in both rotor-types.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>] In a squirrel cage rotor would you expect to have voltage potential difference on the rotor rods?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3c57f48" class="outline-2">
+<h2 id="org3c57f48"><span class="section-number-2">4.</span> Linear Induction Motor</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] LIMs have a finite primary or secondary length.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] When are LIM are desirable?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] LIMs can be used in poly-phase supply.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] LIMs are less efficient than normal rotary motors for any given required force output.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] LIMs a normal rotary motors for any given required force output.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What are the practical uses and applications of a Linear Induction Motor?</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="orange">M</font></b>] Why is ferromagnetic core is chosen for use in Rotor in LIM construction?</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Please draw a diagram showing how one converts a rotary motor into linear.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Please write the speed equation of a LIM.</li>
+<li>[<b><font color="purple">S</font></b>, 5, <b><font color="green">E</font></b>]  What is the difference between a LIM and a double sided LIM.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Thrust in a LIM is analogous to torque of an IM.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <strong><font color="red">H</font></strong>] What is the goodness factor, write the equation and describe the variables.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What is magnetic levitation.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What are the two primary issues involved in magnetic levitation?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="orange">M</font></b>] Essentially all types of magnets can be used to generate lift for magnetic levitation.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgac6edd7" class="outline-2">
+<h2 id="orgac6edd7"><span class="section-number-2">5.</span> Single-Phase Induction Motor</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] A Three-phase induction motor can run and start from a single-phase supply.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] How can a three-phase IM start with a single phase supply?</li>
+<li>[<font color="gray"><b>D</b></font>, 30, <strong><font color="red">H</font></strong>] Using drawing please explain the single-phase rotating magnetic field and show why is it not possible to create motion.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Construction wise, 1-phase rotor is similar to 3-phase.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] How can a single-phase motor achieve rotation?</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please list the types of single-phase induction motors mentioned in the lecture in name only.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please explain the permanent-split induction motor and elaborate on its advantages and disadvantages.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please explain the capacitor-start induction motor.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please explain the capacitor-run induction motor.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please explain the resistance-split phase induction motor.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] Please explain the construction of a shaded-pole induction motor.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org7e5a763" class="outline-2">
+<h2 id="org7e5a763"><span class="section-number-2">6.</span> Dynamic Modelling of an IM</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>[<b><font color="purple">S</font></b>, 15, <b><font color="orange">M</font></b>] Please explain the four assumptions made to derive the dynamic model of an IM.</li>
+<li>[<font color="gray"><b>D</b></font>, 10, <b><font color="green">E</font></b>] What does uniform air gap mean for electric drive construction, and please explain your answer with a drawing.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] What does MMF stand for and please explain briefly the meaning behind sinusoidal distributed MMF.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] The assumption of uniform air gap makes self-inductances independent of angular positions.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] dq0 transformation is reversible.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] &alpha;&beta;&gamma; transformation is not reversible.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] If an unbalanced 3-phase input is given to &alpha;&beta;&gamma; transform what would you expect the outcome to be?</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Please explain Clarke transform and why is it used?</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Please explaine Park transform and why is it used?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What are the four (4) types of reference frames used in dynamic modelling of an induction drive?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Explain stator reference model and which situation is it desirable.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>]Explain rotor reference model and which situation is it desirable.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>]Explain synchronous reference model and which situation is it desirable.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Please write down the power relationship between a two phase and a three phase motor.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What is the per unit modelling, briefly explain the concept behind it.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Please write down the The electromechanical dynamic equation and explain the parameters.</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] What are the SI units of:
+<ul class="org-ul">
+<li>voltage,</li>
+<li>resistance,</li>
+<li>inductance,</li>
+<li>impedance,</li>
+<li>torque,</li>
+<li>inertia,</li>
+<li>frequency,</li>
+<li>angular speed,</li>
+<li>number of poles,</li>
+<li>and friction constant.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc490d3b" class="outline-2">
+<h2 id="orgc490d3b"><span class="section-number-2">7.</span> Control of Induction Motors.</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] The IM synchronous (i.e., stator RMF) speed can be changed by which methods ?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] The slip (s) can be changed by which method(s) ?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Please explain the pole changing method</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Briefly explain thevenin circuit theorem.</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] How is V/f control achieved and how does the torque curve behave under different supply frequencies.</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] Decreasing f in V/f control increases rated slip.</li>
+<li>[<font color="gray"><b>D</b></font>, 20, <b><font color="orange">M</font></b>] Explain how rotor-resistance control work and show its behaviour on a torque-speed plot.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What are the principal disadvantages of line-voltage and rotor-resistance control methods?</li>
+<li>[<b><font color="purple">S</font></b>, 20, <b><font color="orange">M</font></b>] What is field operated control and how does it work conceptually?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="green">E</font></b>] Why is dq0 transform used?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 10, <b><font color="green">E</font></b>] The initial guess of the rotor position of an induction drive plays a significant role on the overall performance.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org82ffb14" class="outline-2">
+<h2 id="org82ffb14"><span class="section-number-2">8.</span> PMSM &amp; BLDC Drives</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Why are PMs preferred over electromagnets?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <strong><font color="red">H</font></strong>] Please name the three types of magnets used in industry?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Explain the in-runner and out-runner motor types.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Based on the flux how can you classify electric drives?</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] What are the advantages/disadvantages of axial rotor design?</li>
+<li>[<font color="blue">T</font>/<font color="red">F</font>, 5, <b><font color="green">E</font></b>] PMSM has a trapezoidal back emf</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] BLDC has a sinusoidal back emf.</li>
+<li>[<b><font color="purple">S</font></b>, 10, <b><font color="orange">M</font></b>] Why is sensor-less control developed?</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Daniel McGuiness</p>
+<p class="date">Created: 2024-05-30 Thu 19:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

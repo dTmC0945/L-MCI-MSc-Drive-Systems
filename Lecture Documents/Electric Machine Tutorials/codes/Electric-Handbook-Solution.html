@@ -1,0 +1,1658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-24 Mon 19:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>B.Sc - Electric Drives - Exercise Python Solutions</title>
+<meta name="author" content="Daniel McGuiness" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #fffff; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="style.css">
+<script src="test.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "1");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">B.Sc - Electric Drives - Exercise Python Solutions</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge3764da">1. Python Preamble</a>
+<ul>
+<li><a href="#orgadf7813">1.1. Import Necessary Modules</a></li>
+<li><a href="#orge5000b4">1.2. Define Common Functions</a>
+<ul>
+<li><a href="#orgfff1cad">1.2.1. Complex-to-Polar Conversion</a></li>
+<li><a href="#orgcb7aef9">1.2.2. Magnitude of a Complex Number</a></li>
+<li><a href="#org82981e3">1.2.3. Polar-to-Complex Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgbe6b24a">2. Magnetic Circuits and Materials</a>
+<ul>
+<li><a href="#orga1b890e">2.1. Question 1</a></li>
+<li><a href="#org3ccd1e1">2.2. Question 2</a></li>
+<li><a href="#orgdeb3668">2.3. Question 3</a></li>
+<li><a href="#org902786d">2.4. Question 4</a></li>
+<li><a href="#org5260e5f">2.5. Question 5</a></li>
+<li><a href="#org37148d6">2.6. Question 6</a></li>
+<li><a href="#orge4b4d8e">2.7. Question 7</a></li>
+<li><a href="#orgdf0b62b">2.8. Question 8</a></li>
+<li><a href="#org29a6244">2.9. Question 9</a></li>
+<li><a href="#org0b243e3">2.10. Question 10</a></li>
+</ul>
+</li>
+<li><a href="#org710813e">3. Transformers</a></li>
+<li><a href="#org40f8db8">4. Electromechanical Energy Converion Principles</a>
+<ul>
+<li><a href="#org5b32bc7">4.1. Magnetic Rotor Circuit - I</a></li>
+<li><a href="#org1b03026">4.2. Magnetic Rotor Circuit - II</a></li>
+<li><a href="#org8686f77">4.3. Magnetic Plunger</a></li>
+<li><a href="#org5bb1347">4.4. Determination fo Magnetic Force and Torque from Co-Energy</a></li>
+<li><a href="#org8bbfae4">4.5. Coenergy of a Magnetic Circuit</a></li>
+</ul>
+</li>
+<li><a href="#org81e4287">5. Introduction to Rotating Machines</a>
+<ul>
+<li><a href="#org3a2f691">5.1. Question 1</a></li>
+<li><a href="#orgcbb669d">5.2. Question 2</a></li>
+<li><a href="#org160b969">5.3. Question 3</a></li>
+</ul>
+</li>
+<li><a href="#org9313a46">6. Synchronous Drives</a>
+<ul>
+<li><a href="#orgf63d2f9">6.1. Question 1</a></li>
+<li><a href="#org0310d7c">6.2. Question 2</a></li>
+<li><a href="#org2bad1f9">6.3. Question 3</a></li>
+<li><a href="#org210fc46">6.4. Question 4</a></li>
+<li><a href="#org9404643">6.5. Question 5</a></li>
+<li><a href="#orgfeb4e31">6.6. Question 6</a></li>
+</ul>
+</li>
+<li><a href="#org9269b38">7. Polyphase Induction Drives</a></li>
+<li><a href="#org2bc7cde">8. Direct Current Machines</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge3764da" class="outline-2">
+<h2 id="orge3764da"><span class="section-number-2">1.</span> Python Preamble</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Before diving into studying all electrical machines and electromagnetic energy conversion,
+we need to do some python preambling.
+</p>
+</div>
+
+<div id="outline-container-orgadf7813" class="outline-3">
+<h3 id="orgadf7813"><span class="section-number-3">1.1.</span> Import Necessary Modules</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+As with all python programming, we need some modules to make it all work and not reinvent the wheel.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np                   <span class="org-comment-delimiter"># </span><span class="org-comment">For all mathematical operations</span>
+<span class="org-keyword">import</span> math                          <span class="org-comment-delimiter"># </span><span class="org-comment">Additional math functions from the core </span>
+<span class="org-keyword">from</span> units <span class="org-keyword">import</span> unit               <span class="org-comment-delimiter"># </span><span class="org-comment">Access unit operations and manipulations</span>
+<span class="org-keyword">import</span> sympy <span class="org-keyword">as</span> sy                   <span class="org-comment-delimiter"># </span><span class="org-comment">For doing symbolic calculations</span>
+<span class="org-keyword">from</span> sympy.plotting <span class="org-keyword">import</span> plot      <span class="org-comment-delimiter"># </span><span class="org-comment">For plotting symbolic plotting</span>
+<span class="org-keyword">import</span> matplotlib                    <span class="org-comment-delimiter"># </span><span class="org-comment">imports plotting functions for non-symbolic functions</span>
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt      <span class="org-comment-delimiter"># </span><span class="org-comment">Access axis and fig properties</span>
+<span class="org-keyword">from</span> prettytable <span class="org-keyword">import</span> PrettyTable  <span class="org-comment-delimiter"># </span><span class="org-comment">To pretty print results</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge5000b4" class="outline-3">
+<h3 id="orge5000b4"><span class="section-number-3">1.2.</span> Define Common Functions</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Some functions are used more than once, and to make sure debugging is kept at
+a minimun, they are defined below.
+</p>
+</div>
+
+<div id="outline-container-orgfff1cad" class="outline-4">
+<h4 id="orgfff1cad"><span class="section-number-4">1.2.1.</span> Complex-to-Polar Conversion</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+As we are working with AC circuits, we will work closely with phasor values, which is
+described below.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">complex2polar</span><span class="org-rainbow-delimiters-depth-1">(</span>Z<span class="org-rainbow-delimiters-depth-1">)</span>:
+    <span class="org-doc">"""</span>
+<span class="org-doc">    Produces the phasor and the angle (in radians).</span>
+<span class="org-doc">    """</span>
+    <span class="org-variable-name">X</span>     <span class="org-operator">=</span> Z.real                    <span class="org-comment-delimiter"># </span><span class="org-comment">get the real value of the impedance</span>
+    <span class="org-variable-name">Y</span>     <span class="org-operator">=</span> Z.imag                    <span class="org-comment-delimiter"># </span><span class="org-comment">get the imaginary value of the impedance</span>
+    <span class="org-variable-name">R</span>     <span class="org-operator">=</span> math.hypot<span class="org-rainbow-delimiters-depth-1">(</span>X,Y<span class="org-rainbow-delimiters-depth-1">)</span>           <span class="org-comment-delimiter"># </span><span class="org-comment">get the radius of the phasor</span>
+    <span class="org-variable-name">theta</span> <span class="org-operator">=</span> math.atan2<span class="org-rainbow-delimiters-depth-1">(</span>Y,X<span class="org-rainbow-delimiters-depth-1">)</span>           <span class="org-comment-delimiter"># </span><span class="org-comment">get the angle of the phasor</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-1">[</span>R, theta<span class="org-rainbow-delimiters-depth-1">]</span>                 <span class="org-comment-delimiter"># </span><span class="org-comment">return the phasor and angle as an array</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb7aef9" class="outline-4">
+<h4 id="orgcb7aef9"><span class="section-number-4">1.2.2.</span> Magnitude of a Complex Number</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Calculates the magnitude of a complex number.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">magnitude</span><span class="org-rainbow-delimiters-depth-1">(</span>Z<span class="org-rainbow-delimiters-depth-1">)</span>:
+    <span class="org-doc">"""</span>
+<span class="org-doc">    Calculates the magnitude of a complex value.</span>
+<span class="org-doc">    """</span>
+  <span class="org-keyword">return</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>Z.real<span class="org-operator">**</span>2 <span class="org-operator">+</span> Z.imag<span class="org-operator">**</span>2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Returns magnitude</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82981e3" class="outline-4">
+<h4 id="org82981e3"><span class="section-number-4">1.2.3.</span> Polar-to-Complex Conversion</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+A simple function to calculate the complex number based on the polar values.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">polar2complex</span><span class="org-rainbow-delimiters-depth-1">(</span>angles, radii<span class="org-rainbow-delimiters-depth-1">)</span>:
+  <span class="org-doc">"""</span>
+<span class="org-doc">  Calculate the complex number based on the polar coordinate values</span>
+<span class="org-doc">  """</span>
+  <span class="org-keyword">return</span> radii <span class="org-operator">*</span> np.exp<span class="org-rainbow-delimiters-depth-1">(</span>1j<span class="org-operator">*</span>angles<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgbe6b24a" class="outline-2">
+<h2 id="orgbe6b24a"><span class="section-number-2">2.</span> Magnetic Circuits and Materials</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga1b890e" class="outline-3">
+<h3 id="orga1b890e"><span class="section-number-3">2.1.</span> Question 1</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The magnetic circuit shown in Fig. 1.2 has dimensions of \(A_c = A_g = 9\) cm<sup>2</sup>,
+\(g = 0.050\) cm, \(l_c\) = 30 cm, and \(N\) = 500 tums. Assume the value \(\mu_r\) = 70,000 for core material.
+</p>
+<ol class="org-ol">
+<li>Find the \(\mathcal{R}_c\) and \(\mathcal{R}_g\).</li>
+<li>For the condition that the magnetic circuit iso perating with \(B_c\) = 1.0 T, find the flux \(\phi\) and the current $i$h.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 500   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1     <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+
+<span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
+<span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
+
+<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> Bc <span class="org-operator">*</span> Ac  <span class="org-comment-delimiter"># </span><span class="org-comment">(Wb) Magnetic core flux</span>
+<span class="org-variable-name">MMF</span> <span class="org-operator">=</span> Phi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Rel_c <span class="org-operator">+</span> Rel_g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns) Magnetomotive force</span>
+<span class="org-variable-name">i</span>   <span class="org-operator">=</span> MMF <span class="org-operator">/</span> N               <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Current</span>
+
+
+  <span class="org-comment-delimiter"># </span><span class="org-comment">Specify the Column Names while initializing the Table</span>
+<span class="org-variable-name">Results</span> <span class="org-operator">=</span> PrettyTable<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Definition"</span>, <span class="org-string">"Symbol"</span>, <span class="org-string">"Value"</span>, <span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Definition"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"r"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Symbol"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Value"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Reluctance"</span>, <span class="org-string">"Rel_c"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Rel_c, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Ampere-Turns/Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Air-gap Reluctance"</span>, <span class="org-string">"Rel_g"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Rel_g, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Ampere-Turns/Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"***********************"</span>, <span class="org-string">"************"</span>, <span class="org-string">"****"</span>, <span class="org-string">"****"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Magneto-motive Force"</span>, <span class="org-string">"F or MMF"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>MMF, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Ampere-Turns"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org4a3132b">
++-------------------------+--------------+------------+--------------------+
+|              Definition | Symbol       | Value      | Unit               |
++-------------------------+--------------+------------+--------------------+
+|         Core Reluctance | Rel_c        | 378.94     | Ampere-Turns/Weber |
+|      Air-gap Reluctance | Rel_g        | 442097.064 | Ampere-Turns/Weber |
+| *********************** | ************ | ****       | ****               |
+|               Core Flux | Phi          | 0.001      | Weber              |
+|    Magneto-motive Force | F or MMF     | 398.228    | Ampere-Turns       |
+|                 Current | i            | 0.796      | A                  |
++-------------------------+--------------+------------+--------------------+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3ccd1e1" class="outline-3">
+<h3 id="org3ccd1e1"><span class="section-number-3">2.2.</span> Question 2</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Find the flux (\(\Phi\)) and current for the previous example if;
+</p>
+<ol class="org-ol">
+<li>the number of turns is doubled to \(N\) = 1000 turns while the circuit dimensions remain the same and</li>
+<li>if the number of turns is equal to \(N\) = 500 and the gap is reduced to \(g\) 0.040 cm.</li>
+</ol>
+
+<p>
+If the number of turns is doubled to \(N\) = 1000 turns:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 1000   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1     <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+
+<span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
+<span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
+
+<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> Bc <span class="org-operator">*</span> Ac  <span class="org-comment-delimiter"># </span><span class="org-comment">(Wb) Magnetic core flux</span>
+<span class="org-variable-name">MMF</span> <span class="org-operator">=</span> Phi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Rel_c <span class="org-operator">+</span> Rel_g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns) Magnetomotive force</span>
+<span class="org-variable-name">i</span>   <span class="org-operator">=</span> MMF <span class="org-operator">/</span> N               <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Current</span>
+
+<span class="org-variable-name">Results</span> <span class="org-operator">=</span> PrettyTable<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Definition"</span>, <span class="org-string">"Symbol"</span>, <span class="org-string">"Value"</span>, <span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Definition"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"r"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Symbol"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Value"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"milli-Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org391d298">
++------------+--------+-------+-------------+
+| Definition | Symbol | Value | Unit        |
++------------+--------+-------+-------------+
+|  Core Flux | Phi    | 0.9   | milli-Weber |
+|    Current | i      | 0.398 | A           |
++------------+--------+-------+-------------+
+</pre>
+
+<p>
+If the number of turns is equal to \(N\) = 500 and the gap is reduced to \(g\) 0.040 cm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 4e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 500   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1     <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+
+<span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
+<span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
+
+<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> Bc <span class="org-operator">*</span> Ac  <span class="org-comment-delimiter"># </span><span class="org-comment">(Wb) Magnetic core flux</span>
+<span class="org-variable-name">MMF</span> <span class="org-operator">=</span> Phi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Rel_c <span class="org-operator">+</span> Rel_g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns) Magnetomotive force</span>
+<span class="org-variable-name">i</span>   <span class="org-operator">=</span> MMF <span class="org-operator">/</span> N               <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Current</span>
+
+<span class="org-variable-name">Results</span> <span class="org-operator">=</span> PrettyTable<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Definition"</span>, <span class="org-string">"Symbol"</span>, <span class="org-string">"Value"</span>, <span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Definition"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"r"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Symbol"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Value"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"milli-Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="orgc5ec81e">
++------------+--------+-------+-------------+
+| Definition | Symbol | Value | Unit        |
++------------+--------+-------+-------------+
+|  Core Flux | Phi    | 0.9   | milli-Weber |
+|    Current | i      | 0.637 | A           |
++------------+--------+-------+-------------+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdeb3668" class="outline-3">
+<h3 id="orgdeb3668"><span class="section-number-3">2.3.</span> Question 3</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+The magnetic structure of a synchronous machine is shown schematically in Fig. 1.5.
+Assuming that rotor and stator iron have infinite permeability (\(\mu \rightarrow \infty\)),
+find the air-gap flux ~band flux density \(B_g\). For this example \(I\) = 10 A, \(N\) = 1000 turns, \(g\) = 1 cm, and \(A_g\) = 2000 cm<sup>2</sup>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 1000             <span class="org-comment-delimiter"># </span><span class="org-comment">(-)   number of turns</span>
+<span class="org-variable-name">I</span>   <span class="org-operator">=</span> 10               <span class="org-comment-delimiter"># </span><span class="org-comment">(A)   current</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 1e<span class="org-operator">-</span>2             <span class="org-comment-delimiter"># </span><span class="org-comment">(m)   air-gap</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 0.2              <span class="org-comment-delimiter"># </span><span class="org-comment">(m2)  air-gap cross-sectional area</span>
+
+<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>N <span class="org-operator">*</span> I <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>2 <span class="org-operator">*</span> g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Weber) Air-gap flux</span>
+<span class="org-variable-name">Bg</span>  <span class="org-operator">=</span> Phi <span class="org-operator">/</span> Ag                     <span class="org-comment-delimiter"># </span><span class="org-comment">(Tesla) Air-gap magnetic flux density</span>
+
+
+<span class="org-variable-name">Results</span> <span class="org-operator">=</span> PrettyTable<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Definition"</span>, <span class="org-string">"Symbol"</span>, <span class="org-string">"Value"</span>, <span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Definition"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"r"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Symbol"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Value"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
+
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Air-gap Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Air-gap Magnetic Flux Density"</span>, <span class="org-string">"Bg"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Bg, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"Tesla"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org3f4ce99">
++-------------------------------+--------+---------+-------+
+|                    Definition | Symbol | Value   | Unit  |
++-------------------------------+--------+---------+-------+
+|                  Air-gap Flux | Phi    | 125.664 | Weber |
+| Air-gap Magnetic Flux Density | Bg     | 0.628   | Tesla |
++-------------------------------+--------+---------+-------+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org902786d" class="outline-3">
+<h3 id="org902786d"><span class="section-number-3">2.4.</span> Question 4</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Using Python, please plot the inductance (\(L\)) of the magnetic circuit of Question 1 and Question 2 as a function of
+core permeability (\(\mu_r\)) over the range 100 \(\leq \mu_r \leq\) 100,000.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7          <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3                       <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 500                       <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1                         <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+
+<span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
+
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>1000<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">len</span><span class="org-rainbow-delimiters-depth-2">(</span>mur<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>:
+    <span class="org-variable-name">mur</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> 100 <span class="org-operator">+</span> <span class="org-rainbow-delimiters-depth-1">(</span>100000 <span class="org-operator">-</span> 100<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>i <span class="org-operator">-</span> 1<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-operator">/</span>1000
+
+
+<span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
+
+<span class="org-variable-name">R_tot</span> <span class="org-operator">=</span> Rel_c <span class="org-operator">+</span> Rel_g
+
+<span class="org-variable-name">L</span><span class="org-operator">=</span> N<span class="org-operator">**</span>2 <span class="org-operator">/</span> R_tot
+
+matplotlib.use<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Agg'</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Use this to write to a file</span>
+
+<span class="org-variable-name">fig</span>, <span class="org-variable-name">ax</span> <span class="org-operator">=</span> plt.subplots<span class="org-rainbow-delimiters-depth-1">(</span>1,1<span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'top'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_visible<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">False</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'right'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_visible<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">False</span><span class="org-rainbow-delimiters-depth-1">)</span>
+fig.patch.set_facecolor<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-4"><span class="custom-5">#363a4f</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>     
+ax.set_facecolor<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-4"><span class="custom-5">#363a4f</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.xaxis.label.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.yaxis.label.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-keyword">for</span> axis <span class="org-keyword">in</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'top'</span>,<span class="org-string">'bottom'</span>,<span class="org-string">'left'</span>,<span class="org-string">'right'</span><span class="org-rainbow-delimiters-depth-1">]</span>:
+  ax.spines<span class="org-rainbow-delimiters-depth-1">[</span>axis<span class="org-rainbow-delimiters-depth-1">]</span>.set_linewidth<span class="org-rainbow-delimiters-depth-1">(</span>3<span class="org-rainbow-delimiters-depth-1">)</span>
+  ax.tick_params<span class="org-rainbow-delimiters-depth-1">(</span>width<span class="org-operator">=</span>3<span class="org-rainbow-delimiters-depth-1">)</span>
+
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'bottom'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'top'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'left'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'right'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.tick_params<span class="org-rainbow-delimiters-depth-1">(</span>axis<span class="org-operator">=</span><span class="org-string">'both'</span>, colors<span class="org-operator">=</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.xlabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Core Relative Permeability ($\mu_r$) [H/m]'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.grid<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">True</span>, <span class="org-string">"both"</span>, color<span class="org-operator">=</span><span class="org-string">'</span><span class="custom-1"><span class="custom-5">#414559</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.ylabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Inductance [H]'</span><span class="org-rainbow-delimiters-depth-1">)</span> 
+plt.xlim<span class="org-rainbow-delimiters-depth-1">(</span>0, 0.8e5<span class="org-rainbow-delimiters-depth-1">)</span>
+plt.ylim<span class="org-rainbow-delimiters-depth-1">(</span>0, 1<span class="org-rainbow-delimiters-depth-1">)</span>
+plt.title<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"Core Relative Permeability vs. Inductance Graph"</span>, color<span class="org-operator">=</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#c6d0f5</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.plot<span class="org-rainbow-delimiters-depth-1">(</span>mur, L,<span class="org-string">'</span><span class="custom"><span class="custom-3">#ef9f76</span></span><span class="org-string">'</span>, linewidth<span class="org-operator">=</span>5<span class="org-rainbow-delimiters-depth-1">)</span>
+fig.tight_layout<span class="org-rainbow-delimiters-depth-1">()</span>
+plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'images/python-matplot-fig.svg'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div id="org3f2c1ea" class="figure">
+<p><img src="images/python-matplot-fig.svg" alt="python-matplot-fig.svg" class="org-svg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5260e5f" class="outline-3">
+<h3 id="org5260e5f"><span class="section-number-3">2.5.</span> Question 5</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Assume that the core material in Question 1 is M-5 electrical steel, which has the dc magnetization curve of Fig. 1.10.
+Find the current i required to produce \(B_e\) = 1 T.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7          <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3                       <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">N</span>   <span class="org-operator">=</span> 500                       <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1                         <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+<span class="org-variable-name">Hc</span> <span class="org-operator">=</span> 11 <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/m)</span>
+<span class="org-variable-name">Ic</span> <span class="org-operator">=</span> 0.3
+
+<span class="org-variable-name">Fc</span> <span class="org-operator">=</span> Hc <span class="org-operator">*</span> Ic
+
+<span class="org-variable-name">Fg</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Bg <span class="org-operator">*</span> g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> mu0
+
+<span class="org-variable-name">i</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Fc <span class="org-operator">+</span> Fg<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> N
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org37148d6" class="outline-3">
+<h3 id="org37148d6"><span class="section-number-3">2.6.</span> Question 6</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Repeat Question 5 but find the current i for Bc &#x2013; 1.6 T.
+By what factor does the current have to be increased to result in this factor of 1.6 increase in flux density?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge4b4d8e" class="outline-3">
+<h3 id="orge4b4d8e"><span class="section-number-3">2.7.</span> Question 7</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+The magnetic core in Fig. 1.15 is made from laminations of M-5 grain-oriented electrical steel.
+The winding is excited with a 60-Hz voltage to produce a flux density in the steel of B = 1.5 sin wt T,
+where w = 2zr60 ~ 377 rad/sec. The steel occupies 0.94 of the core cross- sectional area.
+The mass-density of the steel is 7.65 g/cm3. Find:
+</p>
+<ol class="org-ol">
+<li>the applied voltage,</li>
+<li>the peak current,</li>
+<li>the rms exciting current, and</li>
+<li>the core loss.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgdf0b62b" class="outline-3">
+<h3 id="orgdf0b62b"><span class="section-number-3">2.8.</span> Question 8</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+As shown in Fig. 1.17, a magnetic circuit consists of a core of high permeability (/x &#x2013;+ c¢),
+an air gap of length g = 0.2 cm, and a section of magnetic material of length lm = 1.0 cm.
+The cross-sectional area of the core and gap is equal to Am &#x2013; Ag = 4 cm2.
+Calculate the flux density Bs in the air gap if the magnetic material is (a) Alnico 5 and (b) M-5 electrical steel.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org29a6244" class="outline-3">
+<h3 id="org29a6244"><span class="section-number-3">2.9.</span> Question 9</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+ThemagneticcircuitofFig.1.17ismodifiedsothattheair-gapareaisreducedtoAg= 2.0cm2, as shown in Fig. 1.18.
+Find the minimum magnet volume required to achieve an air-gap flux density of 0.8 T.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b243e3" class="outline-3">
+<h3 id="org0b243e3"><span class="section-number-3">2.10.</span> Question 10</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+The magnetic circuit of Fig. 1.26 consists of rings of magnetic material in a stack of height h.
+The rings have inner radius Ri and outer radius Ro.
+Assume that the iron is of infinite permeability (/z &#x2013;+ c~) and neglect the effects of
+magnetic leakage and fringing. For:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">SYMBOL</th>
+<th scope="col" class="org-right">VALUE</th>
+<th scope="col" class="org-left">UNIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(R_i\)</td>
+<td class="org-right">3.4</td>
+<td class="org-left">cm</td>
+</tr>
+
+<tr>
+<td class="org-left">\(R_i\)</td>
+<td class="org-right">4.0</td>
+<td class="org-left">cm</td>
+</tr>
+
+<tr>
+<td class="org-left">\(h\)</td>
+<td class="org-right">2</td>
+<td class="org-left">cm</td>
+</tr>
+
+<tr>
+<td class="org-left">\(g\)</td>
+<td class="org-right">0.2</td>
+<td class="org-left">cm</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Using this information, please calculate:
+</p>
+
+<ol class="org-ol">
+<li>the mean core length \(l_c\) and the core cross-sectional area \(A_c\).</li>
+<li>the reluctance of the core \(\mathcal{R}_c\) and that of the gap \(\mathcal{R}_g\).</li>
+</ol>
+
+<p>
+For \(N\) = 65 turns, calculate:
+</p>
+<ol class="org-ol">
+<li>the inductance \(L\).</li>
+<li>current \(i\) required to operate at an air-gap flux density of \(B_g\) = 1.35T.</li>
+<li>the corresponding flux linkages \(\lambda\) of the coil.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">Calculation of part 1</span>
+<span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7          <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+<span class="org-variable-name">Ri</span> <span class="org-operator">=</span> 3.4e<span class="org-operator">-</span>2
+<span class="org-variable-name">Ro</span> <span class="org-operator">=</span> 4.0e<span class="org-operator">-</span>2
+<span class="org-variable-name">h</span>  <span class="org-operator">=</span> 2.0e<span class="org-operator">-</span>2
+<span class="org-variable-name">g</span>  <span class="org-operator">=</span> 0.2e<span class="org-operator">-</span>2
+<span class="org-variable-name">N</span> <span class="org-operator">=</span> 65
+<span class="org-variable-name">lc</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Ro <span class="org-operator">-</span> Ri<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">-</span> g
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"Mean core length is:"</span>, lc, <span class="org-string">"m"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">Ac</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Ro <span class="org-operator">-</span> Ri<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> h
+
+<span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> g<span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> 0
+<span class="org-variable-name">L</span> <span class="org-operator">=</span> N<span class="org-operator">**</span>2 <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>Rel_c <span class="org-operator">+</span> Rel_g<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">I</span> <span class="org-operator">=</span> 
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org710813e" class="outline-2">
+<h2 id="org710813e"><span class="section-number-2">3.</span> Transformers</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-comment-delimiter"># </span><span class="org-comment">Define Given Parameters</span>
+<span class="org-variable-name">X_2r</span> <span class="org-operator">=</span> 54.3e<span class="org-operator">-</span>6
+<span class="org-variable-name">R_2r</span> <span class="org-operator">=</span> 9.6e<span class="org-operator">-</span>6
+<span class="org-variable-name">X_m</span>  <span class="org-operator">=</span> 17.7e<span class="org-operator">-</span>3
+
+<span class="org-variable-name">N_1</span> <span class="org-operator">=</span> 5
+<span class="org-variable-name">N_2</span> <span class="org-operator">=</span> 800
+<span class="org-variable-name">N</span> <span class="org-operator">=</span> N_1 <span class="org-operator">/</span> N_2
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Load Impedanceq</span>
+<span class="org-variable-name">R_b</span> <span class="org-operator">=</span> 2.5
+<span class="org-variable-name">X_b</span> <span class="org-operator">=</span> 0
+<span class="org-variable-name">Z_br</span> <span class="org-operator">=</span> N<span class="org-operator">**</span>2 <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>R_b  <span class="org-operator">+</span> 1j <span class="org-operator">*</span> X_b<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">I_1</span> <span class="org-operator">=</span> 800
+<span class="org-variable-name">I_2</span> <span class="org-operator">=</span> phasor<span class="org-rainbow-delimiters-depth-1">(</span>I_1 <span class="org-operator">*</span> N <span class="org-operator">*</span> 1j <span class="org-operator">*</span> X_m <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-2">(</span>Z_br <span class="org-operator">+</span> R_2r <span class="org-operator">+</span> 1j <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-3">(</span>X_2r <span class="org-operator">+</span> X_m<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+</pre>
+</div>
+
+
+
+<p>
+p.107
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+  <span class="org-comment-delimiter"># </span><span class="org-comment">Given Parameters</span>
+<span class="org-variable-name">R1</span> <span class="org-operator">=</span> 128
+<span class="org-variable-name">X1</span> <span class="org-operator">=</span> 143
+<span class="org-variable-name">Xm</span> <span class="org-operator">=</span> 163e3
+
+<span class="org-variable-name">N1</span> <span class="org-operator">=</span> 2400
+<span class="org-variable-name">N2</span> <span class="org-operator">=</span> 120
+<span class="org-variable-name">N</span> <span class="org-operator">=</span> N1<span class="org-operator">/</span>N2
+
+<span class="org-variable-name">V1</span> <span class="org-operator">=</span> 2400 <span class="org-comment-delimiter"># </span><span class="org-comment">Primary Voltage</span>
+<span class="org-variable-name">V2</span> <span class="org-operator">=</span> phasor<span class="org-rainbow-delimiters-depth-1">(</span>V1 <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-2">(</span>N2<span class="org-operator">/</span>N1<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-2">(</span>1j <span class="org-operator">*</span> Xm <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-3">(</span>R1 <span class="org-operator">+</span> 1j <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-4">(</span>X1 <span class="org-operator">+</span> Xm<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+V2
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">119.89477930190378</td>
+<td class="org-right">0.044953557754981735</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+p.119 2.1
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-comment-delimiter"># </span><span class="org-comment">At 60 Hz, w = 120 pi</span>
+
+<span class="org-variable-name">N1</span> <span class="org-operator">=</span> 1200 <span class="org-comment-delimiter"># </span><span class="org-comment">turns</span>
+<span class="org-variable-name">N2</span> <span class="org-operator">=</span> 75 <span class="org-comment-delimiter"># </span><span class="org-comment">turns</span>
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 50
+<span class="org-variable-name">w</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> f
+
+<span class="org-variable-name">Ac</span> <span class="org-operator">=</span> 42e<span class="org-operator">-</span>4 <span class="org-comment-delimiter"># </span><span class="org-comment">m2</span>
+<span class="org-variable-name">B</span> <span class="org-operator">=</span> 1.45 <span class="org-comment-delimiter"># </span><span class="org-comment">Tesla</span>
+
+<span class="org-variable-name">primary</span> <span class="org-operator">=</span> N1 <span class="org-operator">*</span> w <span class="org-operator">*</span> Ac <span class="org-operator">*</span> B
+<span class="org-variable-name">secondary</span> <span class="org-operator">=</span> N2 <span class="org-operator">*</span> w <span class="org-operator">*</span> Ac <span class="org-operator">*</span> B
+
+secondary
+</pre>
+</div>
+
+<pre class="example" id="orga1bb23f">
+143.49224445271378
+</pre>
+
+<p>
+p.120
+</p>
+
+<p>
+A magnetic circuit with a cross-sectional area of \(15 cm^2\) is to be operated at 60 Hz from a 120-V rms supply. Calculate the number of turns required to achieve a peak magnetic flux density of 1.8 T in the core.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">Ac</span> <span class="org-operator">=</span> 15e<span class="org-operator">-</span>4
+<span class="org-variable-name">V</span> <span class="org-operator">=</span> 120
+<span class="org-variable-name">T</span> <span class="org-operator">=</span> 1.8
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 60
+
+<span class="org-variable-name">w</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> f
+
+<span class="org-variable-name">N</span> <span class="org-operator">=</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> V <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>w <span class="org-operator">*</span> Ac <span class="org-operator">*</span> B<span class="org-rainbow-delimiters-depth-1">)</span>
+
+N
+</pre>
+</div>
+
+<pre class="example" id="org0293df9">
+206.96926808209338
+</pre>
+
+<p>
+A transformer is to be used to transform the impedance of a 8-fl resistor to an impedance of 75 ft. Calculate the required turns ratio, assuming the transformer to be ideal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">Z1</span> <span class="org-operator">=</span> 8
+<span class="org-variable-name">Z2</span> <span class="org-operator">=</span> 75
+
+<span class="org-variable-name">N</span> <span class="org-operator">=</span> np.floor<span class="org-rainbow-delimiters-depth-1">(</span>np.sqrt<span class="org-rainbow-delimiters-depth-2">(</span>Z2 <span class="org-operator">/</span> Z1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+A 100-fl resistor is connected to the secondary of an idea transformer with a turns ratio of 1:4 (primary to secondary). A 10-V rms, 1-kHz voltage source is connected to the primary. Calculate the primary current and the voltage across the 100-f2 resistor.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">R2</span> <span class="org-operator">=</span> 100
+<span class="org-variable-name">ratio</span> <span class="org-operator">=</span> 0.25
+<span class="org-variable-name">V1</span> <span class="org-operator">=</span> 10
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 1e3
+
+<span class="org-variable-name">R1</span> <span class="org-operator">=</span> ratio<span class="org-operator">**</span>2 <span class="org-operator">*</span> R2
+
+<span class="org-variable-name">I1</span> <span class="org-operator">=</span> V1 <span class="org-operator">/</span> R1
+
+<span class="org-variable-name">V2</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>1<span class="org-operator">/</span>ratio<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> V1
+</pre>
+</div>
+
+<p>
+A 120-V:2400-V, 60-Hz, 50-kVA transformer has a magnetizing reactance (as measured from the 120-V terminals) of 34.6 ft. The 120-V winding has a leakage reactance of 27.4 mr2 and the 2400-V winding has a leakage reactance of 11.2 ft.
+a. With the secondary open-circuited and 120 V applied to the primary (120-V) winding, calculate the primary current and the secondary voltage.
+b. With the secondary short-circuited, calculate the primary voltage which will result in rated current in the primary winding. Calculate the corresponding current in the secondary winding.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">V1</span> <span class="org-operator">=</span> 120
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 60
+<span class="org-variable-name">Xm</span> <span class="org-operator">=</span> 34.6
+<span class="org-variable-name">X1</span> <span class="org-operator">=</span> 27.4e<span class="org-operator">-</span>3
+
+<span class="org-variable-name">I1</span> <span class="org-operator">=</span> V1 <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>X1 <span class="org-operator">+</span> Xm<span class="org-rainbow-delimiters-depth-1">)</span>
+
+</pre>
+</div>
+
+<p>
+A 7970-V: 120-V, 60-Hz potential transformer has the following parameters as seen from the high-voltage (primary) winding:
+X1=1721~2X~=1897~ Xm=782kf2 R1&#x2013;1378f2 R~=1602S2
+a. Assuming that the secondary is open-circuited and that the primary is connected to a 7.97-kV source, calculate the magnitude and phase angle (with respect to the high-voltage source) of the voltage at the secondary terminals.
+b. Calculate the magnitude and phase angle of the secondary voltage if a 1-kfl resistive load is connected to the secondary terminals.
+c. Repeat part (b) if the burden is changed to a 1-kf2 reactance.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org40f8db8" class="outline-2">
+<h2 id="org40f8db8"><span class="section-number-2">4.</span> Electromechanical Energy Converion Principles</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org5b32bc7" class="outline-3">
+<h3 id="org5b32bc7"><span class="section-number-3">4.1.</span> Magnetic Rotor Circuit - I</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The magnetic circuit of Fig. 3.9 consists of a single-coil stator and an oval rotor. Because the air-gap is <b>nonuniform</b>, the coil inductance
+varies with rotor angular position, measured between the magnetic axis of the stator coil and the major axis of the rotor, as
+</p>
+
+\begin{equation*}
+L(\theta) = L_0 + L_2 \cos(2\theta)
+\end{equation*}
+
+<p>
+where \(L_0 = 10.6 mH\) and \(L_2 = 2.7 mH\).
+</p>
+
+<p>
+NOTE: the second-harmonic variation of inductance with rotor angle 0. This is consistent with the fact that the inductance is unchanged if the rotor is rotated through an angle of 180°.
+</p>
+
+<p>
+Find the torque as a function of \(\theta\) for a coil current of \(i=2 A\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
+<span class="org-variable-name">i</span>, <span class="org-variable-name">theta</span>, <span class="org-variable-name">L0</span>, <span class="org-variable-name">L2</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i theta L0 L2'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Write the inductive value with regards to theta</span>
+<span class="org-variable-name">L</span> <span class="org-operator">=</span> L0 <span class="org-operator">+</span> L2 <span class="org-operator">*</span> sy.cos<span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-operator">*</span>theta<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Calculate the torque equation using the current and</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">induction equations</span>
+<span class="org-variable-name">T</span> <span class="org-operator">=</span> i <span class="org-operator">**</span> 2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L, theta<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Substitute symbolic variables with numeric ones</span>
+T.subs<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">(</span>L2, 2.7e<span class="org-operator">-</span>3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-rainbow-delimiters-depth-3">(</span>i, 2<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>T<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Print the output</span>
+
+<span class="org-keyword">del</span> i, theta, L0, L2  <span class="org-comment-delimiter"># </span><span class="org-comment">Remove the used variables from memory  </span>
+</pre>
+</div>
+
+<pre class="example" id="orgb853d1a">
+-L2*i**2*sin(2*theta)
+</pre>
+
+<div class="theory" id="org4c91ad4">
+\begin{equation*}
+T_{fld}(\theta) = \dfrac{i^2}{2}
+\end{equation*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b03026" class="outline-3">
+<h3 id="org1b03026"><span class="section-number-3">4.2.</span> Magnetic Rotor Circuit - II</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+The inductance of a coil on a magnetic circuit similar to that of Fig. 3.9 is found to vary with rotor position as
+L(O) = Lo + L2 cos (20) + L4 sin (40)
+whereL0= 25.4mH,L2= 8.3mHandL4= 1.8mH.(a)Findthetorqueasafunctionof0 for a winding current of 3.5 A. (b) Find a rotor position 0maxthat produces the largest negative torque.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">i</span>, <span class="org-variable-name">theta</span>, <span class="org-variable-name">L0</span>, <span class="org-variable-name">L2</span>, <span class="org-variable-name">L4</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i theta L0 L2 L4'</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
+
+<span class="org-variable-name">L</span> <span class="org-operator">=</span> L0 <span class="org-operator">+</span> L2 <span class="org-operator">*</span> sy.cos<span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-operator">*</span>theta<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">+</span> L4 <span class="org-operator">*</span> sy.sin<span class="org-rainbow-delimiters-depth-1">(</span>4<span class="org-operator">*</span>theta<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">T</span> <span class="org-operator">=</span> i <span class="org-operator">**</span> 2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L, theta<span class="org-rainbow-delimiters-depth-1">)</span>
+
+T.subs<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">(</span>L2, 8.3e<span class="org-operator">-</span>3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-rainbow-delimiters-depth-3">(</span>i, 3.5<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-rainbow-delimiters-depth-3">(</span>L4, 1.8e<span class="org-operator">-</span>3<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-keyword">del</span> i, theta, L0, L2, L4  <span class="org-comment-delimiter"># </span><span class="org-comment">Remove the used variables from memory</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8686f77" class="outline-3">
+<h3 id="org8686f77"><span class="section-number-3">4.3.</span> Magnetic Plunger</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Consider a plunger whose inductance varies as:
+</p>
+
+\begin{equation*}
+ L(x) = L_0 (1 - (x/d)^2)
+\end{equation*}
+
+<p>
+Find the force on the plunger as a function of \(x\) when the coil is driven by a controller
+which produces a current as a function of \(x\) of the form
+</p>
+
+\begin{equation*}
+ i(x) = I_0 \left( \frac{x}{d} \right)^2 A
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org5bb1347" class="outline-3">
+<h3 id="org5bb1347"><span class="section-number-3">4.4.</span> Determination fo Magnetic Force and Torque from Co-Energy</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">i</span>, <span class="org-variable-name">I0</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">d</span>, <span class="org-variable-name">mu0</span>, <span class="org-variable-name">N</span>, <span class="org-variable-name">l</span>, <span class="org-variable-name">g</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i I0 x d mu0 N l g'</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
+
+<span class="org-variable-name">i</span> <span class="org-operator">=</span> I0 <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>x <span class="org-operator">/</span> d<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">L</span> <span class="org-operator">=</span> mu0 <span class="org-operator">*</span> N <span class="org-operator">**</span> 2 <span class="org-operator">*</span> l <span class="org-operator">*</span> d <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>1 <span class="org-operator">-</span> x <span class="org-operator">/</span>d <span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>2 <span class="org-operator">*</span> g<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> i <span class="org-operator">**</span> 2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L, x<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">W_fld</span> <span class="org-operator">=</span> i <span class="org-operator">**</span> 2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> L
+
+W_fld
+</pre>
+</div>
+
+<pre class="example" id="orgb6c27e1">
+I0**2*N**2*l*mu0*x**2*(1 - x/d)/(4*d*g)
+</pre>
+
+<p>
+In the system shown in Fig. 3.15, the inductances in henrys are given as Lll = (3 + cos 20) x 10-3. L12=0.3cos0" L22= 30 + 10cos20. Find and plot the torque Tnd(0) for current il = 0.8 A and i2 = 0.01 A.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">theta</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'theta'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">L</span> <span class="org-operator">=</span> np.array<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">[</span><span class="org-rainbow-delimiters-depth-4">(</span>3 <span class="org-operator">+</span> sy.cos<span class="org-rainbow-delimiters-depth-5">(</span>2 <span class="org-operator">*</span> theta<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-operator">*</span>1e<span class="org-operator">-</span>3, 0.3 <span class="org-operator">*</span> sy.cos<span class="org-rainbow-delimiters-depth-4">(</span>theta<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>,<span class="org-rainbow-delimiters-depth-3">[</span>0, <span class="org-rainbow-delimiters-depth-4">(</span>30 <span class="org-operator">+</span> 10 <span class="org-operator">*</span> sy.cos<span class="org-rainbow-delimiters-depth-5">(</span>2 <span class="org-operator">*</span> theta<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">i</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>0.8, 0.01<span class="org-rainbow-delimiters-depth-1">]</span>
+
+<span class="org-variable-name">T_fld</span> <span class="org-operator">=</span> i<span class="org-rainbow-delimiters-depth-1">[</span>0<span class="org-rainbow-delimiters-depth-1">]</span><span class="org-operator">**</span>2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L<span class="org-rainbow-delimiters-depth-2">[</span>0,0<span class="org-rainbow-delimiters-depth-2">]</span>, theta<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">+</span> i<span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-rainbow-delimiters-depth-1">]</span><span class="org-operator">**</span>2 <span class="org-operator">/</span> 2 <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L<span class="org-rainbow-delimiters-depth-2">[</span>1,1<span class="org-rainbow-delimiters-depth-2">]</span>, theta<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">+</span> i<span class="org-rainbow-delimiters-depth-1">[</span>0<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">*</span> i<span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">*</span> sy.diff<span class="org-rainbow-delimiters-depth-1">(</span>L<span class="org-rainbow-delimiters-depth-2">[</span>0,1<span class="org-rainbow-delimiters-depth-2">]</span>, theta<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">plot(T_fld)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8bbfae4" class="outline-3">
+<h3 id="org8bbfae4"><span class="section-number-3">4.5.</span> Coenergy of a Magnetic Circuit</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+(a) Derive an expression for the coenergy in the magnetic circuit of Fig. 3.20 as a
+function of the plunger position x. (b) Derive an expression for the x-directed force on the plunger
+and evaluate it at x = Wg/2. Neglect any effects of fringing fluxes. The dimensions are:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">Wm</span> <span class="org-operator">=</span> 0.02 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
+<span class="org-variable-name">Wg</span> <span class="org-operator">=</span> 0.025 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
+<span class="org-variable-name">D</span> <span class="org-operator">=</span> 0.03 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
+<span class="org-variable-name">d</span> <span class="org-operator">=</span> 0.01 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
+<span class="org-variable-name">g</span> <span class="org-operator">=</span> 0.002 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 1.05 <span class="org-operator">*</span> mu0
+<span class="org-variable-name">Br</span> <span class="org-operator">=</span> 0.94
+
+<span class="org-variable-name">W_fldr</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Wm <span class="org-operator">*</span> D <span class="org-operator">*</span> Br<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-operator">**</span>2 <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>2 <span class="org-operator">*</span> mur <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-2">(</span>d <span class="org-operator">+</span> <span class="org-rainbow-delimiters-depth-3">(</span>mur<span class="org-operator">/</span>mu0<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>2 <span class="org-operator">*</span> g <span class="org-operator">*</span> Wm<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-operator">/</span><span class="org-rainbow-delimiters-depth-4">(</span>Wg <span class="org-operator">-</span> x<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>W_fldr<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org6bb614a">
+1.51474285714286e-7/(mu0*(0.01 + 8.4e-5/(0.025 - x)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81e4287" class="outline-2">
+<h2 id="org81e4287"><span class="section-number-2">5.</span> Introduction to Rotating Machines</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org3a2f691" class="outline-3">
+<h3 id="org3a2f691"><span class="section-number-3">5.1.</span> Question 1</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+A two-pole, three-phase, $Y$-connected \(60 Hz\) round-rotor synchronous generator has a field
+winding with \(N_f\) distributed turns and winding factor \(k_f\).
+</p>
+
+<p>
+The armature winding has \(N_a\) turns per phase and winding factor \(k_a\). The air-gap length is \(g\), and the mean air-gap radius is \(r\).
+The armature-winding active length is \(l\). The dimensions and winding data are:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\(N_f\) = 68 series turns</td>
+</tr>
+
+<tr>
+<td class="org-left">\(N_a\) = 18 series turns/phase</td>
+</tr>
+
+<tr>
+<td class="org-left">\(r\) = 0.53 m</td>
+</tr>
+
+<tr>
+<td class="org-left">\(l\) = 3.8 m</td>
+</tr>
+
+<tr>
+<td class="org-left">\(k_f\) = 0.945</td>
+</tr>
+
+<tr>
+<td class="org-left">\(k_a\) = 0.933</td>
+</tr>
+
+<tr>
+<td class="org-left">\(g\) = 4.5 cm</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The rotor is driven by a steam turbine at a speed of 3600 r/min.
+For a field current of \(I_f\) = 720 A DC. Using these informations compute:
+</p>
+
+<ol class="org-ol">
+<li>the peak fundamental mmf (\(F_{{ag1}_{peak}}\)) produced by the field winding,</li>
+<li>the peak fundamental flux density (\(B_{{ag1}_{peak}}\)) in the air gap,</li>
+<li>the fundamental flux per pole (\(\Phi_p\)), and</li>
+<li>the rms value of the open-circuit voltage generated in the armature.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">Nf</span> <span class="org-operator">=</span> 68
+<span class="org-variable-name">Na</span> <span class="org-operator">=</span> 18
+<span class="org-variable-name">r</span> <span class="org-operator">=</span> 0.53
+<span class="org-variable-name">l</span> <span class="org-operator">=</span> 3.8
+<span class="org-variable-name">kf</span> <span class="org-operator">=</span> 0.945
+<span class="org-variable-name">ka</span> <span class="org-operator">=</span> 0.933
+<span class="org-variable-name">g</span> <span class="org-operator">=</span> 0.045
+<span class="org-variable-name">poles</span> <span class="org-operator">=</span> 2
+<span class="org-variable-name">If</span> <span class="org-operator">=</span>720
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 60
+
+<span class="org-variable-name">Fag1peak</span> <span class="org-operator">=</span> 4 <span class="org-operator">/</span> np.pi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>kf <span class="org-operator">*</span> Nf<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-2">(</span>poles<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> If
+<span class="org-variable-name">Bag1peak</span> <span class="org-operator">=</span> mu0 <span class="org-operator">*</span> Fag1peak <span class="org-operator">/</span> g
+<span class="org-variable-name">Phip</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> Bag1peak <span class="org-operator">*</span> l <span class="org-operator">*</span> r
+<span class="org-variable-name">Erms</span> <span class="org-operator">=</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> f <span class="org-operator">*</span> ka <span class="org-operator">*</span> Na <span class="org-operator">*</span> Phip
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Erms<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org234c542">
+11803221534.8993*mu0
+</pre>
+
+<div class="theory" id="org33dad49">
+<p>
+From Eq.
+</p>
+
+\begin{equation*}
+F_{{ag1}_{peak}} = \dfrac{4}{\pi} \left( \dfrac{k_f N_f}{poles}  \right) I_f = \dfrac{4}{\pi} \left( \dfrac{0.945 \times 68}{2} \right) 720
+\end{equation*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcbb669d" class="outline-3">
+<h3 id="orgcbb669d"><span class="section-number-3">5.2.</span> Question 2</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+An 1800-r/min, four-pole, 60-Hz synchronous motor has an air-gap length of 1.2 mm.
+The average diameter of the air-gap is 27 cm, and its axial length is 32 cm.
+The rotor winding has 786 turns and a winding factor of 0.976.
+</p>
+
+<p>
+Assuming that thermal considerations limit the rotor current to 18 A,
+estimate the maximum torque and power output one can expect to obtain from this machine.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-variable-name">kr</span> <span class="org-operator">=</span> 0.976
+<span class="org-variable-name">Nr</span> <span class="org-operator">=</span> 786
+<span class="org-variable-name">poles</span> <span class="org-operator">=</span> 4
+<span class="org-variable-name">Ir_max</span> <span class="org-operator">=</span> 18
+<span class="org-variable-name">D</span> <span class="org-operator">=</span> 0.27
+<span class="org-variable-name">l</span> <span class="org-operator">=</span> 0.32
+<span class="org-variable-name">Bsr</span> <span class="org-operator">=</span> 1.5
+
+<span class="org-variable-name">Fr_max</span> <span class="org-operator">=</span> 4 <span class="org-operator">/</span> np.pi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>kr <span class="org-operator">*</span> Nr<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-operator">/</span><span class="org-rainbow-delimiters-depth-2">(</span>poles<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> Ir_max
+
+<span class="org-variable-name">Tmax</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>poles <span class="org-operator">/</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>np.pi <span class="org-operator">*</span> D <span class="org-operator">*</span> l<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> 2 <span class="org-operator">*</span> Bsr <span class="org-operator">*</span> Fr_max
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Fr_max<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org7dd3c67">
+4395.365511254792
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org160b969" class="outline-3">
+<h3 id="org160b969"><span class="section-number-3">5.3.</span> Question 3</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Repeat Example 4.8 for a two-pole, 60-Hz synchronous motor with an
+air-gap length of 1.3 mm, an average air-gap diameter of 22 cm and an axial length of 41 cm.
+</p>
+
+<p>
+The rotor winding has a 900 turns and a winding factor of 0.965. The maximum rotor current is 22 A.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9313a46" class="outline-2">
+<h2 id="org9313a46"><span class="section-number-2">6.</span> Synchronous Drives</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgf63d2f9" class="outline-3">
+<h3 id="orgf63d2f9"><span class="section-number-3">6.1.</span> Question 1</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+A 60-Hz, three-phase synchronous motor is observed to have a terminal voltage of \(V_a\) = 460 V (line-line)
+and a terminal current of \(I_a\) = 120 A at a power factor of \(pf\) = 0.95 lagging.
+</p>
+
+<p>
+The field-current under this operating condition is \(I_f\) = 47 A. The machine synchronous reactance is equal to
+\(X_m\) = 1.68 Ohm (0.794 per unit on a 460-V, 100-kVA, 3-phase base).
+</p>
+
+<p>
+Assume the armature resistance (\(R_a\) ~ 0) to be negligible. Calculate:
+</p>
+<ol class="org-ol">
+<li>the generated voltage \(E_{af}\) in V,</li>
+<li>the magnitude of the field-to-armature mutual inductance \(L_{af}\), and</li>
+<li>the electrical power input (\(P_{in}\)) to the motor in kW and in horsepower.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-comment-delimiter"># </span><span class="org-comment">Choosing the terminal voltage (Va) as the reference point.</span>
+
+<span class="org-variable-name">Va</span>  <span class="org-operator">=</span> 460      <span class="org-comment-delimiter"># </span><span class="org-comment">(V) line-to-line voltage</span>
+<span class="org-variable-name">pf</span> <span class="org-operator">=</span> <span class="org-operator">-</span> 0.95    <span class="org-comment-delimiter"># </span><span class="org-comment">(-) power factor (lagging)</span>
+<span class="org-variable-name">Ia</span>  <span class="org-operator">=</span> 120      <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Armature voltage</span>
+<span class="org-variable-name">If</span> <span class="org-operator">=</span> 47        <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Field current</span>
+<span class="org-variable-name">Xs</span> <span class="org-operator">=</span> 1.68      <span class="org-comment-delimiter"># </span><span class="org-comment">(Ohm) Armature reactance</span>
+<span class="org-variable-name">angle</span> <span class="org-operator">=</span> <span class="org-operator">-</span> np.arccos<span class="org-rainbow-delimiters-depth-1">(</span>pf<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(-) Power factor </span>
+<span class="org-variable-name">Va_phase</span> <span class="org-operator">=</span> Va <span class="org-operator">/</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>3<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(V) Per-phase armature voltage</span>
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 60 <span class="org-comment-delimiter"># </span><span class="org-comment">(Hz) Input grid frequency</span>
+<span class="org-variable-name">w</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> f <span class="org-comment-delimiter"># </span><span class="org-comment">(rad/s) angular speed</span>
+
+<span class="org-variable-name">Eaf</span> <span class="org-operator">=</span> Va_phase <span class="org-operator">-</span> 1j <span class="org-operator">*</span> Xs <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>polar2complex<span class="org-rainbow-delimiters-depth-2">(</span>Ia, angle<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(V) Generated voltage</span>
+
+<span class="org-variable-name">Laf</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>np.sqrt<span class="org-rainbow-delimiters-depth-2">(</span>2<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">*</span> np.<span class="org-builtin">abs</span><span class="org-rainbow-delimiters-depth-2">(</span>Eaf<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>w <span class="org-operator">*</span> If<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(H) Filed-to-Armature mutual inductance</span>
+
+<span class="org-variable-name">Pin</span> <span class="org-operator">=</span> 3 <span class="org-operator">*</span> Va_phase <span class="org-operator">*</span> Ia <span class="org-operator">*</span> np.<span class="org-builtin">abs</span><span class="org-rainbow-delimiters-depth-1">(</span>pf<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(W) input power</span>
+<span class="org-variable-name">Pin_hp</span> <span class="org-operator">=</span> Pin <span class="org-operator">*</span> 1 <span class="org-operator">/</span> 746 <span class="org-comment-delimiter"># </span><span class="org-comment">(hp) input power</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0310d7c" class="outline-3">
+<h3 id="org0310d7c"><span class="section-number-3">6.2.</span> Question 2</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Assuming the input power and terminal voltage for the motor of the previous example remain constant, calculate
+</p>
+
+<ol class="org-ol">
+<li>the phase angle \((\delta)\) of the generated voltage, and</li>
+<li>the field current required to achieve unity power factor \((\delta=1)\) at the motor terminals.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-comment-delimiter"># </span><span class="org-comment">Choosing the terminal voltage (Va) as the reference point.</span>
+
+<span class="org-variable-name">Va</span>  <span class="org-operator">=</span> 460      <span class="org-comment-delimiter"># </span><span class="org-comment">(V) line-to-line voltage</span>
+<span class="org-variable-name">pf</span> <span class="org-operator">=</span> <span class="org-operator">-</span> 0.95    <span class="org-comment-delimiter"># </span><span class="org-comment">(-) power factor (lagging)</span>
+<span class="org-variable-name">Ia</span>  <span class="org-operator">=</span> 120      <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Armature voltage</span>
+<span class="org-variable-name">If</span> <span class="org-operator">=</span> 47        <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Field current</span>
+<span class="org-variable-name">Xs</span> <span class="org-operator">=</span> 1.68      <span class="org-comment-delimiter"># </span><span class="org-comment">(Ohm) Armature reactance</span>
+<span class="org-variable-name">angle</span> <span class="org-operator">=</span> <span class="org-operator">-</span> np.arccos<span class="org-rainbow-delimiters-depth-1">(</span>pf<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(-) Power factor </span>
+<span class="org-variable-name">Va_phase</span> <span class="org-operator">=</span> Va <span class="org-operator">/</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>3<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(V) Per-phase armature voltage</span>
+<span class="org-variable-name">f</span> <span class="org-operator">=</span> 60 <span class="org-comment-delimiter"># </span><span class="org-comment">(Hz) Input grid frequency</span>
+<span class="org-variable-name">w</span> <span class="org-operator">=</span> 2 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> f <span class="org-comment-delimiter"># </span><span class="org-comment">(rad/s) angular speed</span>
+
+<span class="org-variable-name">Eaf</span> <span class="org-operator">=</span> Va_phase <span class="org-operator">-</span> 1j <span class="org-operator">*</span> Xs <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>polar2complex<span class="org-rainbow-delimiters-depth-2">(</span>Ia, angle<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(V) Generated voltage</span>
+
+<span class="org-variable-name">Laf</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>np.sqrt<span class="org-rainbow-delimiters-depth-2">(</span>2<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">*</span> np.<span class="org-builtin">abs</span><span class="org-rainbow-delimiters-depth-2">(</span>Eaf<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>w <span class="org-operator">*</span> If<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(H) Filed-to-Armature mutual inductance</span>
+
+<span class="org-variable-name">Pin</span> <span class="org-operator">=</span> 3 <span class="org-operator">*</span> Va_phase <span class="org-operator">*</span> Ia <span class="org-operator">*</span> np.<span class="org-builtin">abs</span><span class="org-rainbow-delimiters-depth-1">(</span>pf<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(W) input power</span>
+<span class="org-variable-name">Pin_hp</span> <span class="org-operator">=</span> Pin <span class="org-operator">*</span> 1 <span class="org-operator">/</span> 746 <span class="org-comment-delimiter"># </span><span class="org-comment">(hp) input power</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">For unity power factor at the motor terminals, the phase-a terminal current</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">will be in phase with the phase-a line-to-neutral voltage Va. Therefore:</span>
+
+<span class="org-variable-name">Ia</span>  <span class="org-operator">=</span> Pin <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>3 <span class="org-operator">*</span> Va_phase<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">Eaf</span> <span class="org-operator">=</span> Va_phase <span class="org-operator">-</span> 1j <span class="org-operator">*</span> Xs <span class="org-operator">*</span> Ia
+
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>complex2polar<span class="org-rainbow-delimiters-depth-2">(</span>Eaf<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Having found Laf in Example 5.1, we can find the required field current</span>
+
+<span class="org-variable-name">If</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>np.sqrt<span class="org-rainbow-delimiters-depth-2">(</span>2<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">*</span> Eaf<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>w <span class="org-operator">*</span> Laf<span class="org-rainbow-delimiters-depth-1">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bad1f9" class="outline-3">
+<h3 id="org2bad1f9"><span class="section-number-3">6.3.</span> Question 3</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+The synchronous machine of Question 1 and Question 2 is to be operated as a synchronous generator.
+For operation at 60 Hz with a terminal voltage of 460 V line-to-line,
+calculate the field current required to supply a load of 85 kW, 0.95 power-factor leading.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org210fc46" class="outline-3">
+<h3 id="org210fc46"><span class="section-number-3">6.4.</span> Question 4</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+An open-circuit test performed on a three-phase, 60 Hz synchronous generator shows that the rated
+open-circuit voltage of 13.8 kV is produced by a field current of 318 A.
+Extrapolation of the air-gap line from a complete set of measurements on the machine shows that the
+field-current corresponding to 13.8 kV on the air-gap line is 263 A.
+Calculate the saturated and unsaturated values of \(L_{af}\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">Laf is found from</span>
+
+<span class="org-variable-name">Laf</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">()</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">()</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9404643" class="outline-3">
+<h3 id="org9404643"><span class="section-number-3">6.5.</span> Question 5</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+If the synchronous generator of Question 4 is operated at a speed corresponding to a
+generated voltage of 50 Hz, calculate
+</p>
+<ol class="org-ol">
+<li>the open-circuit line-to-line terminal voltage corresponding to a field current of 318 A and</li>
+<li>the field-current corresponding to that same voltage on the 50-Hz air-gap line.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgfeb4e31" class="outline-3">
+<h3 id="orgfeb4e31"><span class="section-number-3">6.6.</span> Question 6</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+A three-phase, 75-MVA, 13.8-kV synchronous generator with saturated synchronous reactance
+\(X_s\) = 1.35 per unit and unsaturated synchronous reactance \(X_s,u\) = 1.56 per unit is connected
+to an external system with equivalent reactance $X<sub>EQ</sub> = 0.23 per unit and
+voltage $V<sub>EQ</sub> = 1.0 per unit, both on the generator base.
+</p>
+
+<p>
+It achieves rated open-circuit voltage at a field current of 297 amperes.
+</p>
+
+<ol class="org-ol">
+<li>Find the maximum power Pmax(in MW and per unit) that can be supplied to the external system if the
+internal voltage of the generator is held equal to 1.0 per unit.</li>
+<li>Using Python, plot the terminal voltage of the generator as the generator output is varied
+from zero to Pmaxunder the conditions of part 1.</li>
+<li>Now assume that the generator is equipped with an automatic voltage regulator which
+controls the field current to maintain constant terminal voltage. If the generator
+is loaded to its rated value, calculate the corresponding power angle,
+per-unit internal voltage, and field current.
+Using Python, plot per-unit Ear as a function of per-unit power.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span class="org-comment-delimiter"># </span><span class="org-comment">Using the standard power equation for the synchronous drive:</span>
+<span class="org-variable-name">Pbase</span> <span class="org-operator">=</span> 75
+<span class="org-variable-name">Eaf</span> <span class="org-operator">=</span> 1 <span class="org-comment-delimiter"># </span><span class="org-comment">(p.u.) Generated voltage</span>
+<span class="org-variable-name">Va</span> <span class="org-operator">=</span> 1 <span class="org-comment-delimiter"># </span><span class="org-comment">(p.u.) Armature equivalent voltage</span>
+<span class="org-variable-name">Xs</span> <span class="org-operator">=</span> 1.35
+<span class="org-variable-name">Xs_u</span> <span class="org-operator">=</span> 1.56
+<span class="org-variable-name">XEQ</span> <span class="org-operator">=</span> 0.23
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">As the drive is operating with a terminal voltage near its rated value,</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">we should express Pmax in terms of the saturated synchronous reactance.</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Therefore:</span>
+
+<span class="org-variable-name">Pmax</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Eaf <span class="org-operator">*</span> Va<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>Xs <span class="org-operator">+</span> XEQ<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">The generator terminal current is given by</span>
+
+<span class="org-variable-name">VEQ</span> <span class="org-operator">=</span> 1
+<span class="org-variable-name">Eaf</span> <span class="org-operator">=</span> 1
+<span class="org-variable-name">XEQ</span> <span class="org-operator">=</span> 0.23
+<span class="org-variable-name">Xs</span>  <span class="org-operator">=</span> 1.35
+
+<span class="org-variable-name">delta</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>100<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">Ia</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>100<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">Va</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>100<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">degree</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>100<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">len</span><span class="org-rainbow-delimiters-depth-2">(</span>delta<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">-</span> 1<span class="org-rainbow-delimiters-depth-1">)</span>:
+    <span class="org-variable-name">delta</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>np.pi <span class="org-operator">/</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>i <span class="org-operator">-</span> 1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> 100
+
+    <span class="org-variable-name">Ia</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Eaf <span class="org-operator">*</span> np.exp<span class="org-rainbow-delimiters-depth-2">(</span>1j<span class="org-operator">*</span>delta<span class="org-rainbow-delimiters-depth-3">[</span>i<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-operator">-</span> VEQ<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>1j <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-2">(</span>Xs <span class="org-operator">-</span> XEQ<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    <span class="org-variable-name">Va</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> np.<span class="org-builtin">abs</span><span class="org-rainbow-delimiters-depth-1">(</span>VEQ <span class="org-operator">+</span> 1j <span class="org-operator">*</span> XEQ <span class="org-operator">*</span> Ia<span class="org-rainbow-delimiters-depth-2">[</span>i<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    <span class="org-variable-name">degree</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> 180 <span class="org-operator">*</span> delta<span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">/</span> np.pi
+
+matplotlib.use<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Agg'</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Use this to write to a file</span>
+<span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Va<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">fig</span>, <span class="org-variable-name">ax</span> <span class="org-operator">=</span> plt.subplots<span class="org-rainbow-delimiters-depth-1">(</span>1,1<span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'top'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_visible<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">False</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'right'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_visible<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">False</span><span class="org-rainbow-delimiters-depth-1">)</span>
+fig.patch.set_facecolor<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#363a4f</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>     
+ax.set_facecolor<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'</span><span class="custom-2"><span class="custom-3">#363a4f</span></span><span class="org-string">'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.xaxis.label.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.yaxis.label.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'bottom'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'top'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'left'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.spines<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">'right'</span><span class="org-rainbow-delimiters-depth-1">]</span>.set_color<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ax.tick_params<span class="org-rainbow-delimiters-depth-1">(</span>axis<span class="org-operator">=</span><span class="org-string">'both'</span>, colors<span class="org-operator">=</span><span class="org-string">'w'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.xlabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Power angle, $\delta$ [degrees]'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.title<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Terminal voltage vs. Power angle'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.grid<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">True</span><span class="org-rainbow-delimiters-depth-1">)</span>
+plt.ylabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Terminal Voltage [p.u.]'</span><span class="org-rainbow-delimiters-depth-1">)</span> 
+<span class="org-comment-delimiter">#</span><span class="org-comment">plt.xlim(0, 0.8e5) </span>
+plt.plot<span class="org-rainbow-delimiters-depth-1">(</span>degree, Va, <span class="org-string">'</span><span class="custom"><span class="custom-1">#ef9f76</span></span><span class="org-string">'</span>, linewidth<span class="org-operator">=</span>5<span class="org-rainbow-delimiters-depth-1">)</span>
+fig.tight_layout<span class="org-rainbow-delimiters-depth-1">()</span>
+plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'images/saturated-synchronous-reluctance.png'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div id="org9271d9d" class="figure">
+<p><img src="images/saturated-synchronous-reluctance.png" alt="saturated-synchronous-reluctance.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9269b38" class="outline-2">
+<h2 id="org9269b38"><span class="section-number-2">7.</span> Polyphase Induction Drives</h2>
+</div>
+
+<div id="outline-container-org2bc7cde" class="outline-2">
+<h2 id="org2bc7cde"><span class="section-number-2">8.</span> Direct Current Machines</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Daniel McGuiness</p>
+<p class="date">Created: 2024-06-24 Mon 19:42</p>
+</div>
+</body>
+</html>
