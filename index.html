@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-07-01 Mon 15:36 -->
+<!-- 2024-07-01 Mon 18:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>B.Sc - Electric Drives - Exercise Python Solutions</title>
@@ -254,56 +254,50 @@ org_html_manager.setup();  // activate after the parameters are set
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8b0ef88">1. Programming Preamble</a>
+<li><a href="#org972b950">1. Programming Preamble</a>
 <ul>
-<li><a href="#orgbc86111">1.1. Import Necessary Modules</a></li>
-<li><a href="#orga33118f">1.2. Define Common Functions</a></li>
+<li><a href="#org3ab32b4">1.1. Import Necessary Modules</a></li>
+<li><a href="#orgaa20bb0">1.2. Define Common Functions</a></li>
 </ul>
 </li>
-<li><a href="#orgbc33175">2. Magnetic Circuits and Materials</a></li>
-<li><a href="#org9277436">3. Transformers</a></li>
-<li><a href="#org6e82e3b">4. Electromechanical Energy Converion Principles</a>
+<li><a href="#org6033e76">2. Magnetic Circuits and Materials</a></li>
+<li><a href="#org22d6e14">3. Transformers</a></li>
+<li><a href="#org44f654d">4. Electromechanical Energy Converion Principles</a></li>
+<li><a href="#org4b10002">5. Introduction to Rotating Machines</a></li>
+<li><a href="#org55f5bf2">6. Synchronous Drives</a></li>
+<li><a href="#org0e20416">7. Polyphase Induction Drives</a>
 <ul>
-<li>
-<ul>
-<li><a href="#orgc83189b">4.0.1. Question 4 - Determination fo Magnetic Force and Torque from Co-Energy</a></li>
+<li><a href="#org45e6fb0">7.1. Analysis of Poly-phase Equivalent Circuit</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#org3ce4f40">5. Introduction to Rotating Machines</a></li>
-<li><a href="#orgaad5c1d">6. Synchronous Drives</a></li>
-<li><a href="#orge05eb7c">7. Polyphase Induction Drives</a>
+<li><a href="#orgb03a627">8. Direct Current Machines</a>
 <ul>
-<li><a href="#orgfccecbf">7.1. Analysis of Poly-phase Equivalent Circuit</a></li>
-</ul>
-</li>
-<li><a href="#org9765077">8. Direct Current Machines</a>
-<ul>
-<li><a href="#orgaecc8fc">8.1. Motor Analysis</a></li>
-<li><a href="#orga8434e4">8.2. Magnetic Circuit Analysis</a></li>
-<li><a href="#org4980caa">8.3. Steady-state Analysis</a></li>
-<li><a href="#org02d3759">8.4. Motor Analysis</a></li>
+<li><a href="#org831d1bf">8.1. Motor Analysis</a></li>
+<li><a href="#org5dce1cc">8.2. Magnetic Circuit Analysis</a></li>
+<li><a href="#org438247a">8.3. Steady-state Analysis</a></li>
+<li><a href="#orgb595242">8.4. Motor Analysis</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b0ef88" class="outline-2">
-<h2 id="org8b0ef88"><span class="section-number-2">1.</span> Programming Preamble</h2>
+<div id="outline-container-org972b950" class="outline-2">
+<h2 id="org972b950"><span class="section-number-2">1.</span> Programming Preamble</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Before diving into studying all electrical machines and electromagnetic energy conversion,
-we need to do some python preambling.
+Before diving into electrical machines and the electromagnetic energy conversion,
+we need to do some python preambling of importing the necessary modules and definining
+frequently used functions.
 </p>
 </div>
 
-<div id="outline-container-orgbc86111" class="outline-3">
-<h3 id="orgbc86111"><span class="section-number-3">1.1.</span> Import Necessary Modules</h3>
+<div id="outline-container-org3ab32b4" class="outline-3">
+<h3 id="org3ab32b4"><span class="section-number-3">1.1.</span> Import Necessary Modules</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-As with all python programming, we need some modules to make it all work and not reinvent the wheel.
+As with all python programming, or programming in general,  we need some modules to
+borrow the necessary functionality and not to <font color=#ef9f76>reinvent the wheel</font>.
 </p>
 
 <div class="org-src-container">
@@ -320,21 +314,22 @@ As with all python programming, we need some modules to make it all work and not
 </div>
 </div>
 
-<div id="outline-container-orga33118f" class="outline-3">
-<h3 id="orga33118f"><span class="section-number-3">1.2.</span> Define Common Functions</h3>
+<div id="outline-container-orgaa20bb0" class="outline-3">
+<h3 id="orgaa20bb0"><span class="section-number-3">1.2.</span> Define Common Functions</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Some functions are used more than once, and to make sure debugging is kept at
-a minimun, they are defined below.
+a minimum, they are defined below.
 </p>
 </div>
 
 <ol class="org-ol">
-<li><a id="org5a6a19f"></a><font color=#e5c890>Complex-to-Polar Conversion</font><br />
+<li><a id="org6ac11d4"></a><font color=#e5c890>Complex-to-Polar Conversion</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-1">
 <p>
 As we are working with AC circuits, we will work closely with phasor values, which is
-described below.
+described below. This function merely takes a complex value in cartesian coordinates and
+converts it into a polar coordinate value.
 </p>
 
 <div class="org-src-container">
@@ -352,10 +347,10 @@ described below.
 </div>
 </li>
 
-<li><a id="org7188064"></a><font color=#e5c890>Magnitude of a Complex Number</font><br />
+<li><a id="org52076c4"></a><font color=#e5c890>Magnitude of a Complex Number</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-2">
 <p>
-Calculates the magnitude of a complex number.
+Calculates the magnitude of a complex number. The input is of cartesian coordinate system.
 </p>
 
 <div class="org-src-container">
@@ -366,17 +361,13 @@ Calculates the magnitude of a complex number.
   <span class="org-keyword">return</span> np.sqrt<span class="org-rainbow-delimiters-depth-1">(</span>Z.real<span class="org-operator">**</span>2 <span class="org-operator">+</span> Z.imag<span class="org-operator">**</span>2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Returns magnitude</span>
 </pre>
 </div>
-
-<p>
-<hr>
-</p>
 </div>
 </li>
 
-<li><a id="org9520cc3"></a><font color=#e5c890>Polar-to-Complex Conversion</font><br />
+<li><a id="org332ebec"></a><font color=#e5c890>Polar-to-Complex Conversion</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-3">
 <p>
-A simple function to calculate the complex number based on the polar values.
+A simple function to calculate the complex number based on its polar coordinate values.
 </p>
 
 <div class="org-src-container">
@@ -390,16 +381,16 @@ A simple function to calculate the complex number based on the polar values.
 </div>
 </li>
 
-<li><a id="org1a49747"></a><font color=#e5c890>Complex Rounder</font><br />
+<li><a id="org2f2294b"></a><font color=#e5c890>Complex Rounder</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-4">
 <p>
-Rounds complex numbers
+Rounds complex numbers to some arbitrary presicion.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">cRound</span><span class="org-rainbow-delimiters-depth-1">(</span>Z, presicion<span class="org-rainbow-delimiters-depth-1">)</span>:
     <span class="org-doc">"""</span>
-<span class="org-doc">    Rounds complex numbers</span>
+<span class="org-doc">    Rounds complex numbers to an arbitrary precision.</span>
 <span class="org-doc">    """</span>
     <span class="org-keyword">return</span> <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-1">(</span>Z.real, presicion<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">+</span> <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-1">(</span>Z.imag, presicion<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> 1j
 </pre>
@@ -407,8 +398,13 @@ Rounds complex numbers
 </div>
 </li>
 
-<li><a id="org85a99e6"></a><font color=#e5c890>MACRO: Matplotlib Boilerplate</font><br />
+<li><a id="org8b7e58a"></a><font color=#e5c890>MACRO: Matplotlib Boilerplate</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-5">
+<p>
+It is never a good practice to write <font color=#ef9f76>the same code more than once</font>, and this
+includes all the redundant matplotlib config commands, which are presented here.
+</p>
+
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">mplBoilerplate</span><span class="org-rainbow-delimiters-depth-1">()</span>:
  matplotlib.use<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Agg'</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">Use this to write to a file</span>
@@ -438,17 +434,17 @@ Rounds complex numbers
 </div>
 </li>
 
-<li><a id="org9a3a282"></a><font color=#e5c890>MACRO: Results Print Header</font><br />
+<li><a id="orgebfdcbb"></a><font color=#e5c890>MACRO: Results Print Header</font><br />
 <div class="outline-text-6" id="text-1-2-0-0-6">
 <p>
-A MACRO which stores printing headers.
+A MACRO which stores printing headers. This is used predominantly
+used in output of the solutions.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">headerPrint</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>:
       <span class="org-doc">"""</span>
-<span class="org-doc">      A MACRO self</span>
-<span class="org-doc">      toring printing headers.</span>
+<span class="org-doc">      A MACRO for printing results.</span>
 <span class="org-doc">      """</span>
       Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Definition"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"r"</span>
       Results.<span class="org-variable-name">align</span><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Symbol"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> <span class="org-string">"l"</span>
@@ -464,16 +460,17 @@ A MACRO which stores printing headers.
 </div>
 </div>
 
-<div id="outline-container-orgbc33175" class="outline-2">
-<h2 id="orgbc33175"><span class="section-number-2">2.</span> Magnetic Circuits and Materials</h2>
+<div id="outline-container-org6033e76" class="outline-2">
+<h2 id="org6033e76"><span class="section-number-2">2.</span> Magnetic Circuits and Materials</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgf7f2b69"></a><font color=#e78284>QUESTION - A SIMPLE MAGNETIC CIRCUIT</font><br />
+<li><a id="org8fd7fcb"></a><font color=#e78284>QUESTION - A SIMPLE MAGNETIC CIRCUIT</font><br />
 <div class="outline-text-5" id="text-2-0-0-1">
 <p>
-The magnetic circuit shown in Fig. 1.2 has dimensions of \(A_c = A_g = 9\) cm<sup>2</sup>,
-\(g = 0.050\) cm, \(l_c\) = 30 cm, and \(N\) = 500 tums. Assume the value \(\mu_r\) = 70,000 for core material.
+The magnetic circuit shown in the figure above, having dimensions of \(A_c = A_g = 9\) cm<sup>2</sup>,
+\(g = 0.050\) cm, \(l_c\) = 30 cm, and \(N\) = 500 tums. Assume the value \(\mu_r\) = 70,000 (i.e., Mu-metal)
+for core material.
 </p>
 
 <ol class="org-ol">
@@ -521,12 +518,14 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Magneto-motive Force"</span>, <span class="org-string">"F or MMF"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>MMF, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"Ampere-Turns"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span>, <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">--</span>
 
 <span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
+
 </pre>
 </div>
 
-<pre class="example" id="org934b7da">
+<pre class="example" id="orga31ab53">
 +-------------------------+--------------+------------+--------------------+
 |              Definition | Symbol       | Value      | Unit               |
 +-------------------------+--------------+------------+--------------------+
@@ -541,14 +540,14 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="org4df16f2"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgd853479"></a><font color=#e78284>QUESTION - A SIMPLE MAGNETIC CIRCUIT WITH DIFFERENT TURNS</font><br />
 <div class="outline-text-5" id="text-2-0-0-2">
 <p>
-Find the flux (\(\Phi\)) and current for the previous example if;
+Find the flux (\(\Phi\)) and current for the previously given question if:
 </p>
 <ol class="org-ol">
 <li>the number of turns is doubled to \(N\) = 1000 turns while the circuit dimensions remain the same and</li>
-<li>if the number of turns is equal to \(N\) = 500 and the gap is reduced to \(g\) = 0.040 cm.</li>
+<li>the number of turns is equal to \(N\) = 500 and the gap is reduced to \(g\) = 0.040 cm.</li>
 
 <li>If the number of turns is doubled to \(N\) = 1000 turns:</li>
 </ol>
@@ -561,18 +560,18 @@ Find the flux (\(\Phi\)) and current for the previous example if;
 <pre class="src src-python">
 <span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
 
-<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
-<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
-<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
-<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
-<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3    <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4   <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4   <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5    <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
+<span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
 <span class="org-variable-name">N</span>   <span class="org-operator">=</span> 1000   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
-<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1     <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
+<span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1      <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
 
 <span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
 <span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
 
-<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> Bc <span class="org-operator">*</span> Ac  <span class="org-comment-delimiter"># </span><span class="org-comment">(Wb) Magnetic core flux</span>
+<span class="org-variable-name">Phi</span> <span class="org-operator">=</span> Bc <span class="org-operator">*</span> Ac               <span class="org-comment-delimiter"># </span><span class="org-comment">(Wb) Magnetic core flux</span>
 <span class="org-variable-name">MMF</span> <span class="org-operator">=</span> Phi <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Rel_c <span class="org-operator">+</span> Rel_g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns) Magnetomotive force</span>
 <span class="org-variable-name">i</span>   <span class="org-operator">=</span> MMF <span class="org-operator">/</span> N               <span class="org-comment-delimiter"># </span><span class="org-comment">(A) Current</span>
 
@@ -582,12 +581,13 @@ headerPrint<span class="org-rainbow-delimiters-depth-1">(</span>Results<span cla
 
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"milli-Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">--</span>
 
 <span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
-<pre class="example" id="org9c5f02f">
+<pre class="example" id="org42d6268">
 +------------+--------+-------+-------------+
 | Definition | Symbol | Value | Unit        |
 +------------+--------+-------+-------------+
@@ -601,7 +601,8 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
+<pre class="src src-python">
+<span class="org-variable-name">lc</span>  <span class="org-operator">=</span> 0.3   <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  length</span>
 <span class="org-variable-name">Ac</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
 <span class="org-variable-name">Ag</span>  <span class="org-operator">=</span> 9e<span class="org-operator">-</span>4  <span class="org-comment-delimiter"># </span><span class="org-comment">(m2) cross-sectional area</span>
 <span class="org-variable-name">mur</span> <span class="org-operator">=</span> 7e5   <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  relative permeability</span>
@@ -618,18 +619,18 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">-- Printing Results</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">-- Printing Results</span>
 <span class="org-variable-name">Results</span> <span class="org-operator">=</span> PrettyTable<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Definition"</span>, <span class="org-string">"Symbol"</span>, <span class="org-string">"Value"</span>, <span class="org-string">"Unit"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 headerPrint<span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
 
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Core Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"milli-Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Current"</span>, <span class="org-string">"i"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>i, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"A"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">--</span>
 
 <span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
-<pre class="example" id="org72500dd">
+<pre class="example" id="org1f6db95">
 +------------+--------+-------+-------------+
 | Definition | Symbol | Value | Unit        |
 +------------+--------+-------+-------------+
@@ -640,12 +641,16 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="orgba62c45"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orga39fdaa"></a><font color=#e78284>QUESTION - MAGNETIC CIRCUIT OF A SYNCHRONOUS DRIVE</font><br />
 <div class="outline-text-5" id="text-2-0-0-3">
 <p>
-The magnetic structure of a synchronous machine is shown schematically in Fig. 1.5.
+The magnetic structure of a synchronous drive is shown schematically in the Figure above.
 Assuming that rotor and stator iron have infinite permeability (\(\mu \rightarrow \infty\)),
-find the air-gap flux ~band flux density \(B_g\). For this example \(I\) = 10 A, \(N\) = 1000 turns, \(g\) = 1 cm, and \(A_g\) = 2000 cm<sup>2</sup>.
+find the air-gap flux band flux density \(B_g\).
+</p>
+
+<p>
+For this example the given values are \(I\) = 10 A, \(N\) = 1000 turns, \(g\) = 1 cm, and \(A_g\) = 2000 cm<sup>2</sup>.
 </p>
 
 <p>
@@ -653,7 +658,8 @@ find the air-gap flux ~band flux density \(B_g\). For this example \(I\) = 10 A,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
+<pre class="src src-python">
+<span class="org-variable-name">mu0</span> <span class="org-operator">=</span> 4 <span class="org-operator">*</span> np.pi <span class="org-operator">*</span> 1e<span class="org-operator">-</span>7 <span class="org-comment-delimiter"># </span><span class="org-comment">(H/m) permeability of free space</span>
 <span class="org-variable-name">N</span>   <span class="org-operator">=</span> 1000             <span class="org-comment-delimiter"># </span><span class="org-comment">(-)   number of turns</span>
 <span class="org-variable-name">I</span>   <span class="org-operator">=</span> 10               <span class="org-comment-delimiter"># </span><span class="org-comment">(A)   current</span>
 <span class="org-variable-name">g</span>   <span class="org-operator">=</span> 1e<span class="org-operator">-</span>2             <span class="org-comment-delimiter"># </span><span class="org-comment">(m)   air-gap</span>
@@ -669,12 +675,13 @@ headerPrint<span class="org-rainbow-delimiters-depth-1">(</span>Results<span cla
 
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Air-gap Flux"</span>, <span class="org-string">"Phi"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Phi <span class="org-operator">*</span> 1e3, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"Weber"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
 Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"Air-gap Magnetic Flux Density"</span>, <span class="org-string">"Bg"</span>, <span class="org-builtin">round</span><span class="org-rainbow-delimiters-depth-3">(</span>Bg, 3<span class="org-rainbow-delimiters-depth-3">)</span> , <span class="org-string">"Tesla"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">--</span>
 
 <span class="org-builtin">print</span><span class="org-rainbow-delimiters-depth-1">(</span>Results<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
-<pre class="example" id="orgb4f25e6">
+<pre class="example" id="org9f44531">
 +-------------------------------+--------+---------+-------+
 |                    Definition | Symbol | Value   | Unit  |
 +-------------------------------+--------+---------+-------+
@@ -685,7 +692,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="org36dc391"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgc99403e"></a><font color=#e78284>QUESTION - PLOTTING INDUCTANCE VS. RELATIVE PERMEABILITY</font><br />
 <div class="outline-text-5" id="text-2-0-0-4">
 <p>
 Using Python, please plot the inductance (\(L\)) of the magnetic circuit of Question 1 and Question 2 as a function of
@@ -708,20 +715,20 @@ core permeability (\(\mu_r\)) over the range 100 \(\leq \mu_r \leq\) 100,000.
 
 <span class="org-variable-name">Rel_g</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mu0 <span class="org-operator">*</span> Ag<span class="org-rainbow-delimiters-depth-1">)</span>        <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) air-gap reluctance</span>
 
-<span class="org-variable-name">mur</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>1000<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-variable-name">mur</span> <span class="org-operator">=</span> np.zeros<span class="org-rainbow-delimiters-depth-1">(</span>1000<span class="org-rainbow-delimiters-depth-1">)</span>            <span class="org-comment-delimiter"># </span><span class="org-comment">Relative Permeability emtpy array for looping</span>
 
 <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">len</span><span class="org-rainbow-delimiters-depth-2">(</span>mur<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>:
     <span class="org-variable-name">mur</span><span class="org-rainbow-delimiters-depth-1">[</span>i<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-operator">=</span> 100 <span class="org-operator">+</span> <span class="org-rainbow-delimiters-depth-1">(</span>100000 <span class="org-operator">-</span> 100<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>i <span class="org-operator">-</span> 1<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-operator">/</span>1000
 
 
 <span class="org-variable-name">Rel_c</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>lc<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> <span class="org-rainbow-delimiters-depth-1">(</span>mur <span class="org-operator">*</span> mu0 <span class="org-operator">*</span> Ac<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) core reluctance</span>
+<span class="org-variable-name">R_tot</span> <span class="org-operator">=</span> Rel_c <span class="org-operator">+</span> Rel_g           <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/Weber) total reluctance</span>
 
-<span class="org-variable-name">R_tot</span> <span class="org-operator">=</span> Rel_c <span class="org-operator">+</span> Rel_g
-
-<span class="org-variable-name">L</span><span class="org-operator">=</span> N<span class="org-operator">**</span>2 <span class="org-operator">/</span> R_tot
+<span class="org-variable-name">L</span><span class="org-operator">=</span> N<span class="org-operator">**</span>2 <span class="org-operator">/</span> R_tot                 <span class="org-comment-delimiter"># </span><span class="org-comment">(H) Inductance</span>
 
 mplBoilerplate<span class="org-rainbow-delimiters-depth-1">()</span>
 
+<span class="org-comment-delimiter"># </span><span class="org-comment">-- Plotting</span>
 plt.xlabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Core Relative Permeability ($\mu_r$) [H/m]'</span><span class="org-rainbow-delimiters-depth-1">)</span>
 plt.ylabel<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Inductance [H]'</span><span class="org-rainbow-delimiters-depth-1">)</span> 
 plt.xlim<span class="org-rainbow-delimiters-depth-1">(</span>0, 0.8e5<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -730,22 +737,24 @@ plt.title<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-s
 plt.plot<span class="org-rainbow-delimiters-depth-1">(</span>mur, L,<span class="org-string">'</span><span class="custom"><span class="custom-2">#ef9f76</span></span><span class="org-string">'</span>, linewidth<span class="org-operator">=</span>5<span class="org-rainbow-delimiters-depth-1">)</span>
 fig.tight_layout<span class="org-rainbow-delimiters-depth-1">()</span>
 plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'images/python-matplot-fig.svg'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">--</span>
+
 </pre>
 </div>
 
 
-<div id="org8a55119" class="figure">
+<div id="org31ba942" class="figure">
 <p><img src="images/python-matplot-fig.svg" alt="python-matplot-fig.svg" class="org-svg" />
 </p>
 </div>
 </div>
 </li>
 
-<li><a id="org0ffc3d7"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org95d6021"></a><font color=#e78284>QUESTION - DC MAGNETISATION CURVE - I</font><br />
 <div class="outline-text-5" id="text-2-0-0-5">
 <p>
-Assume that the core material in Question 1 is M-5 electrical steel, which has the dc magnetization curve of Fig. 1.10.
-Find the current i required to produce \(B_e\) = 1 T.
+Assume that the core material in Question 1 is M-5 electrical steel, which has the DC magnetisation
+curve given in the figure above. Find the current \(I\) required to produce \(B_e\) = 1 T.
 </p>
 
 <p>
@@ -760,23 +769,26 @@ Find the current i required to produce \(B_e\) = 1 T.
 <span class="org-variable-name">g</span>   <span class="org-operator">=</span> 5e<span class="org-operator">-</span>4                      <span class="org-comment-delimiter"># </span><span class="org-comment">(m)  air gap length</span>
 <span class="org-variable-name">N</span>   <span class="org-operator">=</span> 500                       <span class="org-comment-delimiter"># </span><span class="org-comment">(-)  number of turns</span>
 <span class="org-variable-name">Bc</span>  <span class="org-operator">=</span> 1                         <span class="org-comment-delimiter"># </span><span class="org-comment">(T)  Core magnetic field density</span>
-<span class="org-variable-name">Hc</span> <span class="org-operator">=</span> 11 <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/m)</span>
-<span class="org-variable-name">Ic</span> <span class="org-operator">=</span> 0.3
+<span class="org-variable-name">Hc</span> <span class="org-operator">=</span> 11                         <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns/m)</span>
+<span class="org-variable-name">Ic</span> <span class="org-operator">=</span> 0.3                        <span class="org-comment-delimiter"># </span><span class="org-comment">(I)  </span>
 
-<span class="org-variable-name">Fc</span> <span class="org-operator">=</span> Hc <span class="org-operator">*</span> Ic
+<span class="org-variable-name">Fc</span> <span class="org-operator">=</span> Hc <span class="org-operator">*</span> Ic                    <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns) </span>
 
-<span class="org-variable-name">Fg</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Bg <span class="org-operator">*</span> g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> mu0
+<span class="org-variable-name">Fg</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Bg <span class="org-operator">*</span> g<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> mu0             <span class="org-comment-delimiter"># </span><span class="org-comment">(Ampere-Turns)</span>
 
-<span class="org-variable-name">i</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Fc <span class="org-operator">+</span> Fg<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> N
+<span class="org-variable-name">i</span> <span class="org-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>Fc <span class="org-operator">+</span> Fg<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">/</span> N               <span class="org-comment-delimiter"># </span><span class="org-comment">(A)  Current</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org04b9764"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org2c67b50"></a><font color=#e78284>QUESTION - DC MAGNETISATION CURVE - II</font><br />
 <div class="outline-text-5" id="text-2-0-0-6">
 <p>
-Repeat Question 5 but find the current i for Bc &#x2013; 1.6 T.
+Using the previous DC magnetisation curve in the previous question, find the current \(I\) for \(B_c\) = 1.6 T.
+</p>
+
+<p>
 By what factor does the current have to be increased to result in this factor of 1.6 increase in flux density?
 </p>
 
@@ -786,13 +798,20 @@ By what factor does the current have to be increased to result in this factor of
 </div>
 </li>
 
-<li><a id="org5797c7a"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org50fdf1b"></a><font color=#e78284>QUESTION - MAGNETIC CORE OF A TRANSFORMER</font><br />
 <div class="outline-text-5" id="text-2-0-0-7">
 <p>
-The magnetic core in Fig. 1.15 is made from laminations of M-5 grain-oriented electrical steel.
-The winding is excited with a 60-Hz voltage to produce a flux density in the steel of B = 1.5 sin wt T,
-where w = 2zr60 ~ 377 rad/sec. The steel occupies 0.94 of the core cross- sectional area.
-The mass-density of the steel is 7.65 g/cm3. Find:
+The magnetic core in a transformer is made from laminations of M-5 grain-oriented electrical steel.
+The winding is excited with a 60 Hz voltage to produce a flux density in the steel of B = 1.5 \(\sin \omega t\) T,
+where \(\omega = 2\pi f\) which is 377 rad/s.
+</p>
+
+<p>
+The steel occupies 0.94 of the core cross-sectional area. The mass-density of the steel is 7.65 g/cm<sup>3</sup>.
+</p>
+
+<p>
+Using this information find:
 </p>
 <ol class="org-ol">
 <li>the applied voltage,</li>
@@ -807,14 +826,19 @@ The mass-density of the steel is 7.65 g/cm3. Find:
 </div>
 </li>
 
-<li><a id="orgd687cee"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgbaf1a1c"></a><font color=#e78284>QUESTION - A MAGNETIC CIRCUIT OF HIGH PERMEABILITY</font><br />
 <div class="outline-text-5" id="text-2-0-0-8">
 <p>
-As shown in Fig. 1.17, a magnetic circuit consists of a core of high permeability (/x &#x2013;+ c¢),
-an air gap of length g = 0.2 cm, and a section of magnetic material of length lm = 1.0 cm.
-The cross-sectional area of the core and gap is equal to Am &#x2013; Ag = 4 cm2.
-Calculate the flux density Bs in the air gap if the magnetic material is (a) Alnico 5 and (b) M-5 electrical steel.
+A magnetic circuit consists of a core of high permeability (\(\mu \rightarrow \infty\)),
+an air gap of length \(g\) = 0.2 cm, and a section of magnetic material of length \(l_m\) = 1.0 cm.
+The cross-sectional area of the core and gap is equal to \(A_m\) = \(A_g\) = 4 cm<sup>2</sup>.
+Calculate the flux density \(B_s\) in the air gap if the magnetic material is:
 </p>
+
+<ol class="org-ol">
+<li>Alnico 5,</li>
+<li>Electrical steel.</li>
+</ol>
 
 <p>
 <font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p>
@@ -822,10 +846,10 @@ Calculate the flux density Bs in the air gap if the magnetic material is (a) Aln
 </div>
 </li>
 
-<li><a id="org61251d2"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org242aa79"></a><font color=#e78284>QUESTION - MINIMUM MAGNET VOLUME</font><br />
 <div class="outline-text-5" id="text-2-0-0-9">
 <p>
-ThemagneticcircuitofFig.1.17ismodifiedsothattheair-gapareaisreducedtoAg= 2.0cm2, as shown in Fig. 1.18.
+A magnetic circuit ofFig.1.17ismodifiedsothattheair-gapareaisreducedtoAg= 2.0cm2, as shown in Fig. 1.18.
 Find the minimum magnet volume required to achieve an air-gap flux density of 0.8 T.
 </p>
 
@@ -835,12 +859,12 @@ Find the minimum magnet volume required to achieve an air-gap flux density of 0.
 </div>
 </li>
 
-<li><a id="orgd0ce527"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org8022f6b"></a><font color=#e78284>QUESTION - RINGS OF MAGNETIC MATERIALS</font><br />
 <div class="outline-text-5" id="text-2-0-0-10">
 <p>
-The magnetic circuit of Fig. 1.26 consists of rings of magnetic material in a stack of height h.
-The rings have inner radius Ri and outer radius Ro.
-Assume that the iron is of infinite permeability (/z &#x2013;+ c~) and neglect the effects of
+The magnetic circuit consists of rings of magnetic material in a stack of height h.
+The rings have inner radius \(R_i\) and outer radius \(R_o\).
+Assume that the iron is of infinite permeability (\(\mu \rightarrow \infty\)) and neglect the effects of
 magnetic leakage and fringing. For:
 </p>
 
@@ -931,12 +955,12 @@ For \(N\) = 65 turns, calculate:
 </ol>
 </div>
 
-<div id="outline-container-org9277436" class="outline-2">
-<h2 id="org9277436"><span class="section-number-2">3.</span> Transformers</h2>
+<div id="outline-container-org22d6e14" class="outline-2">
+<h2 id="org22d6e14"><span class="section-number-2">3.</span> Transformers</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 <ol class="org-ol">
-<li><a id="org4c27f50"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org197cca6"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-1">
 <div class="org-src-container">
 <pre class="src src-python">
@@ -966,7 +990,7 @@ p.107
 </div>
 </li>
 
-<li><a id="org3d288f6"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org1b8b4e1"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-2">
 <div class="org-src-container">
 <pre class="src src-python">
@@ -991,7 +1015,7 @@ p.119 2.1
 </div>
 </li>
 
-<li><a id="org6a75b21"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgbde0ca6"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-3">
 <div class="org-src-container">
 <pre class="src src-python">
@@ -1012,7 +1036,7 @@ secondary
 </pre>
 </div>
 
-<pre class="example" id="orgd890329">
+<pre class="example" id="org988f547">
 143.49224445271378
 </pre>
 
@@ -1022,7 +1046,7 @@ p.120
 </div>
 </li>
 
-<li><a id="org6cda0f5"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org0fb7dfa"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-4">
 <p>
 A magnetic circuit with a cross-sectional area of \(15 cm^2\) is to be operated at 60 Hz from a 120-V rms supply. Calculate the number of turns required to achieve a peak magnetic flux density of 1.8 T in the core.
@@ -1043,13 +1067,13 @@ N
 </pre>
 </div>
 
-<pre class="example" id="org69a36a0">
+<pre class="example" id="orgb58820e">
 206.96926808209338
 </pre>
 </div>
 </li>
 
-<li><a id="org82d73ac"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgc34e320"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-5">
 <p>
 A transformer is to be used to transform the impedance of a 8-fl resistor to an impedance of 75 ft. Calculate the required turns ratio, assuming the transformer to be ideal.
@@ -1065,7 +1089,7 @@ A transformer is to be used to transform the impedance of a 8-fl resistor to an 
 </div>
 </li>
 
-<li><a id="orgf266a59"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgbdbd538"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-6">
 <p>
 A 100-fl resistor is connected to the secondary of an idea transformer with a turns ratio of 1:4 (primary to secondary). A 10-V rms, 1-kHz voltage source is connected to the primary. Calculate the primary current and the voltage across the 100-f2 resistor.
@@ -1088,7 +1112,7 @@ A 100-fl resistor is connected to the secondary of an idea transformer with a tu
 </div>
 </li>
 
-<li><a id="orge4d3627"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org769a2c7"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-7">
 <p>
 A 120-V:2400-V, 60-Hz, 50-kVA transformer has a magnetizing reactance (as measured from the 120-V terminals) of 34.6 ft. The 120-V winding has a leakage reactance of 27.4 mr2 and the 2400-V winding has a leakage reactance of 11.2 ft.
@@ -1109,7 +1133,7 @@ b. With the secondary short-circuited, calculate the primary voltage which will 
 </div>
 </li>
 
-<li><a id="org57c96dc"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orged2df9d"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-8">
 <p>
 A 7970-V: 120-V, 60-Hz potential transformer has the following parameters as seen from the high-voltage (primary) winding:
@@ -1128,7 +1152,7 @@ c. Repeat part (b) if the burden is changed to a 1-kf2 reactance.
 </div>
 </li>
 
-<li><a id="orgb2c884a"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orge2123cf"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-9">
 <p>
 A single-phase power system consists of a 48O V 60 Hz generator supplying a load Z<sub>load</sub> = 4 + j3 Ohm through a transmission line of impedance Z<sub>line</sub> = 0.18 + j0.24 Ohm.
@@ -1210,7 +1234,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </pre>
 </div>
 
-<pre class="example" id="org8ef0abb">
+<pre class="example" id="org03d3a4f">
 +--------------+--------+----------------------------------------------+--------+
 |   Definition | Symbol | Value                                        | Unit   |
 +--------------+--------+----------------------------------------------+--------+
@@ -1222,7 +1246,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="org11a7647"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgaf3a278"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-3-0-0-10">
 <p>
 A simple power system is shown Below. This system contains a 480 V generator connected to an ideal 1:10 step-up transfonner, a transmission line, an ideal 20:1 step-down transformer, and a load.
@@ -1292,7 +1316,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </pre>
 </div>
 
-<pre class="example" id="org3a5f644">
+<pre class="example" id="org8621bd8">
 +---------------------+---------+--------+-------------+
 |          Definition | Symbol  | Value  | Unit        |
 +---------------------+---------+--------+-------------+
@@ -1328,16 +1352,17 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </ol>
 </div>
 
-<div id="outline-container-org6e82e3b" class="outline-2">
-<h2 id="org6e82e3b"><span class="section-number-2">4.</span> Electromechanical Energy Converion Principles</h2>
+<div id="outline-container-org44f654d" class="outline-2">
+<h2 id="org44f654d"><span class="section-number-2">4.</span> Electromechanical Energy Converion Principles</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgf88d59c"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org0dfb157"></a><font color=#e78284>QUESTION - AN OVAL DRIVE</font><br />
 <div class="outline-text-5" id="text-4-0-0-1">
 <p>
-The magnetic circuit of Fig. 3.9 consists of a single-coil stator and an oval rotor. Because the air-gap is <b>nonuniform</b>, the coil inductance
-varies with rotor angular position, measured between the magnetic axis of the stator coil and the major axis of the rotor, as
+A magnetic circuit consists of a single-coil stator and an oval rotor (i.e,. the rotor has a non-uniform air gap).
+Because the <font color=#ef9f76>air-gap isn on-uniform</font>, the coil inductance varies with rotor angular position, measured between the
+magnetic axis of the stator coil and the major axis of the rotor, as
 </p>
 
 \begin{equation*}
@@ -1345,7 +1370,7 @@ L(\theta) = L_0 + L_2 \cos(2\theta)
 \end{equation*}
 
 <p>
-where \(L_0 = 10.6 mH\) and \(L_2 = 2.7 mH\).
+where \(L_0 = 10.6\)  mH and \(L_2 = 2.7\) mH.
 </p>
 
 <p>
@@ -1355,7 +1380,11 @@ NOTE: the second-harmonic variation of inductance with rotor angle 0. This is co
 <p>
 Find the torque as a function of \(\theta\) for a coil current of \(i=2 A\).
 </p>
+</div>
+</li>
 
+<li><a id="orgd2f2408"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
+<div class="outline-text-5" id="text-4-0-0-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
 <span class="org-variable-name">i</span>, <span class="org-variable-name">theta</span>, <span class="org-variable-name">L0</span>, <span class="org-variable-name">L2</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i theta L0 L2'</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1376,27 +1405,35 @@ T.subs<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rain
 </pre>
 </div>
 
-<pre class="example" id="org58107ac">
+<pre class="example" id="org280d92b">
 -L2*i**2*sin(2*theta)
 </pre>
-
-<div class="theory" id="org1e76bf2">
-\begin{equation*}
-T_{fld}(\theta) = \dfrac{i^2}{2}
-\end{equation*}
-
-</div>
 </div>
 </li>
 
-<li><a id="orgd97c1ab"></a><font color=#e78284>QUESTION - </font><br />
-<div class="outline-text-5" id="text-4-0-0-2">
+<li><a id="org30b79dd"></a><font color=#e78284>QUESTION - ROTOR POSITION AND TORQUE</font><br />
+<div class="outline-text-5" id="text-4-0-0-3">
 <p>
-The inductance of a coil on a magnetic circuit similar to that of Fig. 3.9 is found to vary with rotor position as
-L(O) = Lo + L2 cos (20) + L4 sin (40)
-whereL0= 25.4mH,L2= 8.3mHandL4= 1.8mH.(a)Findthetorqueasafunctionof0 for a winding current of 3.5 A. (b) Find a rotor position 0maxthat produces the largest negative torque.
+The coil inductance coil on a magnetic circuit is found to vary with rotor position as:
 </p>
 
+\begin{equation*}
+L(\theta) = L_0 + L_2 \cos (2\theta) + L_4 \sin (4\theta)
+\end{equation*}
+
+<p>
+where $L<sub>0</sub>$= 25.4 mH, \(L_2\) = 8.3 mH and \(L_4\) = 1.8 mH. Using these values:
+</p>
+
+<ol class="org-ol">
+<li>Find the torque as a function of \(\theta\) (i.e., \(T (\theta)\)) for a winding current of 3.5 A.</li>
+<li>Find a rotor position \(\theta_{max}\) that produces the largest negative torque.</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org39abfce"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
+<div class="outline-text-5" id="text-4-0-0-4">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">i</span>, <span class="org-variable-name">theta</span>, <span class="org-variable-name">L0</span>, <span class="org-variable-name">L2</span>, <span class="org-variable-name">L4</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i theta L0 L2 L4'</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
 
@@ -1412,10 +1449,10 @@ T.subs<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rain
 </div>
 </li>
 
-<li><a id="org0bc1c18"></a><font color=#e78284>QUESTION - </font><br />
-<div class="outline-text-5" id="text-4-0-0-3">
+<li><a id="org3370ac8"></a><font color=#e78284>QUESTION - INDUCTANCE OF A PLUNGER</font><br />
+<div class="outline-text-5" id="text-4-0-0-5">
 <p>
-Consider a plunger whose inductance varies as:
+Consider a plunger whose inductance varies as with position as:
 </p>
 
 \begin{equation*}
@@ -1432,11 +1469,9 @@ which produces a current as a function of \(x\) of the form
 \end{equation*}
 </div>
 </li>
-</ol>
 
-<div id="outline-container-orgc83189b" class="outline-4">
-<h4 id="orgc83189b"><span class="section-number-4">4.0.1.</span> Question 4 - Determination fo Magnetic Force and Torque from Co-Energy</h4>
-<div class="outline-text-4" id="text-4-0-1">
+<li><a id="org31364c0"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
+<div class="outline-text-5" id="text-4-0-0-6">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">i</span>, <span class="org-variable-name">I0</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">d</span>, <span class="org-variable-name">mu0</span>, <span class="org-variable-name">N</span>, <span class="org-variable-name">l</span>, <span class="org-variable-name">g</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'i I0 x d mu0 N l g'</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Define symbols for symbolic calculation</span>
 
@@ -1452,18 +1487,30 @@ W_fld
 </pre>
 </div>
 
-<pre class="example" id="org2078812">
+<pre class="example" id="org34a004e">
 I0**2*N**2*l*mu0*x**2*(1 - x/d)/(4*d*g)
 </pre>
 </div>
+</li>
 
-<ol class="org-ol">
-<li><a id="org735353b"></a><font color=#e78284>QUESTION - </font><br />
-<div class="outline-text-5" id="text-4-0-1-1">
+<li><a id="orgcd0c39f"></a><font color=#e78284>QUESTION - PLOTTING TORQUE VS. ROTOR ANGLE</font><br />
+<div class="outline-text-5" id="text-4-0-0-7">
 <p>
-In the system shown in Fig. 3.15, the inductances in henrys are given as Lll = (3 + cos 20) x 10-3. L12=0.3cos0" L22= 30 + 10cos20. Find and plot the torque Tnd(0) for current il = 0.8 A and i2 = 0.01 A.
+In a drive with a rotow with <font color=#ef9f76>non-uniform air gap</font>, the inductances in henrys are given as:
 </p>
 
+\begin{equation*}
+L_{11} = (3 + \cos 2\theta) \times 10^{-3},  L_{12} = 0.3 \cos \theta, L_{22}= 3\theta + 10 cos 2\theta.
+\end{equation*}
+
+<p>
+Using this information, please find and plot the torque \(T_{fld} (\theta)\) for current \(I_1\) = 0.8 A and \(I_2\) = 0.01 A.
+</p>
+</div>
+</li>
+
+<li><a id="org0ab7b53"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
+<div class="outline-text-5" id="text-4-0-0-8">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">theta</span> <span class="org-operator">=</span> sy.symbols<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'theta'</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -1476,22 +1523,34 @@ In the system shown in Fig. 3.15, the inductances in henrys are given as Lll = (
 <span class="org-comment-delimiter">#</span><span class="org-comment">plot(T_fld)</span>
 </pre>
 </div>
-
-<div class="org-src-container">
-<pre class="src src-python">
-</pre>
-</div>
 </div>
 </li>
 
-<li><a id="org2b4a3b4"></a><font color=#e78284>QUESTION - </font><br />
-<div class="outline-text-5" id="text-4-0-1-2">
+<li><a id="org800ae87"></a><font color=#e78284>QUESTION - DERIVING AN EXPRESSION FOR CO-ENERGY</font><br />
+<div class="outline-text-5" id="text-4-0-0-9">
+<ol class="org-ol">
+<li>Derive an expression for the coenergy in the magnetic circuit given above as a</li>
+</ol>
 <p>
-(a) Derive an expression for the coenergy in the magnetic circuit of Fig. 3.20 as a
-function of the plunger position x. (b) Derive an expression for the x-directed force on the plunger
-and evaluate it at x = Wg/2. Neglect any effects of fringing fluxes. The dimensions are:
+function of the plunger position x.
+</p>
+<ol class="org-ol">
+<li>Derive an expression for the x-directed force on the plunger and evaluate it
+at \(x\) = $W<sub>g</sub>$/2.</li>
+</ol>
+
+<p>
+<font color=#8caaee>NOTE: </font> Neglect any effects of fringing fluxes.
 </p>
 
+<p>
+The dimensions are:
+</p>
+</div>
+</li>
+
+<li><a id="orgf69e213"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
+<div class="outline-text-5" id="text-4-0-0-10">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">Wm</span> <span class="org-operator">=</span> 0.02 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
 <span class="org-variable-name">Wg</span> <span class="org-operator">=</span> 0.025 <span class="org-comment-delimiter"># </span><span class="org-comment">m</span>
@@ -1507,21 +1566,20 @@ and evaluate it at x = Wg/2. Neglect any effects of fringing fluxes. The dimensi
 </pre>
 </div>
 
-<pre class="example" id="orgd733369">
+<pre class="example" id="org795179b">
 1.51474285714286e-7/(mu0*(0.01 + 8.4e-5/(0.025 - x)))
 </pre>
 </div>
 </li>
 </ol>
 </div>
-</div>
 
-<div id="outline-container-org3ce4f40" class="outline-2">
-<h2 id="org3ce4f40"><span class="section-number-2">5.</span> Introduction to Rotating Machines</h2>
+<div id="outline-container-org4b10002" class="outline-2">
+<h2 id="org4b10002"><span class="section-number-2">5.</span> Introduction to Rotating Machines</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 <ol class="org-ol">
-<li><a id="org54f9a29"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org47c720a"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-5-0-0-1">
 <p>
 A two-pole, three-phase, $Y$-connected \(60 Hz\) round-rotor synchronous generator has a field
@@ -1603,11 +1661,11 @@ For a field current of \(I_f\) = 720 A DC. Using these informations compute:
 </pre>
 </div>
 
-<pre class="example" id="orgab2020c">
+<pre class="example" id="org46de322">
 11803221534.8993*mu0
 </pre>
 
-<div class="theory" id="orgdd5008a">
+<div class="theory" id="org3720273">
 <p>
 From Eq.
 </p>
@@ -1620,7 +1678,7 @@ F_{{ag1}_{peak}} = \dfrac{4}{\pi} \left( \dfrac{k_f N_f}{poles}  \right) I_f = \
 </div>
 </li>
 
-<li><a id="org189f7f4"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org0ce5245"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-5-0-0-2">
 <p>
 An 1800-r/min, four-pole, 60-Hz synchronous motor has an air-gap length of 1.2 mm.
@@ -1651,13 +1709,13 @@ estimate the maximum torque and power output one can expect to obtain from this 
 </pre>
 </div>
 
-<pre class="example" id="orgcd2d02b">
+<pre class="example" id="org28d142f">
 4395.365511254792
 </pre>
 </div>
 </li>
 
-<li><a id="org0e9dac5"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org2a53fcd"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-5-0-0-3">
 <p>
 Repeat Example 4.8 for a two-pole, 60-Hz synchronous motor with an
@@ -1672,12 +1730,12 @@ The rotor winding has a 900 turns and a winding factor of 0.965. The maximum rot
 </ol>
 </div>
 
-<div id="outline-container-orgaad5c1d" class="outline-2">
-<h2 id="orgaad5c1d"><span class="section-number-2">6.</span> Synchronous Drives</h2>
+<div id="outline-container-org55f5bf2" class="outline-2">
+<h2 id="org55f5bf2"><span class="section-number-2">6.</span> Synchronous Drives</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 <ol class="org-ol">
-<li><a id="org95d96db"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org170508c"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-1">
 <p>
 A 60-Hz, three-phase synchronous motor is observed to have a terminal voltage of \(V_a\) = 460 V (line-line)
@@ -1723,7 +1781,7 @@ Assume the armature resistance (\(R_a\) ~ 0) to be negligible. Calculate:
 </div>
 </li>
 
-<li><a id="orgce30d84"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org181d661"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-2">
 <p>
 Assuming the input power and terminal voltage for the motor of the previous example remain constant, calculate
@@ -1773,7 +1831,7 @@ Assuming the input power and terminal voltage for the motor of the previous exam
 </div>
 </li>
 
-<li><a id="org7d994da"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orge3c3916"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-3">
 <p>
 The synchronous machine of Question 1 and Question 2 is to be operated as a synchronous generator.
@@ -1783,7 +1841,7 @@ calculate the field current required to supply a load of 85 kW, 0.95 power-facto
 </div>
 </li>
 
-<li><a id="org1b02b01"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org6f349fc"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-4">
 <p>
 An open-circuit test performed on a three-phase, 60 Hz synchronous generator shows that the rated
@@ -1803,7 +1861,7 @@ Calculate the saturated and unsaturated values of \(L_{af}\).
 </div>
 </li>
 
-<li><a id="org4426b45"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org888ebe0"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-5">
 <p>
 If the synchronous generator of Question 4 is operated at a speed corresponding to a
@@ -1816,7 +1874,7 @@ generated voltage of 50 Hz, calculate
 </div>
 </li>
 
-<li><a id="orgade60b2"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org184328e"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-6-0-0-6">
 <p>
 A three-phase, 75-MVA, 13.8-kV synchronous generator with saturated synchronous reactance
@@ -1902,7 +1960,7 @@ plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org
 </div>
 
 
-<div id="orgfc60590" class="figure">
+<div id="orgf7c0f10" class="figure">
 <p><img src="images/saturated-synchronous-reluctance.png" alt="saturated-synchronous-reluctance.png" />
 </p>
 </div>
@@ -1911,16 +1969,16 @@ plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org
 </ol>
 </div>
 
-<div id="outline-container-orge05eb7c" class="outline-2">
-<h2 id="orge05eb7c"><span class="section-number-2">7.</span> Polyphase Induction Drives</h2>
+<div id="outline-container-org0e20416" class="outline-2">
+<h2 id="org0e20416"><span class="section-number-2">7.</span> Polyphase Induction Drives</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orgfccecbf" class="outline-3">
-<h3 id="orgfccecbf"><span class="section-number-3">7.1.</span> Analysis of Poly-phase Equivalent Circuit</h3>
+<div id="outline-container-org45e6fb0" class="outline-3">
+<h3 id="org45e6fb0"><span class="section-number-3">7.1.</span> Analysis of Poly-phase Equivalent Circuit</h3>
 <div class="outline-text-3" id="text-7-1">
 </div>
 <ol class="org-ol">
-<li><a id="org112351d"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org8488bce"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-7-1-0-1">
 <p>
 A three-phase, two-pole, 60 Hz induction motor is observed to be operating at a speed of 3502 r/min with an
@@ -1982,7 +2040,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </pre>
 </div>
 
-<pre class="example" id="org02de8af">
+<pre class="example" id="orgb3d5255">
 +-------------------+---------+-----------+-------+
 |        Definition | Symbol  | Value     | Unit  |
 +-------------------+---------+-----------+-------+
@@ -1996,7 +2054,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="org5f09d3f"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orga6ab05d"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-7-1-0-2">
 <p>
 Calculate the rotor power dissipation for a three-phase, 460 V, 60 Hz, four-pole motor with an armature resistance of 0.056 Ohm operating
@@ -2057,7 +2115,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </pre>
 </div>
 
-<pre class="example" id="org60d8d66">
+<pre class="example" id="org7cd22cb">
 +-------------------+---------+-----------+-------+
 |        Definition | Symbol  | Value     | Unit  |
 +-------------------+---------+-----------+-------+
@@ -2071,7 +2129,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </div>
 </li>
 
-<li><a id="org3c59cbd"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org897117d"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-7-1-0-3">
 <p>
 A three-phase Y-connected 220-V (line-to-line) 7.5-kW 60-Hz six-pole induction motor has the following parameter values in ~/phase referred to the stator:
@@ -2083,7 +2141,7 @@ For a slip of 2 percent, compute the speed, output torque and power, stator curr
 </div>
 </li>
 
-<li><a id="orgc0cf5e3"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org50236d6"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-7-1-0-4">
 <p>
 Find the speed (n<sub>s</sub>), output power (P<sub>out</sub>), and efficiency (%) for the motor of Example 6.2 operating at rated voltage and frequency for a slip of 1.5 percent.
@@ -2091,7 +2149,7 @@ Find the speed (n<sub>s</sub>), output power (P<sub>out</sub>), and efficiency (
 </div>
 </li>
 
-<li><a id="org944f6a8"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgc979428"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-7-1-0-5">
 <p>
 A three-phase, 230 V, 60 Hz, 12 kW, four-pole wound-rotor induction motor has the following parameters expressed in Ohm-per-phase.
@@ -2153,7 +2211,7 @@ Results.add_row<span class="org-rainbow-delimiters-depth-1">(</span><span class=
 </pre>
 </div>
 
-<pre class="example" id="org6a84e52">
+<pre class="example" id="orgb7aba77">
 +--------------------------+--------+---------+------+
 |               Definition | Symbol | Value   | Unit |
 +--------------------------+--------+---------+------+
@@ -2210,7 +2268,7 @@ plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org
 </div>
 
 
-<div id="orge81483d" class="figure">
+<div id="org5899d33" class="figure">
 <p><img src="images/wound-rotor-torque-plot.svg" alt="wound-rotor-torque-plot.svg" class="org-svg" />
 </p>
 </div>
@@ -2220,16 +2278,16 @@ plt.savefig<span class="org-rainbow-delimiters-depth-1">(</span><span class="org
 </div>
 </div>
 
-<div id="outline-container-org9765077" class="outline-2">
-<h2 id="org9765077"><span class="section-number-2">8.</span> Direct Current Machines</h2>
+<div id="outline-container-orgb03a627" class="outline-2">
+<h2 id="orgb03a627"><span class="section-number-2">8.</span> Direct Current Machines</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgaecc8fc" class="outline-3">
-<h3 id="orgaecc8fc"><span class="section-number-3">8.1.</span> Motor Analysis</h3>
+<div id="outline-container-org831d1bf" class="outline-3">
+<h3 id="org831d1bf"><span class="section-number-3">8.1.</span> Motor Analysis</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
 <ol class="org-ol">
-<li><a id="org334e19f"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org35bcd00"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-1-0-1">
 <p>
 A 25 kW 125 V separately-excited DC machine is operated at a constant speed of 3000 r/min with a constant field current such that
@@ -2246,7 +2304,7 @@ Calculate the armature current, terminal power, and electromagnetic power and to
 </div>
 </li>
 
-<li><a id="orgfe516be"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgc84eea7"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-1-0-2">
 <p>
 The speed of the separately-excited dc machine of the previous Question is observed to be 2950 r/min with the field current at the same
@@ -2260,7 +2318,7 @@ Is it acting as a motor or a generator?
 </div>
 </li>
 
-<li><a id="orgddeff01"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org3d0238c"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-1-0-3">
 <p>
 Consider again the separately-excited dc machine of Question 1 with the field-current maintained constant at the value that would produce a
@@ -2274,7 +2332,7 @@ Calculate the speed of the motor.
 </div>
 </li>
 
-<li><a id="org2179ef4"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgaf6fd59"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-1-0-4">
 <p>
 Repeat Question 2 if the machine is observed to be operating as a generator with a terminal voltage of 124 V and a terminal power of 24 kW.
@@ -2284,12 +2342,12 @@ Repeat Question 2 if the machine is observed to be operating as a generator with
 </ol>
 </div>
 
-<div id="outline-container-orga8434e4" class="outline-3">
-<h3 id="orga8434e4"><span class="section-number-3">8.2.</span> Magnetic Circuit Analysis</h3>
+<div id="outline-container-org5dce1cc" class="outline-3">
+<h3 id="org5dce1cc"><span class="section-number-3">8.2.</span> Magnetic Circuit Analysis</h3>
 <div class="outline-text-3" id="text-8-2">
 </div>
 <ol class="org-ol">
-<li><a id="org0715b80"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgd41a2f3"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-2-0-1">
 <p>
 A 100-kW, 250-V, 400-A, long-shunt compound generator has an armature resistance (including brushes) of 0.025 g2, a
@@ -2305,7 +2363,7 @@ when the shunt-field current is 4.7 A and the speed is 1150 r/min. Neglect the e
 </div>
 </li>
 
-<li><a id="orgaf4d463"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgb47c31d"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-2-0-2">
 <p>
 Consider again the long-shunt compound dc generator of Example 7.3. As in Example 7.3, compute the terminal voltage
@@ -2316,7 +2374,7 @@ include the effects of armature reaction.
 </li>
 
 
-<li><a id="orgad0c745"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org2fdcaba"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-2-0-3">
 <p>
 To counter the effects of armature reaction, a fourth turn is added to the series field winding of the dc generator
@@ -2326,7 +2384,7 @@ of Examples 7.3 and 7.4, increasing its resistance to 0.007 g2. Repeat the termi
 </li>
 
 
-<li><a id="orga650b32"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org56aa796"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-2-0-4">
 <p>
 Repeat Example 7.5 assuming that a fifth turn is added to the series field winding, bringing its total resistance to 0.009 if2.
@@ -2336,12 +2394,12 @@ Repeat Example 7.5 assuming that a fifth turn is added to the series field windi
 </ol>
 </div>
 
-<div id="outline-container-org4980caa" class="outline-3">
-<h3 id="org4980caa"><span class="section-number-3">8.3.</span> Steady-state Analysis</h3>
+<div id="outline-container-org438247a" class="outline-3">
+<h3 id="org438247a"><span class="section-number-3">8.3.</span> Steady-state Analysis</h3>
 <div class="outline-text-3" id="text-8-3">
 </div>
 <ol class="org-ol">
-<li><a id="org6b52ee8"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orgcb36dcb"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-3-0-1">
 <p>
 100-kW, 250-V, 400-A, 1200-r/min dc shunt generator has the magnetization curves (including armature-reaction effects) of Fig. 7.14.
@@ -2361,23 +2419,92 @@ Show how a resistance across the series field (referred to as a series-fielddive
 </ol>
 </div>
 
-<div id="outline-container-org02d3759" class="outline-3">
-<h3 id="org02d3759"><span class="section-number-3">8.4.</span> Motor Analysis</h3>
+<div id="outline-container-orgb595242" class="outline-3">
+<h3 id="orgb595242"><span class="section-number-3">8.4.</span> Motor Analysis</h3>
 <div class="outline-text-3" id="text-8-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgfa8eefd"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="orga2f1ca4"></a><font color=#e78284>QUESTION - </font><br />
 <div class="outline-text-5" id="text-8-4-0-1">
 <p>
-A 100-hp, 250-V dc shunt motor has the magnetization curves (including armature-reaction effects) of Fig. 7.14. The armature circuit resistance, including brushes, is 0.025 ~2. No-load rotational losses are 2000 W and the stray-load losses equal 1.0% of the output. The field rheostat is adjusted for a no-load speed of 1100 r/min.
-a. As an example of computing points on the speed-load characteristic, determine the speed in r/min and output in horsepower (1 hp = 746 W) corresponding to an armature current of 400 A.
-b. Because the speed-load characteristic observed to in part (a) is considered undesirable, a stabilizingwindingconsisting of 1-1/2 cumulative series turns per pole is to be added. The resistance of this winding is assumed negligible. There are 1000 turns per pole in the shunt field. Compute the speed corresponding to an armature current of 400 A.
+A 100-hp (73.5 kW), 250 V DC <font color=#ef9f76>shunt motor</font> has the magnetisation curves (including armature-reaction effects) shown above.
+The armature circuit resistance, including its brushes, is 0.025 Ohm. No-load rotational losses are measured to be 2000 W and
+the stray-load losses equal 1.0 % of the output. The field rheostat is adjusted for a no-load speed of 1100 r/min.
 </p>
+
+<ol class="org-ol">
+<li>As an example of computing points on the speed-load characteristic, determine the speed in r/min and output
+in horsepower (1 hp = 746 W) corresponding to an armature current of 400 A.</li>
+<li>Because the speed-load characteristic observed in (1) is considered undesirable, a stabilising winding consisting
+of 1-1/2 cumulative series turns per pole is to be added. The resistance of this winding is <font color=#ef9f76>assumed negligible</font>.
+There are 1000 turns per pole in the shunt field. Compute the speed corresponding to an armature current of 400 A.</li>
+</ol>
 </div>
 </li>
 
-<li><a id="orgcd86428"></a><font color=#e78284>QUESTION - </font><br />
+<li><a id="org1c3d672"></a><font color=#a6d189>ANSWER:</font> <p>The following part describes the answer to the aforementioned Question. </p><br />
 <div class="outline-text-5" id="text-8-4-0-2">
+<div class="org-src-container">
+<pre class="src src-python" id="org4472e5a"><span class="org-comment-delimiter"># </span><span class="org-comment">1. At no load, armature voltage (Ea) is 250 V. The corresponding point on the 1200-r/min no-load saturation curve is</span>
+
+<span class="org-variable-name">w_c</span> <span class="org-operator">=</span> 1200  <span class="org-comment-delimiter"># </span><span class="org-comment">(rpm/min) magnetisation curve speed</span>
+<span class="org-variable-name">w_n</span> <span class="org-operator">=</span> 1120  <span class="org-comment-delimiter"># </span><span class="org-comment">(rpm/min) no-load speed</span>
+<span class="org-variable-name">Ea</span>  <span class="org-operator">=</span> 250   <span class="org-comment-delimiter"># </span><span class="org-comment">(V) Armature voltage</span>
+<span class="org-variable-name">Ra</span>  <span class="org-operator">=</span> 0.025 <span class="org-comment-delimiter"># </span><span class="org-comment">(Ohm) Armature resistance</span>
+
+<span class="org-variable-name">Ea_0</span> <span class="org-operator">=</span> Ea <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>w_c <span class="org-operator">/</span> w_n<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">From this value and looking at the curve, the field current (If) is:</span>
+
+<span class="org-variable-name">If</span> <span class="org-operator">=</span> 5.9 <span class="org-comment-delimiter"># </span><span class="org-comment">(A) the field current</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">The field current remains constant at this value</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">At the armature current of</span>
+
+<span class="org-variable-name">Ia</span> <span class="org-operator">=</span> 400 <span class="org-comment-delimiter"># </span><span class="org-comment">(A) the armature current</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">the actual counter emf is:</span>
+
+<span class="org-variable-name">Ea</span> <span class="org-operator">=</span> Ea <span class="org-operator">-</span> Ia <span class="org-operator">*</span> Ra
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">From the magnetisation curve, with Ia = 400 and If = 5.9 the supposed Ea needs to be 261V, if the speed were 1200 rpm.</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">The actual speed is therefore:</span>
+
+<span class="org-variable-name">n</span> <span class="org-operator">=</span> w_c <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>Ea <span class="org-operator">/</span> Ea_0<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">The electromagnetic power is:</span>
+
+<span class="org-variable-name">Pemag</span> <span class="org-operator">=</span> Ea <span class="org-operator">*</span> Ia
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">The deduction of rotational losses deducted we can calculate the output power:</span>
+<span class="org-variable-name">Plosses</span> <span class="org-operator">=</span> 2000
+
+<span class="org-variable-name">Poutput</span> <span class="org-operator">=</span> Pemag <span class="org-operator">-</span> Plosses
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Note that the speed at this load is the same as at no load, indicating that armature-reaction</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">effects have caused an essentially flat speed-load curve.</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">2. With If = 5.90 A and Is = Ia = 400 A, the main-field mmf in equivalent shunt-field amperes is</span>
+
+<span class="org-variable-name">If_shunt</span> <span class="org-operator">=</span> If <span class="org-operator">+</span> <span class="org-rainbow-delimiters-depth-1">(</span>1.5 <span class="org-operator">/</span> 1000<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-operator">*</span> Ia
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">From the magnetisation curve, the corresponding value of Ea at 1200 r/min would be 271 V.</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Accordingly, the speed is now</span>
+
+<span class="org-variable-name">n</span> <span class="org-operator">=</span> 1200 <span class="org-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>240 <span class="org-operator">/</span> 271<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">The power output is the same as in 1. The speed-load curve is now drooping,</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">due to the effect of the stabilizing winding.</span>
+
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org732dded"></a><font color=#e78284>QUESTION - </font><br />
+<div class="outline-text-5" id="text-8-4-0-3">
 <p>
 Repeat Question 10 for an armature current of I<sub>a</sub> = 200 A.
 </p>
@@ -2389,7 +2516,7 @@ Repeat Question 10 for an armature current of I<sub>a</sub> = 200 A.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Daniel McGuiness</p>
-<p class="date">Created: 2024-07-01 Mon 15:36</p>
+<p class="date">Created: 2024-07-01 Mon 18:32</p>
 </div>
 </body>
 </html>
