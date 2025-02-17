@@ -1,0 +1,240 @@
+#+title: LS MSc Drive Systems
+
+
+** Table of Contents :TOC_2:
+  - [[#lecture-information][Lecture Information]]
+  - [[#requirements-and-the-learning-outcomes][Requirements and the Learning Outcomes]]
+  - [[#grading-of-the-lecture][Grading of the Lecture]]
+  - [[#lecture-sources][Lecture Sources]]
+  - [[#content-and-unit-distribution][Content and Unit Distribution]]
+  - [[#structure-per-session][Structure per Session]]
+
+** Lecture Information
+ 
+#+TBLNAME: WORKBOOK
+| INDEX | DESCRIPTION        | VALUE                          |
+|-------+--------------------+--------------------------------|
+|     1 | Official Name      | Antriebssysteme                |
+|-------+--------------------+--------------------------------|
+|     2 | Lecture Code       | ATS                            |
+|     3 | Module Code        | MECH-M-2-ATS-ATS-VO            |
+|     4 | Degree             | M.Sc                           |
+|     5 | Program Name       | Mechatronik Smart Technologies |
+|     6 | Lecture Name       | Drive Systems                  |
+|     7 | Semester           | 2                              |
+|     8 | Season             | SS                             |
+|     9 | Room Type          | Lecture Room                   |
+|    10 | Assignments        | Oral Exam                      |
+|    11 | Lecturer           | Daniel T. McGuiness, Ph.D      |
+|    12 | Module Responsible | DaM                            |
+|-------+--------------------+--------------------------------|
+|    13 | Software           | Python*, Simulink*             |
+|    14 | Hardware           | -                              |
+|-------+--------------------+--------------------------------|
+|    15 | SWS Total          | 2                              |
+|    16 | SWS Teaching       | 2                              |
+|    17 | SWS Tutorial       | 0                              |
+|    18 | SWS Laboratory     | 0                              |
+|    19 | SWS Project Work   | 0                              |
+|-------+--------------------+--------------------------------|
+|    20 | UE Total           | 0                              |
+|    21 | UE Teaching        | 0                              |
+|    22 | UE Tutorial        |                                |
+|    23 | UE Laboratory      |                                |
+|    24 | Assessment Units   |                                |
+|    25 | Planned Units      |                                |
+|-------+--------------------+--------------------------------|
+|    26 | ECTS               | 2                              |
+|    27 | Lecture Type       | VO                             |
+|-------+--------------------+--------------------------------|
+#+TBLFM: $1=vlen(@I..0)
+
+** Requirements and the Learning Outcomes
+
+The requirements and the outcome for the lecture are given as follows.
+
+#+TBLNAME: REQUIREMENTS
+| INDEX | REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
+|-------+-----------------------+----------------------+------+--------+-----------------------|
+|     1 | Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
+|     2 | Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
+|     3 | Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
+|     4 | Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
+|     5 | -                     |                      |      |        | Complex Analysis      |
+|-------+-----------------------+----------------------+------+--------+-----------------------|
+#+TBLFM: $1=vlen(@I..0)
+
+** Grading of the Lecture
+
+#+TBLNAME: ASSIGNMENTS
+| ASSIGNMENT TYPE | VALUE |
+|-----------------+-------|
+| Oral Exam       |   100 |
+|-----------------+-------|
+| SUM             |   100 |
+#+TBLFM: @>$>=vsum(@I..@II)
+
+** Lecture Sources
+
+#+TBLNAME: LECTURE-SOURCES
+| Name                                                                                                               | Type | Link |
+|--------------------------------------------------------------------------------------------------------------------+------+------|
+| Mohan Ned. "Advanced electric drives: analysis control and modeling using MATLAB/Simulink" John Wiley & Sons 2014. | Book |      |
+| Krause Paul C. et. al. "Analysis of electric machinery and drive systems" Vol. 2 IEEE Press 2002.                  | Book |      |
+| Pyrhonen Juha et. al "Design of rotating electrical machines" John Wiley & Sons 2013.                              | Book |      |
+| Stephen J. Chapman. "Electric Machinery Fundamentals (5th Edition)" (2012).                                        | Book |      |
+| Fitzgerald A. E. et. al.  "Electric Machinery." McGraw Hill (2003).                                                | Book |      |
+| Hughes A. et. al. "Electric Motors and Drives: Fundamentals Types and Applications" Newnes 2019.                   | Book |      |
+| Melkebeek A. "Electrical Machines and Drives: Fundamentals and Advanced Modelling" Springer 2018.                  | Book |      |
+| Wildi T. "Electrical machines, drives, and power systems" Pearson Education 2006.                                  | Book |      |
+| Veltman A. et. al. "Fundamentals of Electrical Drives" Springer 2007.                                              | Book |      |
+#+TBLFM: $1=vlen(@I..0)
+
+** Content and Unit Distribution
+
+
+#+TBLNAME: CONTENT-AND-UNIT-DISTRIBUTION
+| ORDER | TOPIC                                         | UNITS | SELF STUDY |
+|-------+-----------------------------------------------+-------+------------|
+|     1 | Modelling DC Machines                         |     4 |            |
+|     2 | Phase Controlled DC Machines                  |     4 |            |
+|     3 | Induction Motor Dynamics and Control          |     4 |            |
+|     4 | Permanent Magnet Machine Dynamics and Control |     4 |            |
+|-------+-----------------------------------------------+-------+------------|
+|     5 | SUM                                           |    16 |            |
+#+TBLFM: @>$3=vsum(@2..@-1)::$1=vlen(@I..0)
+
+** Structure per Session
+
+#+TAG-BEGIN: TABLE-OF-CONTENTS
+ Part I DC Machines
+   1 Modelling DC Machines
+     1.1 Introduction
+     1.2 Operation Principle
+     1.3 Induced EMF
+     1.4 Equivalent Circuit and Electromagnetic Torque
+     1.5 Electromechanical Modelling
+     1.6 State-Space Modelling
+     1.7 Block Diagrams and Transfer Functions
+     1.8 Field Excitation
+       1.8.1 Separetly Excited
+       1.8.2 Shunt Excited
+       1.8.3 Series Excited
+       1.8.4 Compound
+       1.8.5 Permanent-Magnets
+     1.9 Measuring the Motor Constants
+       1.9.1 Armature Resistance
+       1.9.2 Armature Inductance
+       1.9.3 EMF Constant
+     1.10 Simulation
+       1.10.1 Separately-Excited
+   2 Phase Controlled DC Machines
+     2.1 Introduction
+     2.2 Principles of DC Machine Speed Control
+       2.2.1 Important Relationships
+       2.2.2 Field Control
+       2.2.3 Armature Control
+       2.2.4 Armature and Field Control
+       2.2.5 Four Quadrant Operation
+         2.2.5.1 Converter Requirements
+         2.2.5.2 Thyristor Converter
+     2.3 Phase Controlled Converters
+       2.3.1 Single-Phase Controlled Converter
+       2.3.2 Three-Phase Controlled Converter
+       2.3.3 Control Circuit
+       2.3.4 Control Modelling of the Three-Phase Converter
+         2.3.4.1 Current Source
+       2.3.5 Half-Controlled Converter
+         2.3.5.1 Converters with Freewheeling
+         2.3.5.2 Converter Configuration for a Four-Quadrant DC Drive
+     2.4 Steady State Analysis of 3-Phase Converter Drive
+       2.4.1 Average Analysis
+     2.5 Two Quadrant 3-Phase Converter Control
+     2.6 Transfer Functions of the Subsystems
+       2.6.1 DC Motor with Load
+       2.6.2 Converter
+       2.6.3 Current and Speed Controllers
+       2.6.4 Current Feedback
+       2.6.5 Speed Feedback
+     2.7 Designing Controllers
+       2.7.1 Current Controller
+ Part II Induction Machines
+   3 Induction Motor Dynamics and Control
+     3.1 Introduction
+     3.2 Steady-State Analysis
+       3.2.1 Speed of Operation
+       3.2.2 Normal Operation
+     3.3 Construction
+         * Magnetic Part
+         * Windings
+         3.3.0.1 Stator \& Rotor Windings
+             * Induced EMF
+             * Winding Methods
+         3.3.0.2 Random-Wound Winding
+         3.3.0.3 Form-Wound Winding
+             * Rotor Construction
+             * Insulation
+             * Rotor Shaft
+             * Enclosure
+             * Rotor Balancing
+     3.4 Dynamic Modelling
+       3.4.1 Real Time Model of a Two-Phase Induction Machine
+       3.4.2 Tranformations for Constant Matrices
+       3.4.3 Three-Phase to Two-Phase Transformation
+       3.4.4 Power Equivalence
+       3.4.5 Electromagnetic Torque
+       3.4.6 Derivation of Commonly Used Induction-Machine Models
+         3.4.6.1 Stator Reference
+         3.4.6.2 Rotor Reference
+         3.4.6.3 Synchronous Rotation Reference
+       3.4.7 Equations in Flux Linkages
+     3.5 Dynamic Simulation Equations
+     3.6 Small-Signal Equations
+       3.6.1 Derivation
+     3.7 Evaluation of Control Characteristics
+       3.7.1 Transfer Functions and Frequency Responses
+       3.7.2 Computation of Time Responses
+       3.7.3 Deriving the dq Flux-Linkage Model
+     3.8 Control Principles
+     3.9 Space-Phasor Model
+       3.9.1 Operation Principle
+ Part III Permanent Magnet Synchronous Machines
+   4 Permanent Magnet Machine Dynamics and Control
+     4.1 Introduction
+     4.2 Properties of Permanent Magnets
+         * Types of Permanent Magnets
+         4.2.0.1 Ceramic
+         4.2.0.2 AlNiCo
+         4.2.0.3 Samarium Cobalt
+         4.2.0.4 Neodymium Iron Boron
+             * Air Gap Line
+         4.2.0.5 Energy Density
+         4.2.0.6 Magnet Volume
+     4.3 Permanent Magnet Synchronous Machines
+       4.3.1 Machine Configurations
+       4.3.2 Flux Density Distribution
+       4.3.3 Line-Start PMSM
+       4.3.4 Types of PM Synchronous Machines
+     4.4 Vector Control
+       4.4.1 Mathematical Model
+       4.4.2 Vector Control
+       4.4.3 Drive System Schematic
+     4.5 Control Strategies
+       4.5.1 Constant ($\delta=\aci{90}$) Torque-Angle Control
+     4.6 Flux Weakening Operation
+       4.6.1 Maximum Speed
+       4.6.2 Direct Flux Weakening
+     4.7 Speed-Controller Design
+       4.7.1 Deriving the Block Diagram
+       4.7.2 Current Loop
+     4.8 Sensorless Control
+     4.9 Brushless DC Motor
+       4.9.1 Mathematical Modelling
+       4.9.2 Control Scheme
+       4.9.3 Dynamic Simulation
+       4.9.4 Commutation-Torque Ripple
+       4.9.5 Sensorless Control
+         4.9.5.1 Torque Smoothing
+         4.9.5.2 Design of Current and Speed Controllers
+         4.9.5.3 Parameter Sensitivity of the PMBDCM Drive
+#+TAG-END: TABLE OF CONTENTS
