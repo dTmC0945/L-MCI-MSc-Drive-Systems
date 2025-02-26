@@ -6,55 +6,65 @@
   - [[#grading-of-the-lecture][Grading of the Lecture]]
   - [[#lecture-sources][Lecture Sources]]
   - [[#content-and-unit-distribution][Content and Unit Distribution]]
-  - [[#structure-per-session][Structure per Session]]
+  - [[#lecture-table-of-contents][Lecture Table of Contents]]
+  - [[#related-links][Related Links]]
 
 ** Lecture Information
 
+*WARNING:* This is the content only covered by me as this lecture is shared by
+both me and Prof. Bernhard Hollaus, Ph.D.
+
+The goal of this lecture is to introduce to you the interesting world of machine
+design/control. The content is relatively math heavy but there are
+quite some simulations to give a better picture on how machines operate
+and are controlled. Simulation are done via MATLAB and SIMULINK and therefore
+to get the most out of the lecture, it is recommended for students to download
+and install these software(s).
 
 The Lecture structure for this lecture is as follows.
 
-| INDEX | DESCRIPTION        | VALUE                          | STATUS |
-|-------+--------------------+--------------------------------+--------|
-|     1 | Official Name      | Antriebssysteme                |        |
-|-------+--------------------+--------------------------------+--------|
-|     2 | Lecture Code       | ATS                            | A      |
-|     3 | Module Code        | MECH-M-2-ATS-ATS-VO            | A      |
-|     4 | Degree             | M.Sc                           | A      |
-|     5 | Program Name       | Mechatronik Smart Technologies | A      |
-|     6 | Lecture Name       | Drive Systems                  |        |
-|     7 | Semester           | 2                              | A      |
-|     8 | Season             | SS                             | A      |
-|     9 | Room Type          | Lecture Room                   |        |
-|    10 | Assignments        | Oral Exam                      | A      |
-|    11 | Lecturer           | Daniel T. McGuiness, Ph.D      |        |
-|    12 | Module Responsible | DaM                            | A      |
-|-------+--------------------+--------------------------------+--------|
-|    13 | Software           | Python*, Simulink*             |        |
-|    14 | Hardware           | -                              |        |
-|-------+--------------------+--------------------------------+--------|
-|    15 | SWS Total          | 2                              | A      |
-|    16 | SWS Teaching       | 2                              |        |
-|    17 | SWS Tutorial       | 0                              |        |
-|    18 | SWS Laboratory     | 0                              |        |
-|    19 | SWS Project Work   | 0                              |        |
-|-------+--------------------+--------------------------------+--------|
-|    20 | UE Total           | 0                              | A      |
-|    21 | UE Teaching        | 0                              | A      |
-|    22 | UE Tutorial        |                                | A      |
-|    23 | UE Laboratory      |                                | A      |
-|    24 | Assessment Units   |                                | A      |
-|    25 | Planned Units      |                                | A      |
-|-------+--------------------+--------------------------------+--------|
-|    26 | ECTS               | 2                              | A      |
-|    27 | Lecture Type       | VO                             | A      |
-|-------+--------------------+--------------------------------+--------|
-
+| INDEX | DESCRIPTION        | VALUE                                                   | STATUS |
+|-------+--------------------+---------------------------------------------------------+--------|
+|     1 | Official Name      | Antriebssysteme                                         |        |
+|-------+--------------------+---------------------------------------------------------+--------|
+|     2 | Lecture Code       | ATS                                                     | A      |
+|     3 | Module Code        | MECH-M-2-ATS-ATS-VO                                     | A      |
+|     4 | Degree             | M.Sc                                                    | A      |
+|     5 | Program Name       | Mechatronik Smart Technologies                          | A      |
+|     6 | Lecture Name       | Drive Systems                                           |        |
+|     7 | Semester           | 2                                                       | A      |
+|     8 | Season             | SS                                                      | A      |
+|     9 | Room Type          | Lecture Room                                            |        |
+|    10 | Assignments        | Oral Exam                                               | A      |
+|    11 | Lecturer           | Daniel T. McGuiness, Ph.D, Prof. Bernhard Hollaus, Ph.D |        |
+|    12 | Module Responsible | DaM                                                     | A      |
+|-------+--------------------+---------------------------------------------------------+--------|
+|    13 | Software           | Simulink, MATLAB                                        |        |
+|    14 | Hardware           | -                                                       |        |
+|-------+--------------------+---------------------------------------------------------+--------|
+|    15 | SWS Total          | 2                                                       | A      |
+|    16 | SWS Teaching       | 2                                                       |        |
+|    17 | SWS Tutorial       | 0                                                       |        |
+|    18 | SWS Laboratory     | 0                                                       |        |
+|    19 | SWS Project Work   | 0                                                       |        |
+|-------+--------------------+---------------------------------------------------------+--------|
+|    20 | UE Total           | 0                                                       | A      |
+|-------+--------------------+---------------------------------------------------------+--------|
+|    26 | ECTS               | 2                                                       | A      |
+|    27 | Lecture Type       | VO                                                      | A      |
+|-------+--------------------+---------------------------------------------------------+--------|
 
 ** Requirements and the Learning Outcomes
 
 The requirements and the outcome for the lecture are given as follows.
 They are shown here as table.
 
+The student should be comfortable with working with electrical machines and have a fundamental
+undestanding of poly-phase and AC circuits. For a refreshment on its content the students are
+encouraged to read the materials presented in the following repos:
+
+- [[https://github.com/dTmC0945/L-MCI-BSc-Drive-Technology][B.Sc Drive Technology]]
+- [[https://github.com/dTmC0945/L-MCI-MSc-Higher-Mathematics-I][M.Sc Higher Mathematics I]]  
 
 | INDEX | REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
 |-------+-----------------------+----------------------+------+--------+-----------------------|
@@ -67,9 +77,9 @@ They are shown here as table.
 
 ** Grading of the Lecture
 
-
 The lecture examination will be %100 Oral Exam based where you will be asked
-questions about the topics discussed during the lectures.
+questions about the topics discussed during the lectures. The exam will be carried
+out by both lecturers who will ask questions from their respective topics.
       
 | ASSIGNMENT TYPE | VALUE |
 |-----------------+-------|
@@ -82,21 +92,21 @@ questions about the topics discussed during the lectures.
 The following are a table of documentation which are useful resources which
 goes well with the lectures.
 
-| Name                                                                                                               | Type |
-|--------------------------------------------------------------------------------------------------------------------+------|
-| Mohan Ned. "Advanced electric drives: analysis control and modeling using MATLAB/Simulink" John Wiley & Sons 2014. | Book |
-| Krause Paul C. et. al. "Analysis of electric machinery and drive systems" Vol. 2 IEEE Press 2002.                  | Book |
-| Pyrhonen Juha et. al "Design of rotating electrical machines" John Wiley & Sons 2013.                              | Book |
-| Stephen J. Chapman. "Electric Machinery Fundamentals (5th Edition)" (2012).                                        | Book |
-| Fitzgerald A. E. et. al.  "Electric Machinery." McGraw Hill (2003).                                                | Book |
-| Hughes A. et. al. "Electric Motors and Drives: Fundamentals Types and Applications" Newnes 2019.                   | Book |
-| Melkebeek A. "Electrical Machines and Drives: Fundamentals and Advanced Modelling" Springer 2018.                  | Book |
-| Wildi T. "Electrical machines, drives, and power systems" Pearson Education 2006.                                  | Book |
-| Veltman A. et. al. "Fundamentals of Electrical Drives" Springer 2007.                                              | Book |
+| INDEX | AUTHOR                   | TITLE                                                                         | PUBLISHER               |
+|-------+--------------------------+-------------------------------------------------------------------------------+-------------------------|
+|     1 | Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
+|     2 | Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
+|     3 | Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
+|     4 | Stephen J. Chapman.      | Electric Machinery Fundamentals (5th Edition)                                 | (2012).                 |
+|     5 | Fitzgerald A. E. et. al. | Electric Machinery.                                                           | McGraw Hill (2003).     |
+|     6 | Hughes A. et. al.        | Electric Motors and Drives: Fundamentals Types and Applications               | Newnes 2019.            |
+|     7 | Melkebeek A.             | Electrical Machines and Drives: Fundamentals and Advanced Modelling           | Springer 2018.          |
+|     8 | Wildi T.                 | Electrical machines, drives, and power systems                                | Pearson Education 2006. |
+|     9 | Veltman A. et. al.       | Fundamentals of Electrical Drives                                             | Springer 2007.          |
 
 ** Content and Unit Distribution
 
-
+    
 The content and unit distribution of the lecture is as follows where a unit
 is defined as 45 min lecture.
     
@@ -105,20 +115,24 @@ is defined as 45 min lecture.
 |       | Modelling DC Machines                         |     4 |          8 |
 |       | Phase Controlled DC Machines                  |     4 |          8 |
 |       | Induction Motor Dynamics and Control          |     4 |          8 |
+|       | Phase Controlled Induction Machines           |     4 |          8 |
+|       | Frequency Controlled Induction Machines       |     4 |          8 |
+|       | Vector Controlled Induction Machines          |     4 |          8 |
 |       | Permanent Magnet Machine Dynamics and Control |     4 |          8 |
 |-------+-----------------------------------------------+-------+------------|
 |       | SUM                                           |       |            |
 
-** Structure per Session
+** Lecture Table of Contents
 
-Below is the structure of the lecture. The structure of the M.Sc Drive Systems
+ The structure of the M.Sc Drive Systems
 can be grouped into three (3) parts:
 
-1. DC Machines
-2. Induction Machines
-3. BLDC & PMSM Machines
+- DC Motor Modelling & Control
+- Induction Motor Modelling & Control
+- BLDC & PMSM Motor Modelling & Control
 
-#+TAG-BEGIN: TABLE-OF-CONTENTS
+Below is the detailed structure of the lecture.
+
 - Modelling DC Machines
   - Introduction
   - Operation Principle
@@ -147,17 +161,12 @@ can be grouped into three (3) parts:
     - Armature Control
     - Armature and Field Control
     - Four Quadrant Operation
-      - Converter Requirements
-      - Thyristor Converter
   - Phase Controlled Converters
     - Single-Phase Controlled Converter
     - Three-Phase Controlled Converter
     - Control Circuit
     - Control Modelling of the Three-Phase Converter
-      - Current Source
     - Half-Controlled Converter
-      - Converters with Freewheeling
-      - Converter Configuration for a Four-Quadrant DC Drive
   - Steady State Analysis of 3-Phase Converter Drive
     - Average Analysis
     - Harmonic Analysis
@@ -178,21 +187,17 @@ can be grouped into three (3) parts:
     - Speed of Operation
     - Normal Operation
   - Construction
-      - Stator \& Rotor Windings
-      - Random-Wound Winding
-      - Form-Wound Winding
   - Dynamic Modelling
     - Real Time Model of a Two-Phase Induction Machine
     - Tranformations for Constant Matrices
     - Three-Phase to Two-Phase Transformation
     - Power Equivalence
+    - Generalised Model in Arbitrary Reference Frame
     - Electromagnetic Torque
     - Derivation of Commonly Used Induction-Machine Models
-      - Stator Reference
-      - Rotor Reference
-      - Synchronous Rotation Reference
     - Equations in Flux Linkages
   - Dynamic Simulation Equations
+    - Simulation Example
   - Small-Signal Equations
     - Derivation
   - Evaluation of Control Characteristics
@@ -203,15 +208,40 @@ can be grouped into three (3) parts:
   - Control Principles
   - Space-Phasor Model
     - Operation Principle
+- Phase Controlled Induction Machines
+  - Introduction
+  - Stator Voltage Control
+    - Power Circuit and Gating
+    - Reversible Controller
+  - Approximate Analysis
+    - Slip-Energy Recovery Scheme
+    - Operation Principle
+- Frequency Controlled Induction Machines
+  - Introduction
+    - Static Frequency Changers
+  - Voltage-Source Inverter
+    - Modified McMurray Inverter
+    - Full-Bridge Inverter Operation
+  - Voltage-Source Inverter-Driven Induction Motor
+    - Voltage Waveforms
+    - Real Power
+    - Reactive Power
+    - Speed Control
+    - Constant V/f Control
+    - Torque Pulsation
+- Vector Controlled Induction Machines
+  - Introduction
+  - Principles of Vector Control
+  - Direct Vector Control
+    - Description
+    - Calculating the Torque and Flux
+  - Indirect Vector Control Scheme
+    - Derivation
+    - Indirect
+    - An Implementation
 - Permanent Magnet Machine Dynamics and Control
   - Introduction
   - Properties of Permanent Magnets
-      - Ceramic
-      - AlNiCo
-      - Samarium Cobalt
-      - Neodymium Iron Boron
-      - Energy Density
-      - Magnet Volume
   - Permanent Magnet Synchronous Machines
     - Machine Configurations
     - Flux Density Distribution
@@ -222,7 +252,7 @@ can be grouped into three (3) parts:
     - Vector Control
     - Drive System Schematic
   - Control Strategies
-    - Constant ($\delta=\aci{90}$) Torque-Angle Control
+    - Unity Power Control
   - Flux Weakening Operation
     - Maximum Speed
     - Direct Flux Weakening
@@ -236,6 +266,5 @@ can be grouped into three (3) parts:
     - Dynamic Simulation
     - Commutation-Torque Ripple
     - Sensorless Control
-      - Torque Smoothing
-      - Design of Current and Speed Controllers
-      - Parameter Sensitivity of the PMBDCM Drive
+
+(-DTMc 2025)
