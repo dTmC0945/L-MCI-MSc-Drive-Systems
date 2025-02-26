@@ -7,6 +7,7 @@
   - [[#lecture-sources][Lecture Sources]]
   - [[#content-and-unit-distribution][Content and Unit Distribution]]
   - [[#lecture-table-of-contents][Lecture Table of Contents]]
+  - [[#documentation][Documentation]]
   - [[#related-links][Related Links]]
 
 ** Lecture Information
@@ -103,7 +104,6 @@ goes well with the lectures.
 
 ** Content and Unit Distribution
 
-    
 The content and unit distribution of the lecture is as follows where a unit
 is defined as 45 min lecture.
     
@@ -263,5 +263,11 @@ Below is the detailed structure of the lecture.
     - Dynamic Simulation
     - Commutation-Torque Ripple
     - Sensorless Control
+
+** Documentation
+
+For any student in need of a LaTex class designed from the ground-up for
+assignment/thesis/slide for MCI needs please have a look at ~mcidoc~ class
+hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
 
 (-DTMc 2025)
