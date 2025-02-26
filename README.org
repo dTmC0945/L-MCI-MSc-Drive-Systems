@@ -42,13 +42,10 @@ The Lecture structure for this lecture is as follows.
 |    13 | Software           | Simulink, MATLAB                                        |        |
 |    14 | Hardware           | -                                                       |        |
 |-------+--------------------+---------------------------------------------------------+--------|
-|    15 | SWS Total          | 2                                                       | A      |
-|    16 | SWS Teaching       | 2                                                       |        |
-|    17 | SWS Tutorial       | 0                                                       |        |
-|    18 | SWS Laboratory     | 0                                                       |        |
-|    19 | SWS Project Work   | 0                                                       |        |
+|    15 | SWS Total          | 1                                                       | A      |
+|    16 | SWS Teaching       | 1                                                       |        |
 |-------+--------------------+---------------------------------------------------------+--------|
-|    20 | UE Total           | 0                                                       | A      |
+|    20 | UE Total           | 15                                                      | A      |
 |-------+--------------------+---------------------------------------------------------+--------|
 |    26 | ECTS               | 2                                                       | A      |
 |    27 | Lecture Type       | VO                                                      | A      |
