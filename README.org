@@ -25,9 +25,7 @@ and install these software(s).
 The Lecture structure for this lecture is as follows.
 
 | INDEX | DESCRIPTION        | VALUE                                                   | STATUS |
-|-------+--------------------+---------------------------------------------------------+--------|
 |     1 | Official Name      | Antriebssysteme                                         |        |
-|-------+--------------------+---------------------------------------------------------+--------|
 |     2 | Lecture Code       | ATS                                                     | A      |
 |     3 | Module Code        | MECH-M-2-ATS-ATS-VO                                     | A      |
 |     4 | Degree             | M.Sc                                                    | A      |
@@ -39,18 +37,13 @@ The Lecture structure for this lecture is as follows.
 |    10 | Assignments        | Oral Exam                                               | A      |
 |    11 | Lecturer           | Daniel T. McGuiness, Ph.D, Prof. Bernhard Hollaus, Ph.D |        |
 |    12 | Module Responsible | DaM                                                     | A      |
-|-------+--------------------+---------------------------------------------------------+--------|
 |    13 | Software           | Simulink, MATLAB                                        |        |
 |    14 | Hardware           | -                                                       |        |
-|-------+--------------------+---------------------------------------------------------+--------|
 |    15 | SWS Total          | 1                                                       | A      |
 |    16 | SWS Teaching       | 1                                                       |        |
-|-------+--------------------+---------------------------------------------------------+--------|
 |    20 | UE Total           | 15                                                      | A      |
-|-------+--------------------+---------------------------------------------------------+--------|
 |    26 | ECTS               | 2                                                       | A      |
 |    27 | Lecture Type       | VO                                                      | A      |
-|-------+--------------------+---------------------------------------------------------+--------|
 
 ** Requirements and the Learning Outcomes
 
@@ -65,13 +58,11 @@ encouraged to read the materials presented in the following repos:
 - [[https://github.com/dTmC0945/L-MCI-MSc-Higher-Mathematics-I][M.Sc Higher Mathematics I]]  
 
 | INDEX | REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
-|-------+-----------------------+----------------------+------+--------+-----------------------|
 |     1 | Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
 |     2 | Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
 |     3 | Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
 |     4 | Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
 |     5 | -                     |                      |      |        | Complex Analysis      |
-|-------+-----------------------+----------------------+------+--------+-----------------------|
 
 ** Grading of the Lecture
 
@@ -80,9 +71,7 @@ questions about the topics discussed during the lectures. The exam will be carri
 out by both lecturers who will ask questions from their respective topics.
       
 | ASSIGNMENT TYPE | VALUE |
-|-----------------+-------|
 | Oral Exam       |   100 |
-|-----------------+-------|
 | SUM             |   100 |
 
 ** Lecture Sources
@@ -91,7 +80,6 @@ The following are a table of documentation which are useful resources which
 goes well with the lectures.
 
 | INDEX | AUTHOR                   | TITLE                                                                         | PUBLISHER               |
-|-------+--------------------------+-------------------------------------------------------------------------------+-------------------------|
 |     1 | Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
 |     2 | Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
 |     3 | Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
@@ -107,22 +95,19 @@ goes well with the lectures.
 The content and unit distribution of the lecture is as follows where a unit
 is defined as 45 min lecture.
     
-| ORDER | TOPIC                                         | UNITS | SELF STUDY |
-|-------+-----------------------------------------------+-------+------------|
-|       | Modelling DC Machines                         |     4 |          8 |
-|       | Phase Controlled DC Machines                  |     4 |          8 |
-|       | Induction Motor Dynamics and Control          |     4 |          8 |
-|       | Phase Controlled Induction Machines           |     4 |          8 |
-|       | Frequency Controlled Induction Machines       |     4 |          8 |
-|       | Vector Controlled Induction Machines          |     4 |          8 |
-|       | Permanent Magnet Machine Dynamics and Control |     4 |          8 |
-|-------+-----------------------------------------------+-------+------------|
-|       | SUM                                           |       |            |
+| INDEX | TOPIC                                         | UNITS | SELF STUDY |
+|     1 | Modelling DC Machines                         |     2 |          4 |
+|     2 | Phase Controlled DC Machines                  |     2 |          4 |
+|     3 | Induction Motor Dynamics and Control          |     3 |          6 |
+|     4 | Phase Controlled Induction Machines           |     1 |          2 |
+|     5 | Frequency Controlled Induction Machines       |     1 |          2 |
+|     6 | Vector Controlled Induction Machines          |     3 |          6 |
+|     7 | Permanent Magnet Machine Dynamics and Control |     3 |          6 |
+|     8 | SUM                                           |    15 |         30 |
 
 ** Lecture Table of Contents
 
- The structure of the M.Sc Drive Systems
-can be grouped into three (3) parts:
+The structure of the M.Sc Drive Systems can be grouped into three (3) parts:
 
 - DC Motor Modelling & Control
 - Induction Motor Modelling & Control
