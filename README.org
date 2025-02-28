@@ -24,26 +24,26 @@ and install these software(s).
 
 The Lecture structure for this lecture is as follows.
 
-| INDEX | DESCRIPTION        | VALUE                                                   | STATUS |
-|     1 | Official Name      | Antriebssysteme                                         |        |
-|     2 | Lecture Code       | ATS                                                     | A      |
-|     3 | Module Code        | MECH-M-2-ATS-ATS-VO                                     | A      |
-|     4 | Degree             | M.Sc                                                    | A      |
-|     5 | Program Name       | Mechatronik Smart Technologies                          | A      |
-|     6 | Lecture Name       | Drive Systems                                           |        |
-|     7 | Semester           | 2                                                       | A      |
-|     8 | Season             | SS                                                      | A      |
-|     9 | Room Type          | Lecture Room                                            |        |
-|    10 | Assignments        | Oral Exam                                               | A      |
-|    11 | Lecturer           | Daniel T. McGuiness, Ph.D, Prof. Bernhard Hollaus, Ph.D |        |
-|    12 | Module Responsible | DaM                                                     | A      |
-|    13 | Software           | Simulink, MATLAB                                        |        |
-|    14 | Hardware           | -                                                       |        |
-|    15 | SWS Total          | 1                                                       | A      |
-|    16 | SWS Teaching       | 1                                                       |        |
-|    20 | UE Total           | 15                                                      | A      |
-|    26 | ECTS               | 2                                                       | A      |
-|    27 | Lecture Type       | VO                                                      | A      |
+| DESCRIPTION        | VALUE                                                   |
+| Official Name      | Antriebssysteme                                         |
+| Lecture Code       | ATS                                                     |
+| Module Code        | MECH-M-2-ATS-ATS-VO                                     |
+| Degree             | M.Sc                                                    |
+| Program Name       | Mechatronik Smart Technologies                          |
+| Lecture Name       | Drive Systems                                           |
+| Semester           | 2                                                       |
+| Season             | SS                                                      |
+| Room Type          | Lecture Room                                            |
+| Assignments        | Oral Exam                                               |
+| Lecturer           | Daniel T. McGuiness, Ph.D, Prof. Bernhard Hollaus, Ph.D |
+| Module Responsible | DaM                                                     |
+| Software           | Simulink, MATLAB                                        |
+| Hardware           | -                                                       |
+| SWS Total          | 1                                                       |
+| SWS Teaching       | 1                                                       |
+| UE Total           | 15                                                      |
+| ECTS               | 2                                                       |
+| Lecture Type       | VO                                                      |
 
 ** Requirements and the Learning Outcomes
 
@@ -57,12 +57,12 @@ encouraged to read the materials presented in the following repos:
 - [[https://github.com/dTmC0945/L-MCI-BSc-Drive-Technology][B.Sc Drive Technology]]
 - [[https://github.com/dTmC0945/L-MCI-MSc-Higher-Mathematics-I][M.Sc Higher Mathematics I]]  
 
-| INDEX | REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
-|     1 | Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
-|     2 | Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
-|     3 | Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
-|     4 | Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
-|     5 | -                     |                      |      |        | Complex Analysis      |
+| REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
+| Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
+| Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
+| Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
+| Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
+| -                     |                      |      |        | Complex Analysis      |
 
 ** Grading of the Lecture
 
@@ -79,31 +79,31 @@ out by both lecturers who will ask questions from their respective topics.
 The following are a table of documentation which are useful resources which
 goes well with the lectures.
 
-| INDEX | AUTHOR                   | TITLE                                                                         | PUBLISHER               |
-|     1 | Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
-|     2 | Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
-|     3 | Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
-|     4 | Stephen J. Chapman.      | Electric Machinery Fundamentals (5th Edition)                                 | (2012).                 |
-|     5 | Fitzgerald A. E. et. al. | Electric Machinery.                                                           | McGraw Hill (2003).     |
-|     6 | Hughes A. et. al.        | Electric Motors and Drives: Fundamentals Types and Applications               | Newnes 2019.            |
-|     7 | Melkebeek A.             | Electrical Machines and Drives: Fundamentals and Advanced Modelling           | Springer 2018.          |
-|     8 | Wildi T.                 | Electrical machines, drives, and power systems                                | Pearson Education 2006. |
-|     9 | Veltman A. et. al.       | Fundamentals of Electrical Drives                                             | Springer 2007.          |
+| AUTHOR                   | TITLE                                                                         | PUBLISHER               |
+| Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
+| Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
+| Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
+| Stephen J. Chapman.      | Electric Machinery Fundamentals (5th Edition)                                 | (2012).                 |
+| Fitzgerald A. E. et. al. | Electric Machinery.                                                           | McGraw Hill (2003).     |
+| Hughes A. et. al.        | Electric Motors and Drives: Fundamentals Types and Applications               | Newnes 2019.            |
+| Melkebeek A.             | Electrical Machines and Drives: Fundamentals and Advanced Modelling           | Springer 2018.          |
+| Wildi T.                 | Electrical machines, drives, and power systems                                | Pearson Education 2006. |
+| Veltman A. et. al.       | Fundamentals of Electrical Drives                                             | Springer 2007.          |
 
 ** Content and Unit Distribution
 
 The content and unit distribution of the lecture is as follows where a unit
 is defined as 45 min lecture.
     
-| INDEX | TOPIC                                         | UNITS | SELF STUDY |
-|     1 | Modelling DC Machines                         |     2 |          4 |
-|     2 | Phase Controlled DC Machines                  |     2 |          4 |
-|     3 | Induction Motor Dynamics and Control          |     3 |          6 |
-|     4 | Phase Controlled Induction Machines           |     1 |          2 |
-|     5 | Frequency Controlled Induction Machines       |     1 |          2 |
-|     6 | Vector Controlled Induction Machines          |     3 |          6 |
-|     7 | Permanent Magnet Machine Dynamics and Control |     3 |          6 |
-|     8 | SUM                                           |    15 |         30 |
+| TOPIC                                         | UNITS | SELF STUDY |
+| Modelling DC Machines                         |     2 |          4 |
+| Phase Controlled DC Machines                  |     2 |          4 |
+| Induction Motor Dynamics and Control          |     3 |          6 |
+| Phase Controlled Induction Machines           |     1 |          2 |
+| Frequency Controlled Induction Machines       |     1 |          2 |
+| Vector Controlled Induction Machines          |     3 |          6 |
+| Permanent Magnet Machine Dynamics and Control |     3 |          6 |
+| SUM                                           |    15 |         30 |
 
 ** Lecture Table of Contents
 
