@@ -12,17 +12,17 @@
 
 ** Lecture Information
 
-*WARNING:* This is the content only covered by me as this lecture is shared by
-both me and Prof. Bernhard Hollaus, Ph.D.
+- *WARNING:* This is the content only covered by me as this lecture is shared by
+  both me and Prof. Bernhard Hollaus, Ph.D.
+- The goal of this lecture is to introduce to you the interesting world of machine
+  design/control. The content is relatively math heavy but there are
+  quite some simulations to give a better picture on how machines operate
+  and are controlled.
+- Simulation are done via MATLAB and SIMULINK and therefore
+  to get the most out of the lecture, it is recommended for students to download
+  and install these software(s).
 
-The goal of this lecture is to introduce to you the interesting world of machine
-design/control. The content is relatively math heavy but there are
-quite some simulations to give a better picture on how machines operate
-and are controlled. Simulation are done via MATLAB and SIMULINK and therefore
-to get the most out of the lecture, it is recommended for students to download
-and install these software(s).
-
-The Lecture structure for this lecture is as follows.
+The structure for this lecture is as follows.
 
 | DESCRIPTION        | VALUE                                                   |
 | Official Name      | Antriebssysteme                                         |
@@ -47,28 +47,28 @@ The Lecture structure for this lecture is as follows.
 
 ** Requirements and the Learning Outcomes
 
-The requirements and the outcome for the lecture are given as follows.
-They are shown here as table.
+- The student should be comfortable with working with electrical machines and
+  have a fundamental undestanding of poly-phase and AC circuits.
 
-The student should be comfortable with working with electrical machines and have a fundamental
-undestanding of poly-phase and AC circuits. For a refreshment on its content the students are
-encouraged to read the materials presented in the following repos:
+- For a refreshment on its content the students are encouraged to read the
+  materials presented in the following repos:
 
 - [[https://github.com/dTmC0945/L-MCI-BSc-Drive-Technology][B.Sc Drive Technology]]
 - [[https://github.com/dTmC0945/L-MCI-MSc-Higher-Mathematics-I][M.Sc Higher Mathematics I]]  
 
-| REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
-| Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
-| Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
-| Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
-| Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
-| -                     |                      |      |        | Complex Analysis      |
+| REQUIREMENTS      | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME                 |
+| Laplace Transform | Higher Mathematics I | HMA  | M.Sc   | Modelling Machines      |
+| Linear Algebra    | Higher Mathematics I | HMA  | M.Sc   | Working with SIMULINK   |
+| Machine Basics    | Drive Technology     | ATS  | B.Sc   | Machine Control Methods |
+| Machine Builds    | Drive Technology     | ATS  | B.Sc   | Magnetic Materials      |
+| -                 | -                    | -    | -      | -                       |
 
 ** Grading of the Lecture
 
-The lecture examination will be %100 Oral Exam based where you will be asked
-questions about the topics discussed during the lectures. The exam will be carried
-out by both lecturers who will ask questions from their respective topics.
+- The lecture examination will be %100 oral exam based where you will be asked
+  questions about the topics discussed during the lectures.
+- The exam will be carried
+  out by both lecturers who will ask questions from their respective topics.
       
 | ASSIGNMENT TYPE | VALUE |
 | Oral Exam       |   100 |
@@ -92,8 +92,8 @@ goes well with the lectures.
 
 ** Content and Unit Distribution
 
-The content and unit distribution of the lecture is as follows where a unit
-is defined as 45 min lecture.
+- The content and unit distribution of the lecture is as follows where a unit
+  is defined as 45 min lecture.
     
 | TOPIC                                         | UNITS | SELF STUDY |
 | Modelling DC Machines                         |     2 |          4 |
@@ -109,9 +109,9 @@ is defined as 45 min lecture.
 
 The structure of the M.Sc Drive Systems can be grouped into three (3) parts:
 
-- DC Motor Modelling & Control
-- Induction Motor Modelling & Control
-- BLDC & PMSM Motor Modelling & Control
+1. DC Motor Modelling & Control
+2. Induction Motor Modelling & Control
+3. BLDC & PMSM Motor Modelling & Control
 
 Below is the detailed structure of the lecture.
 
@@ -252,7 +252,7 @@ Below is the detailed structure of the lecture.
 ** Documentation
 
 For any student in need of a LaTex class designed from the ground-up for
-assignment/thesis/slide for MCI needs please have a look at ~mcidoc~ class
+assignment/thesis/lab/slide for MCI needs please have a look at ~mcidoc~ class
 hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
 
 (-DTMc 2025)
