@@ -67,8 +67,8 @@ The structure for this lecture is as follows.
 
 - The lecture examination will be %100 oral exam based where you will be asked
   questions about the topics discussed during the lectures.
-- The exam will be carried
-  out by both lecturers who will ask questions from their respective topics.
+- The exam will be carried out by both lecturers who will ask questions
+  from their respective topics.
       
 | ASSIGNMENT TYPE | VALUE |
 | Oral Exam       |   100 |
