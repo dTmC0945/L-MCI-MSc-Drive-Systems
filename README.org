@@ -7,7 +7,6 @@
   - [[#lecture-sources][Lecture Sources]]
   - [[#content-and-unit-distribution][Content and Unit Distribution]]
   - [[#lecture-table-of-contents][Lecture Table of Contents]]
-  - [[#documentation][Documentation]]
   - [[#related-links][Related Links]]
 
 ** Lecture Information
@@ -95,15 +94,11 @@ goes well with the lectures.
 - The content and unit distribution of the lecture is as follows where a unit
   is defined as 45 min lecture.
     
-| TOPIC                                         | UNITS | SELF STUDY |
-| Modelling DC Machines                         |     2 |          4 |
-| Phase Controlled DC Machines                  |     2 |          4 |
-| Induction Motor Dynamics and Control          |     3 |          6 |
-| Phase Controlled Induction Machines           |     1 |          2 |
-| Frequency Controlled Induction Machines       |     1 |          2 |
-| Vector Controlled Induction Machines          |     3 |          6 |
-| Permanent Magnet Machine Dynamics and Control |     3 |          6 |
-| SUM                                           |    15 |         30 |
+| TOPIC                                | UNITS | SELF STUDY |
+| Modelling DC Machines                |     4 |          8 |
+| Induction Motor Dynamics and Control |     4 |          8 |
+| Vector Controlled Induction Machines |     4 |          8 |
+| SUM                                  |       |            |
 
 ** Lecture Table of Contents
 
@@ -135,51 +130,31 @@ Below is the detailed structure of the lecture.
     - EMF Constant
   - Simulation
     - Separately-Excited
-- Phase Controlled DC Machines
-  - Introduction
-  - Principles of DC Machine Speed Control
-    - Important Relationships
-    - Field Control
-    - Armature Control
-    - Armature and Field Control
-    - Four Quadrant Operation
-  - Phase Controlled Converters
-    - Single-Phase Controlled Converter
-    - Three-Phase Controlled Converter
-    - Control Circuit
-    - Control Modelling of the Three-Phase Converter
-    - Half-Controlled Converter
-  - Steady State Analysis of 3-Phase Converter Drive
-    - Average Analysis
-    - Harmonic Analysis
-    - Critical Triggering Angle
-    - Discountinuous Current Conduction
-  - Two Quadrant 3-Phase Converter Control
-  - Transfer Functions of the Subsystems
-    - DC Motor with Load
-    - Converter
-    - Current and Speed Controllers
-    - Current Feedback
-    - Speed Feedback
-  - Designing Controllers
-    - Current Controller
 - Induction Motor Dynamics and Control
   - Introduction
   - Steady-State Analysis
     - Speed of Operation
     - Normal Operation
   - Construction
+      - Stator & Rotor Windings
+      - Random-Wound Winding
+      - Form-Wound Winding
   - Dynamic Modelling
     - Real Time Model of a Two-Phase Induction Machine
-    - Tranformations for Constant Matrices
+    - Transformations for Constant Matrices
     - Three-Phase to Two-Phase Transformation
     - Power Equivalence
     - Generalised Model in Arbitrary Reference Frame
     - Electromagnetic Torque
     - Derivation of Commonly Used Induction-Machine Models
+      - Stator Reference
+      - Rotor Reference
+      - Synchronous Rotation Reference
     - Equations in Flux Linkages
   - Dynamic Simulation Equations
     - Simulation Example
+    - No-load Startup
+    - Application of a Step Torque Load
   - Small-Signal Equations
     - Derivation
   - Evaluation of Control Characteristics
@@ -190,69 +165,17 @@ Below is the detailed structure of the lecture.
   - Control Principles
   - Space-Phasor Model
     - Operation Principle
-- Phase Controlled Induction Machines
-  - Introduction
-  - Stator Voltage Control
-    - Power Circuit and Gating
-    - Reversible Controller
-  - Approximate Analysis
-    - Slip-Energy Recovery Scheme
-    - Operation Principle
-- Frequency Controlled Induction Machines
-  - Introduction
-    - Static Frequency Changers
-  - Voltage-Source Inverter
-    - Modified McMurray Inverter
-    - Full-Bridge Inverter Operation
-  - Voltage-Source Inverter-Driven Induction Motor
-    - Voltage Waveforms
-    - Real Power
-    - Reactive Power
-    - Speed Control
-    - Constant V/f Control
-    - Torque Pulsation
 - Vector Controlled Induction Machines
   - Introduction
   - Principles of Vector Control
   - Direct Vector Control
     - Description
     - Calculating the Torque and Flux
+      - Case I: Terminal Voltages
+    - Case II: Induced emf from Flux-Sensing Coils of Hall Sensors
   - Indirect Vector Control Scheme
     - Derivation
     - Indirect
     - An Implementation
-- Permanent Magnet Machine Dynamics and Control
-  - Introduction
-  - Properties of Permanent Magnets
-  - Permanent Magnet Synchronous Machines
-    - Machine Configurations
-    - Flux Density Distribution
-    - Line-Start PMSM
-    - Types of PM Synchronous Machines
-  - Vector Control
-    - Mathematical Model
-    - Vector Control
-    - Drive System Schematic
-  - Control Strategies
-    - Unity Power Control
-  - Flux Weakening Operation
-    - Maximum Speed
-    - Direct Flux Weakening
-  - Speed-Controller Design
-    - Deriving the Block Diagram
-    - Current Loop
-  - Sensorless Control
-  - Brushless DC Motor
-    - Mathematical Modelling
-    - Control Scheme
-    - Dynamic Simulation
-    - Commutation-Torque Ripple
-    - Sensorless Control
-
-** Documentation
-
-For any student in need of a LaTex class designed from the ground-up for
-assignment/thesis/lab/slide for MCI needs please have a look at ~mcidoc~ class
-hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
 
 (-DTMc 2025)
