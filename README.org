@@ -1,4 +1,5 @@
-#+title: MSc Drive Systems
+#+title: LS MSc Drive Systems
+
 
 ** Table of Contents :TOC_2:
   - [[#lecture-information][Lecture Information]]
@@ -7,138 +8,267 @@
   - [[#lecture-sources][Lecture Sources]]
   - [[#content-and-unit-distribution][Content and Unit Distribution]]
   - [[#lecture-table-of-contents][Lecture Table of Contents]]
-  - [[#related-links][Related Links]]
+  - [[#documentation][Documentation]]
 
 ** Lecture Information
 
-- *WARNING:* This is the content only covered by me as this lecture is shared by
-  both me and Prof. Bernhard Hollaus, Ph.D.
-- The goal of this lecture is to introduce to you the interesting world of machine
-  design/control. The content is relatively math heavy but there are
-  quite some simulations to give a better picture on how machines operate
-  and are controlled.
-- Simulation are done via MATLAB and SIMULINK and therefore
-  to get the most out of the lecture, it is recommended for students to download
-  and install these software(s).
 
-The structure for this lecture is as follows.
+- The goal of this lecture is to give a strong foundation on Drive Systems used
+  in industry with emphasis on power electronics, control, and of course machine
+  modeling.
 
-| DESCRIPTION        | VALUE                                                   |
-| Official Name      | Antriebssysteme                                         |
-| Lecture Code       | ATS                                                     |
-| Module Code        | MECH-M-2-ATS-ATS-VO                                     |
-| Degree             | M.Sc                                                    |
-| Program Name       | Mechatronik Smart Technologies                          |
-| Lecture Name       | Drive Systems                                           |
-| Semester           | 2                                                       |
-| Season             | SS                                                      |
-| Room Type          | Lecture Room                                            |
-| Assignments        | Oral Exam                                               |
-| Lecturer           | Daniel T. McGuiness, Ph.D, Prof. Bernhard Hollaus, Ph.D |
-| Module Responsible | DaM                                                     |
-| Software           | Simulink, MATLAB                                        |
-| Hardware           | -                                                       |
-| SWS Total          | 1                                                       |
-| SWS Teaching       | 1                                                       |
-| UE Total           | 15                                                      |
-| ECTS               | 2                                                       |
-| Lecture Type       | VO                                                      |
+| INDEX | DESCRIPTION        | VALUE                          | STATUS |
+|-------+--------------------+--------------------------------+--------|
+|     1 | Official Name      | Antriebssysteme                |        |
+|-------+--------------------+--------------------------------+--------|
+|     2 | Lecture Code       | ATS                            | A      |
+|     3 | Module Code        | MECH-M-2-ATS-ATS-VO            | A      |
+|     4 | Degree             | M.Sc                           | A      |
+|     5 | Program Name       | Mechatronik Smart Technologies | A      |
+|     6 | Lecture Name       | Drive Systems                  |        |
+|     7 | Semester           | 2                              | A      |
+|     8 | Season             | SS                             | A      |
+|     9 | Room Type          | Lecture Room                   |        |
+|    10 | Assignments        | Personal Assignment Final Exam | A      |
+|    11 | Lecturer           | Daniel T. McGuiness, Ph.D      |        |
+|    12 | Module Responsible | DaM                            | A      |
+|-------+--------------------+--------------------------------+--------|
+|    13 | Software           | Simulink, MATLAB               |        |
+|    14 | Hardware           | -                              |        |
+|-------+--------------------+--------------------------------+--------|
+|    15 | SWS Total          | 2                              | A      |
+|    16 | SWS Teaching       | 2                              |        |
+|    17 | SWS Tutorial       | 0                              |        |
+|    18 | SWS Laboratory     | 0                              |        |
+|    19 | SWS Project Work   | 0                              |        |
+|-------+--------------------+--------------------------------+--------|
+|    20 | UE Total           | 30                             | A      |
+|    21 | UE Teaching        | 30                             | A      |
+|    22 | UE Tutorial        | 0                              | A      |
+|    23 | UE Laboratory      | 0                              | A      |
+|    24 | Assessment Units   | 0                              | A      |
+|    25 | Planned Units      | 30                             | A      |
+|-------+--------------------+--------------------------------+--------|
+|    26 | ECTS               | 2                              | A      |
+|    27 | Lecture Type       | VO                             | A      |
+|    28 | Working Language   | English                        |        |
+|-------+--------------------+--------------------------------+--------|
+
+
 
 ** Requirements and the Learning Outcomes
 
 - The student should be comfortable with working with electrical machines and
   have a fundamental undestanding of poly-phase and AC circuits.
 
-- For a refreshment on its content the students are encouraged to read the
-  materials presented in the following repos:
-
-- [[https://github.com/dTmC0945/L-MCI-BSc-Drive-Technology][B.Sc Drive Technology]]
-- [[https://github.com/dTmC0945/L-MCI-MSc-Higher-Mathematics-I][M.Sc Higher Mathematics I]]  
-
-| REQUIREMENTS      | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME                 |
-| Laplace Transform | Higher Mathematics I | HMA  | M.Sc   | Modelling Machines      |
-| Linear Algebra    | Higher Mathematics I | HMA  | M.Sc   | Working with SIMULINK   |
-| Machine Basics    | Drive Technology     | ATS  | B.Sc   | Machine Control Methods |
-| Machine Builds    | Drive Technology     | ATS  | B.Sc   | Magnetic Materials      |
-| -                 | -                    | -    | -      | -                       |
+| INDEX | REQUIREMENTS      | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME                 |
+|-------+-------------------+----------------------+------+--------+-------------------------|
+|     1 | Laplace Transform | Higher Mathematics I | HMA  | M.Sc   | Modelling Machines      |
+|     2 | Linear Algebra    | Higher Mathematics I | HMA  | M.Sc   | Working with SIMULINK   |
+|     3 | Machine Basics    | Drive Technology     | ATS  | B.Sc   | Machine Control Methods |
+|     4 | Machine Builds    | Drive Technology     | ATS  | B.Sc   | Magnetic Materials      |
+|     5 | -                 | -                    | -    | -      | -                       |
+|-------+-------------------+----------------------+------+--------+-------------------------|
 
 ** Grading of the Lecture
 
-- The lecture examination will be %100 oral exam based where you will be asked
-  questions about the topics discussed during the lectures.
-- The exam will be carried out by both lecturers who will ask questions
-  from their respective topics.
-      
-| ASSIGNMENT TYPE | VALUE |
-| Oral Exam       |   100 |
-| SUM             |   100 |
+
+    
+- The lecture will have a single personal assignment comprising of a set list of
+  questions and a final exam comprising of all the topics covered in the lecture.
+
+- For the written exam you are allowed to write your own equation reference paper, as
+  long as it is a single sheet of A4, double sided and contains no exercise or solutions.  
+  
+| ASSIGNMENT TYPE     | VALUE | QUANTITY |
+|---------------------+-------+----------|
+| Personal Assignment |    40 |        1 |
+| Final Exam          |    60 |        1 |
+|---------------------+-------+----------|
+| SUM                 |   100 |        2 |
 
 ** Lecture Sources
 
 The following are a table of documentation which are useful resources which
 goes well with the lectures.
 
-| AUTHOR                   | TITLE                                                                         | PUBLISHER               |
-| Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
-| Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
-| Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
-| Stephen J. Chapman.      | Electric Machinery Fundamentals (5th Edition)                                 | (2012).                 |
-| Fitzgerald A. E. et. al. | Electric Machinery.                                                           | McGraw Hill (2003).     |
-| Hughes A. et. al.        | Electric Motors and Drives: Fundamentals Types and Applications               | Newnes 2019.            |
-| Melkebeek A.             | Electrical Machines and Drives: Fundamentals and Advanced Modelling           | Springer 2018.          |
-| Wildi T.                 | Electrical machines, drives, and power systems                                | Pearson Education 2006. |
-| Veltman A. et. al.       | Fundamentals of Electrical Drives                                             | Springer 2007.          |
+| INDEX | AUTHOR                   | TITLE                                                                         | PUBLISHER               |
+|-------+--------------------------+-------------------------------------------------------------------------------+-------------------------|
+|     1 | Mohan Ned.               | Advanced electric drives: analysis control and modeling using MATLAB/Simulink | John Wiley & Sons 2014. |
+|     2 | Krause Paul C. et. al.   | Analysis of electric machinery and drive systems                              | Vol. 2 IEEE Press 2002. |
+|     3 | Pyrhonen Juha et. al     | Design of rotating electrical machines                                        | John Wiley & Sons 2013. |
+|     4 | Stephen J. Chapman.      | Electric Machinery Fundamentals (5th Edition)                                 | (2012).                 |
+|     5 | Fitzgerald A. E. et. al. | Electric Machinery.                                                           | McGraw Hill (2003).     |
+|     6 | Hughes A. et. al.        | Electric Motors and Drives: Fundamentals Types and Applications               | Newnes 2019.            |
+|     7 | Melkebeek A.             | Electrical Machines and Drives: Fundamentals and Advanced Modelling           | Springer 2018.          |
+|     8 | Wildi T.                 | Electrical machines, drives, and power systems                                | Pearson Education 2006. |
+|     9 | Veltman A. et. al.       | Fundamentals of Electrical Drives                                             | Springer 2007.          |
 
 ** Content and Unit Distribution
+
 
 - The content and unit distribution of the lecture is as follows where a unit
   is defined as 45 min lecture.
     
-| TOPIC                                | UNITS | SELF STUDY |
-| Modelling DC Machines                |     4 |          8 |
-| Induction Motor Dynamics and Control |     4 |          8 |
-| Vector Controlled Induction Machines |     4 |          8 |
-| SUM                                  |       |            |
+| ORDER | TOPIC                                         | UNITS | SELF STUDY |
+|-------+-----------------------------------------------+-------+------------|
+|     1 | Fundamentals of Drive Systems                 |     2 |          4 |
+|     2 | Modelling DC Machines                         |     2 |          4 |
+|     3 | Phase Controlled DC Machines                  |     2 |          4 |
+|     4 | Chopper Controlled DC Drives                  |     4 |          8 |
+|     5 | Induction Motor Dynamics and Control          |     4 |          8 |
+|     6 | Phase Controlled Induction Machines           |     2 |          4 |
+|     7 | Frequency Controlled Induction Drives         |     4 |          8 |
+|     8 | Vector Controlled Induction Machines          |     4 |          8 |
+|     9 | Permanent Magnet Machine Dynamics and Control |     4 |          8 |
+|    10 | Final Exam                                    |     2 |          4 |
+|-------+-----------------------------------------------+-------+------------|
+|    11 | SUM                                           |    30 |         60 |
 
 ** Lecture Table of Contents
 
-The structure of the M.Sc Drive Systems can be grouped into three (3) parts:
+The structure of the lecture is as follows:
 
-1. DC Motor Modelling & Control
-2. Induction Motor Modelling & Control
-3. BLDC & PMSM Motor Modelling & Control
-
-Below is the detailed structure of the lecture.
-
+- Fundamentals of Drive Systems
+  - Power Devices and Switching
+    - Power Devices
+      - Power Diode
+      - Power Transistor
+      - Silicon Controlled Rectifier (SCR) or Thyristor
+      - Gate Turn-Off Thyristor (GTO)
+      - MOSFET
+      - Insulated Gate Bipolar Transistor
+    - Switching of Power Devices
+  - Motor Drive
+    - Electric Machines
+      - Calculating Efficiency
+      - Motor Rating
+    - Power Converters
+    - Controllers
+    - Load
 - Modelling DC Machines
-  - Introduction
   - Operation Principle
-  - Induced EMF
-  - Equivalent Circuit and Electromagnetic Torque
-  - Electromechanical Modelling
-  - State-Space Modelling
-  - Block Diagrams and Transfer Functions
+    - Induced EMF
+    - Equivalent Circuit and Electromagnetic Torque
+      - Electromechanical Modelling
+    - State-Space Modelling
+      - Block Diagrams and Transfer Functions
   - Field Excitation
     - Separetly Excited
     - Shunt Excited
     - Series Excited
     - Compound
     - Permanent-Magnets
-  - Measuring the Motor Constants
-    - Armature Resistance
-    - Armature Inductance
-    - EMF Constant
+    - Measuring the Motor Constants
+      - Armature Resistance
+      - Armature Inductance
+      - EMF Constant
   - Simulation
     - Separately-Excited
-- Induction Motor Dynamics and Control
+- Phase Controlled DC Machines
   - Introduction
-  - Steady-State Analysis
-    - Speed of Operation
-    - Normal Operation
+  - Principles of DC Machine Speed Control
+    - Important Relationships
+    - Field Control
+    - Armature Control
+    - Armature and Field Control
+    - Four Quadrant Operation
+      - Converter Requirements
+      - Thyristor Converter
+  - Phase Controlled Converters
+    - Single-Phase Controlled Converter
+    - Three-Phase Controlled Converter
+    - Control Circuit
+    - Control Modelling of the Three-Phase Converter
+      - Current Source
+    - Half-Controlled Converter
+      - Converters with Freewheeling
+      - Converter Configuration for a Four-Quadrant DC Drive
+  - Steady State Analysis of 3-Phase Converter Drive
+    - Average Analysis
+    - Harmonic Analysis
+    - Critical Triggering Angle
+    - Discountinuous Current Conduction
+  - Two Quadrant 3-Phase Converter Control
+  - Transfer Functions of the Subsystems
+    - DC Motor with Load
+  - Designing Controllers
+    - Current Controller
+  - Two-Quadrant DC Motor Drive with Field Weakening
+  - Four-Quadrant DC Motor Drive
+  - Converter Selection and Characteristics
+  - Simulation of One-Quadrant DC Motor Drive
+    - Motor Equations
+    - Filter in the Speed-Feedback Loop
+    - Speed Controller
+    - Current-Reference Generator
+    - Current Controller
+    - Simulation Results
+  - Harmonics and Associated Problems
+    - Harmonic Resonance
+    - Twelve-Pulse Converter for DC Motor Drives
+    - Selective Harmonic Elimination and Power Factor Improvement by Switching
+  - Sixth-Harmonic Torque
+    - Continuous Current Conduction Mode
+    - Discontinuous Current-Conduction Mode
+- Chopper Controlled DC Drives
+  - Operation Principle of the Chopper
+  - Four Quadrant Chopper Circuit
+    - First Quadrant Operation
+    - Second-Quadrant Operation
+    - Third-Quadrant Operation
+    - Fourth Quadrant Operation
+    - Model of the Chopper
+      - Input to the Chopper
+    - Other Chopper Circuits
+  - Steady-State Chopper DC Analysis
+    - Analysis by Averaging
+    - Instantaneous Steady-State Computation
+    - Continuous Current Conduction
+    - Discontinuous Current Conduction
+  - Rating of Devices
+  - Pulsating Torques
+  - Closed Loop Operation
+    - Speed-Controlled Drive System
+    - Current Control Loop
+    - Pulse-Width-Modulated Current Controller
+    - Hysteresis-Current Controller
+    - Modeling of Current Controllers
+    - Design of Current Controller
+    - Design of Speed Controller by the Symmetric-Optimum Method
+  - Dynamic Simulation of Speed-Controlled DC Drive
+    - Motor Equations
+    - Speed Feedback
+    - Speed Controller
+    - Command Current Generator
+    - Current Controller
+    - System Simulation
+  - Application
+- Induction Motor Dynamics and Control
   - Construction
+    - Magnetic Part
+    - Windings
       - Stator & Rotor Windings
-      - Random-Wound Winding
-      - Form-Wound Winding
+      - Induced EMF
+      - Winding Methods
+    - Rotor Construction
+    - Insulation
+    - Rotor Shaft
+    - Enclosure
+    - Rotor Balancing
+  - Steady-State Operation
+    - Speed of Operation
+      - Starting Up the Motor
+    - Normal Operation
+    - Parameters Tests
+      - No-Load Test
+    - Starting Methods
+      - Direct On-Line Starter
+      - Stator Resistance Starting
+      - Auto-transformer Starting
+      - Star-Delta Starter
+    - Rotor Resistance Starter
+    - Power Flow
   - Dynamic Modelling
     - Real Time Model of a Two-Phase Induction Machine
     - Transformations for Constant Matrices
@@ -151,31 +281,174 @@ Below is the detailed structure of the lecture.
       - Rotor Reference
       - Synchronous Rotation Reference
     - Equations in Flux Linkages
+    - Per Unit Model
   - Dynamic Simulation Equations
     - Simulation Example
     - No-load Startup
     - Application of a Step Torque Load
   - Small-Signal Equations
     - Derivation
-  - Evaluation of Control Characteristics
+    - Normalized Small-Signal Equations
+  - Evaluation and Control Characteristics
     - Transfer Functions and Frequency Responses
     - Computation of Time Responses
-    - Three to Two Phase Transformation
-    - Deriving the dq Flux-Linkage Model
-  - Control Principles
   - Space-Phasor Model
+    - Principle
+    - DQ Flux-Linkages Model Derivation
+    - Root Loci of the DQ Axes
+    - Space-Phasor Model Derivation
+    - Root Loci of the Space-Phasor
+    - Expression for Electromagnetic Torque
+    - Analytical Solution of Machine Dynamics
+    - Signal-Flow Graph of the Space-Phasor-Modeled
+  - Control Principles
+- Phase Controlled Induction Machines
+  - Stator Voltage Control
+    - Power Circuit and Gating
+    - Reversible Gating
+    - Steady-State Analysis
+    - Approximate Analysis
+      - Motor model and conduction angle
+      - Torque-Speed Characteristics with Phase Control
+      - Interaction of the Load
+    - Closed-Loop Operation
+    - Efficiency
+  - Slip-Energy Recovery Scheme
     - Operation Principle
+    - Slip-Energy Recovery Scheme
+    - Steady-State Analysis
+    - Starting
+    - Rating of the Converters
+      - Bridge-rectifier ratings
+      - Phase-controlled converter
+      - Filter choke
+    - Closed-Loop Control
+    - Sixth-Harmonic Pulsating Torques
+    - Harmonic Torques
+      - Static Scherbius Drive
+      - Applications
+- Frequency Controlled Induction Drives
+  - Static Frequency Changers
+  - Voltage Source Inverter
+    - Modified McMurray Inverter
+    - Full-Bridge-Inverter Operation
+  - Voltage-Source Inverter-Driven Induction Motor
+    - Voltage Waveforms
+    - Real Power
+    - Reactive Power
+    - Speed Control
+    - Constant Volts/Hz Control
+      - Relationship between voltage and frequency
+      - An Implementation
+      - Steady-State Performance
+      - Dynamic Simulation
+      - Small-Signal Responses
+    - Constant Slip-Speed Control
+      - Drive Strategy
+      - Steady-State Analysis
+    - Contant Air Gap Flux Control
+      - Operation Principle
+      - Drive Strategy
+    - Torque Pulsations
+      - Calculation of Torque Pulsations
+      - Effects of Time Harmonics
+    - Control of Harmonics
+      - Phase-Shifting Control
+      - Pulse-Width Modulation (PWM)
+      - Machine Model
+      - Direct Evaluation of steady-state current vector by Boundary-Matching
+      - Calculation of Steady-State Performance
+    - Flux-Weakening Operation
+      - Flux Weakening
+      - Calculation of Slip
+      - Maximum Stator Frequency
+  - Current-Source Induction Motor Drives
+    - Autosequentiall Commutated Current-Source Inverter
+      - Commutation
+      - Phase-Sequence Reversal
+      - Regeneration
+      - Comparison of Converters for AC and DC Motor Drives
+    - Steady-State Performance
+    - Direct Steady-State Evaluation of Six-Step Current-Source Inverter-Fed Induction Motor (CSIM) Drive System
+      - Stator Currents
+      - Machine Equations
+    - Closed-Loop CSIM Drive System
+    - Dynamic Simulation of the Closed-loop CSIM Drive System
+  - Applications
 - Vector Controlled Induction Machines
-  - Introduction
-  - Principles of Vector Control
+  - Fundamentals of Vector Control
   - Direct Vector Control
     - Description
-    - Calculating the Torque and Flux
-      - Case I: Terminal Voltages
-    - Case II: Induced emf from Flux-Sensing Coils of Hall Sensors
-  - Indirect Vector Control Scheme
-    - Derivation
-    - Indirect
-    - An Implementation
+    - Flux and Torque Processor
+    - Case i.: Terminal voltages
+    - Implementation with Six-Step Current Source
+    - Implementation with Voltage Source
+      - Direct Vector (Self) Control in Stator Reference Frames with Space-Vector Modulation
+      - Stator-Resistance Compensation
+  - Indirect Vector Control
+  - Indirect Vector Control Method
+    - An Implementation Example
+  - Flowchart for Dynamics Computation
+    - Dynamic Simulation Results
+    - Parameter Sensitivity
+      - Parameter Sensitivity Effects When the Outer Speed Loop Is Open
+      - Steady-state results
+      - Transient characteristics
+      - Parameter Sensitivity Effects on Speed-Controlled IM Drives
+  - Parameter Sensitivity Compensation
+      - Modified Reactive-Power Compensation Scheme
+      - Parameter Compensation with Air Gap-Power Feedback Control
+      - Dynamic performance
+  - Flux-Weakening Operation
+    - Principle of Flux Weakening
+      - Flux Weakening in Stator-Flux-Linkages-Controlled Schemes
+      - Flux Weakening in Rotor-Flux-Linkages-Controlled Schemes
+      - Algorithm to Generate the Rotor Flux-Linkages Reference
+    - Constant-Power Operation
+  - Speed-Controller Design for an Indirect Vector Control
+    - Deriving the Block Diagram
+      - Block-Diagram Reduction
+      - Simplifying the Current-Loop Transfer Function
+      - Speed-Controller Design
+- Permanent Magnet Machine Dynamics and Control
+  - Properties of Permanent Magnets
+      - Ceramic
+      - AlNiCo
+      - Samarium Cobalt
+      - Neodymium Iron Boron
+      - Energy Density
+      - Magnet Volume
+  - Permanent Magnet Synchronous Machines
+    - Machine Configurations
+    - Flux Density Distribution
+    - Line-Start PMSM
+    - Types of PM Synchronous Machines
+  - Vector Control
+    - Mathematical Model
+    - Vector Control
+    - Drive System Schematic
+  - Control Strategies
+  - Flux Weakening Operation
+    - Maximum Speed
+    - Direct Flux Weakening
+  - Speed-Controller Design
+    - Deriving the Block Diagram
+    - Current Loop
+  - Sensorless Control
+  - Brushless DC Motor
+    - Mathematical Model
+    - Control
+    - Dynamic Simulation
+    - Commutation-Torque Ripple
+    - Sensorless Control
+      - Torque Smoothing
+      - Design of Current and Speed Controllers
+      - Parameter Sensitivity of the BLDC Drive
 
-(-DTMc 2025)
+
+** Documentation
+
+For any student in need of a LaTeX class designed from the ground-up for
+assignment/lab/thesis/slide for MCI needs please have a look at ~mcidoc~ class
+hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
+
